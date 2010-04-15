@@ -1,32 +1,32 @@
 /**
- * Handle: wpCPStoreAdmin
+ * Handle: wpQCPAdmin
  * Version: 0.0.1
  * Deps: jquery
  * Enqueue: true
  */
 
-var wpCPStoreAdmin = function () {}
+var wpQCPAdmin = function () {}
 
-wpCPStoreAdmin.prototype = {
+wpQCPAdmin.prototype = {
     options           : {},
     generateShortCode : function() {
         var content = this['options']['content'];
         delete this['options']['content'];
 
         var attrs = '';
-		var content = document.getElementById('wpCPStore_url').value;
-		var returnnum = document.getElementById('wpCPStore_return').value;
+		var content = document.getElementById('wpQCP_url').value;
+		var returnnum = document.getElementById('wpQCP_return').value;
 			if (returnnum != '') {
                 attrs += ' return="' + returnnum + '"';
             }
-		var previewnum = document.getElementById('wpCPStore_preview').value;
+		var previewnum = document.getElementById('wpQCP_preview').value;
 			if (returnnum != '') {
                 attrs += ' preview="' + previewnum + '"';
             }
-		return '[cpstore' + attrs + ']' + content + '[/cpstore]'
+		return '[QuickCafe' + attrs + ']' + content + '[/QuickCafe]'
     },
     sendToEditor      : function(f) {
-        var collection = jQuery(f).find("input[id^=wpCPStoreName]:not(input:checkbox),input[id^=wpCPStoreName]:checkbox:checked");
+        var collection = jQuery(f).find("input[id^=wpQCPName]:not(input:checkbox),input[id^=wpQCPName]:checkbox:checked");
         var $this = this;
         collection.each(function () {
             var name = this.name.substring(13, this.name.length-1);
@@ -37,4 +37,4 @@ wpCPStoreAdmin.prototype = {
     }
 }
 
-var this_wpCPStoreAdmin = new wpCPStoreAdmin();
+var this_wpQCPAdmin = new wpQCPAdmin();

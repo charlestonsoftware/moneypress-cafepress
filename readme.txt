@@ -25,3 +25,7 @@ Features:
 * Enter your Cafepress API key.
 
 
+Update History
+
+V1.1 (March 15th, 2010)
+- Initial release (only released on cybersprocket.com)

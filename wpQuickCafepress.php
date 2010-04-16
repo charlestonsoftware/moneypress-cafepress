@@ -66,26 +66,26 @@ function wpQC_Register_Settings() { // whitelist options
   wpCSL_initialize_license_options('qcp');
 
   /* Configuration Settings */
-  register_setting( 'qcp_settings', 'config_cpapikey' );
-  register_setting( 'qcp_settings', 'config_cjxid' );
+  register_setting( 'qcp-settings', 'config_cpapikey' );
+  register_setting( 'qcp-settings', 'config_cjxid' );
 
   /* Display Settings */
-  register_setting( 'qcp_settings', 'display_numtoshow' );
-  register_setting( 'qcp_settings', 'display_numtopreview' );
+  register_setting( 'qcp-settings', 'display_numtoshow' );
+  register_setting( 'qcp-settings', 'display_numtopreview' );
 
   /* CSS Settings */
-  register_setting( 'qcp_settings', 'css_viewall');
-  register_setting( 'qcp_settings', 'css_category');
-  register_setting( 'qcp_settings', 'css_catmenu');
-  register_setting( 'qcp_settings', 'css_container');
-  register_setting( 'qcp_settings', 'css_float');
-  register_setting( 'qcp_settings', 'css_float_img');
-  register_setting( 'qcp_settings', 'css_float_p');
-  register_setting( 'qcp_settings', 'css_price_a');
-  register_setting( 'qcp_settings', 'css_float_hover');
-  register_setting( 'qcp_settings', 'css_float_hover_img');
-  register_setting( 'qcp_settings', 'css_float_hover_p');
-  register_setting( 'qcp_settings', 'css_price_hover_a');
+  register_setting( 'qcp-settings', 'css_viewall');
+  register_setting( 'qcp-settings', 'css_category');
+  register_setting( 'qcp-settings', 'css_catmenu');
+  register_setting( 'qcp-settings', 'css_container');
+  register_setting( 'qcp-settings', 'css_float');
+  register_setting( 'qcp-settings', 'css_float_img');
+  register_setting( 'qcp-settings', 'css_float_p');
+  register_setting( 'qcp-settings', 'css_price_a');
+  register_setting( 'qcp-settings', 'css_float_hover');
+  register_setting( 'qcp-settings', 'css_float_hover_img');
+  register_setting( 'qcp-settings', 'css_float_hover_p');
+  register_setting( 'qcp-settings', 'css_price_hover_a');
 }
 
 /*--------------------------------------------------------------------------
@@ -161,21 +161,23 @@ function wpQuickCafe ($attr, $content) {
   // Display Settings...
 
   // Default category ordering
-  $cpstore_category[] = "Shirts (short)";
-  $cpstore_category[] = "Shirts (long)";
-  $cpstore_category[] = "Kids Clothing";
-  $cpstore_category[] = "Outerwear";
-  $cpstore_category[] = "Intimate Apparel";
-  $cpstore_category[] = "Home & Office";
-  $cpstore_category[] = "Fun Stuff";
-  $cpstore_category[] = "Cards, Prints & Calendars";
-  $cpstore_category[] = "Hats & Caps";
-  $cpstore_category[] = "Bags";
-  $cpstore_category[] = "Stickers";
-  $cpstore_category[] = "Mugs";
-  $cpstore_category[] = "Pets";
-  $cpstore_category[] = "Buttons & Magnets";
-  $cpstore_category[] = "Books & CDs";
+  $cpstore_category = array(
+                            "Shirts (short)",
+                            "Shirts (long)",
+                            "Kids Clothing",
+                            "Outerwear",
+                            "Intimate Apparel",
+                            "Home & Office",
+                            "Fun Stuff",
+                            "Cards, Prints & Calendars",
+                            "Hats & Caps",
+                            "Bags",
+                            "Stickers",
+                            "Mugs",
+                            "Pets",
+                            "Buttons & Magnets",
+                            "Books & CDs",
+                            );
 
   // Get CSS Settings
   $cpstore_css_container = get_option('css_container');
@@ -331,8 +333,8 @@ function cpstorewarning() {
 
 //--------------------------------------------------------------------------
 function cpStoreInsertForm() {
-  ?>
-  <table class="form-table">
+?>
+<table class="form-table">
   <tr valign="top">
     <th align="right" scope="row"><label for="wpCPStore_url"><?php _e('Section Url:')?></label></th>
     <td>
@@ -351,12 +353,12 @@ function cpStoreInsertForm() {
       <input type="text" size="40" style="width:95%;" name="wpCPStore_return" id="wpCPStore_return" />
     </td>
   </tr>
-  </table>
-  <p class="submit">
-    <input type="button" onclick="return this_wpCPStoreAdmin.sendToEditor(this.form);" value="<?php _e('Create QuickCafepress Shortcode &raquo;'); ?>" />
-  </p>
-  <?php
-    }
+</table>
+<p class="submit">
+  <input type="button" onclick="return this_wpCPStoreAdmin.sendToEditor(this.form);" value="<?php _e('Create QuickCafepress Shortcode &raquo;'); ?>" />
+</p>
+<?php
+}
 
 
     //--------------------------------------------------------------------------

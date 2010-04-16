@@ -25,7 +25,7 @@
           <div class="inside">
             <p>
               To obtain a key, please purchase this plugin from
-              <a href="http://www.cybersprocket.com/products/wpcjproductsearch/" target="_new">http://www.cybersprocket.com/products/wpcjproductsearch/</a>
+              <a href="http://www.cybersprocket.com/products/wpcjproductsearch/" target="_new">http://www.cybersprocket.com/proucts/wpquickcafepress/</a>
             </p>
 
             <table class="form-table" style="margin-top: 0pt;">
@@ -42,7 +42,7 @@
 
                   <? if (!get_option('qcp-purchased')) { ?>
                   <div>
-                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WXZH2ATCDAJ4Y" target="_new">
+                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NRMZK9MRR7AML" target="_new">
                       <img alt="PayPal - The safer, easier way to pay online!" src="https://www.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" />
                     </a>
                   </div>
@@ -302,6 +302,30 @@
                     </td>
                   </tr>
                   </table>
+                </div>
+              </div>
+
+              <div class="postbox">
+                <div class="handlediv" title="Click to toggle"><br/></div>
+                <h3 class="hndle">
+                  <span>Product Info</span>
+                </h3>
+                <div class="inside" style="min-height: 150px;">
+                  <img src="<?= QCPPLUGINURL ?>/images/CSL_Logo_Only.jpg" style="float: left; padding: 5px;"/>
+                  <h4>This plugin was written and created by Cyber Sprocket Labs</h4>
+                  <p>
+                    Cyber Sprocket Labs provides technical consulting
+                    services for small-to-medium sized businesses.  If you’ve got an
+                    online business concept, a new piece of cool software you want
+                    written, or just need some help getting your technical team organized
+                    and pointed in the right direction, we can help.
+                  </p>
+                  <p>
+                    For more information, please visit our website at <a href="http://www.cybersprocket.com" target="_new">www.cybersprocket.com</a>
+                  </p>
+                  <p>
+                    Visit the product page for this plugin <a href="http://www.cybersprocket.com/proucts/wpquickcafepress/" target="_new">here</a>.
+                  </p>
                 </div>
               </div>
 

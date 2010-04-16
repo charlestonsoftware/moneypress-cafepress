@@ -43,6 +43,9 @@ if (!strpos(implode(get_included_files()), 'CSL-license.php')) {
 }
 wpCSL_check_product_key('qcp');
 
+/* Defines */
+define('QCPPLUGINURL', plugins_url('',__FILE__));
+
 /*--------------------------------------------------------------------------
 *
 * Variable Initialization

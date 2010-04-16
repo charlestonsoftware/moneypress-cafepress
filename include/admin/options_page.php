@@ -5,7 +5,7 @@
   <h3>For a complete explanation of the setup and use, see the <a href="<?= WP_PLUGIN_URL; ?>/wpQuickCafepress/wpQuickCafepress-help.php" target="_blank">help file</a>.	</h3>
 
   <form method="post" action="options.php">
-    <?php settings_fields('qcp_settings'); ?>
+    <?php settings_fields('qcp-settings'); ?>
 
     <div id="poststuff" class="metabox-holder">
       <div class="meta-box-sortables">
@@ -16,6 +16,47 @@
               });
           });
         </script>
+
+        <div class="postbox">
+          <div class="handlediv" title="Click to toggle"><br/></div>
+          <h3 class="hndle">
+            <span>Product Settings</span>
+          </h3>
+          <div class="inside">
+            <p>
+              To obtain a key, please purchase this plugin from
+              <a href="http://www.cybersprocket.com/products/wpcjproductsearch/" target="_new">http://www.cybersprocket.com/products/wpcjproductsearch/</a>
+            </p>
+
+            <table class="form-table" style="margin-top: 0pt;">
+              <tr valign="top">
+                <th scope="row">License Key *</th>
+                <td>
+                  <input type="text" <?= (!get_option('qcp-purchased')) ? 'name="qcp-license_key"' : '' ?> value="<?= get_option('qcp-license_key'); ?>" <?= (get_option('qcp-purchased')) ? 'disabled' : ''?> />
+                  <? if (get_option('qcp-purchased')) { ?>
+                  <input type="hidden" name="license_key" value="<?= get_option('qcp-license_key')?>"/>
+                  <span><font color="green">Valid license key.  Thanks for your purchase!</font></span>
+                  <? } ?>
+                  <?= (get_option('qcp-license_key') == '') ? '<span><font color="red">Without a license key, this plugin will only function for Admins</font></span>' : '' ?>
+                  <?= ( !(get_option('qcp-license_key') == '') && !get_option('qcp-purchased') ) ? '<span><font color="red">Your license key could not be verified</font></span>' : '' ?>
+
+                  <? if (!get_option('qcp-purchased')) { ?>
+                  <div>
+                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WXZH2ATCDAJ4Y" target="_new">
+                      <img alt="PayPal - The safer, easier way to pay online!" src="https://www.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" />
+                    </a>
+                  </div>
+                  <? }?>
+
+                  <div>
+                    <p>Your license key is simply your PayPal transaction key</p>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
 
         <div class="postbox">
           <div class="handlediv" title="Click to toggle"><br/></div>

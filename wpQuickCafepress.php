@@ -36,6 +36,13 @@
         Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+
+/* Includes */
+if (!strpos(implode(get_included_files()), 'CSL-license.php')) {
+  include_once('WPCSL-license/CSL-license.php');
+}
+wpCSL_check_product_key('qcp');
+
 /*--------------------------------------------------------------------------
 *
 * Variable Initialization
@@ -55,6 +62,8 @@ add_action('wp_head', 'wpQC_add_css');
 
 
 function wpQC_Register_Settings() { // whitelist options
+  /* Product Settings */
+  wpCSL_initialize_license_options('qcp');
 
   /* Configuration Settings */
   register_setting( 'qcp_settings', 'config_cpapikey' );

@@ -4,7 +4,7 @@ Donate link: http://www.cybersprocket.com/proucts/wpquickcafepress/
 Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store
 Requires at least: 2.6
 Test up to: 2.9.2
-Stable tag: 1.0
+Stable tag: 1.2
 
 Display your CafePress store products on pages and posts using shortcodes.
 
@@ -27,5 +27,12 @@ Features:
 
 Update History
 
-V1.1 (March 15th, 2010)
+v1.2 (April 19th, 2010)
+- Minor documentation fixes
+- Added "demo mode" for non-licensed copies
+- Added notification for missing license info
+- Added license verification
+- Restyled options page to look much nicer
+
+v1.1 (March 15th, 2010)
 - Initial release (only released on cybersprocket.com)

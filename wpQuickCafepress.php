@@ -4,7 +4,7 @@
   Plugin URI: http://www.cybersprocket.com/products/wpquickcafepress/
   Description: Cafepress store plugin for Wordpress.
   Author: Cyber Sprocket Labs
-  Version: 1.1
+  Version: 1.2
   Author URI: http://www.cybersprocket.com/
 
   Based on the Wishads Cafepress store plugin.  We picked it up

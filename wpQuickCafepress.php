@@ -141,7 +141,7 @@ function wpQuickCafe ($attr, $content) {
   get_currentuserinfo();
 
   // This block of code is a bit too big, needs to be re-worked
-  if (($current_user->user_level == '10') || get_option('qcp-purchased')) {
+  if ( ($current_user->wp_capabilities['administrator']) || ($current_user->user_level == '10') || get_option('qcp-purchased')) {
 
     // Get the CafePress API Key - return if blank.
     $cpApiKey = trim(get_option('config_cpapikey'));

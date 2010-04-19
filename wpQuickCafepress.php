@@ -41,7 +41,6 @@
 if (!strpos(implode(get_included_files()), 'CSL-license.php')) {
   include_once('WPCSL-license/CSL-license.php');
 }
-wpCSL_check_product_key('qcp');
 
 /* Defines */
 define('QCPPLUGINURL', plugins_url('',__FILE__));
@@ -58,6 +57,9 @@ if ( is_admin() ) {
   add_action('admin_menu', 'wpQC_plugin_menu');
   add_action('admin_menu', 'wpQC_Handle_AdminMenu');
   add_filter('admin_print_scripts', 'wpQC_AdminHead');
+  add_action('admin_notices', 'wpQC_admin_notices');
+} else {
+  wpCSL_check_product_key('qcp');
 }
 
 add_shortcode('QuickCafe', 'wpQuickCafe');
@@ -89,6 +91,40 @@ function wpQC_Register_Settings() { // whitelist options
   register_setting( 'qcp-settings', 'css_float_hover_img');
   register_setting( 'qcp-settings', 'css_float_hover_p');
   register_setting( 'qcp-settings', 'css_price_hover_a');
+}
+
+function wpQC_admin_notices() {
+  /* $notices[] = wpCJ_check_required_options(); */
+  /* $notices[] = wpCJ_check_cache(); */
+  $notices[] = wpCSL_check_product_key('qcp');
+
+  // Generate the warning message
+
+  foreach ($notices as $notice) {
+    if ($notice) {
+      $notice_output = "<div id='cscj_warning' class='updated fade' style='background-color: rgb(255, 102, 102);'>";
+      $notice_output .= sprintf(__('<p><strong><a href="%1$s">CSL Quick CafePress Store</a> needs attention: </strong>'),"options-general.php?page=CSQC-options");
+
+      if (isset($notice['options'])) {
+        $notice_output .= 'Please provide the following on the settings page: ';
+        $notice_output .= join(',', $notice['options']);
+      }
+
+      foreach( array('cache', 'product') as $item) {
+        if (isset($notice[$item])) {
+          $notice_output .= $notice[$item];
+        }
+      }
+
+      $notice_output .= "</p></div>";
+
+      $notices_output[] = $notice_output;
+    }
+  }
+
+  if ($notices_output) {
+    foreach ($notices_output as $output) echo $output;
+  }
 }
 
 /*--------------------------------------------------------------------------
@@ -374,7 +410,7 @@ function cpStoreInsertForm() {
 
     //--------------------------------------------------------------------------
     function wpQC_plugin_menu() {
-      add_options_page('wpQuickCafepress Settings', 'wpQuickCafepress', 'administrator', __FILE__, 'qcp_plugin_options');
+      add_options_page('wpQuickCafepress Settings', 'wpQuickCafepress', 'administrator', 'CSQC-options', 'qcp_plugin_options');
     }
 
 

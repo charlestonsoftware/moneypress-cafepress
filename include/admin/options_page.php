@@ -34,7 +34,7 @@
                 <td>
                   <input type="text" <?= (!get_option('qcp-purchased')) ? 'name="qcp-license_key"' : '' ?> value="<?= get_option('qcp-license_key'); ?>" <?= (get_option('qcp-purchased')) ? 'disabled' : ''?> />
                   <? if (get_option('qcp-purchased')) { ?>
-                  <input type="hidden" name="license_key" value="<?= get_option('qcp-license_key')?>"/>
+                  <input type="hidden" name="qcp-license_key" value="<?= get_option('qcp-license_key')?>"/>
                   <span><font color="green">Valid license key.  Thanks for your purchase!</font></span>
                   <? } ?>
                   <?= (get_option('qcp-license_key') == '') ? '<span><font color="red">Without a license key, this plugin will only function for Admins</font></span>' : '' ?>

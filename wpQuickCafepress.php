@@ -137,104 +137,109 @@ function wpQC_admin_notices() {
 */
 function wpQuickCafe ($attr, $content) {
   global $thisprod;
+  global $current_user;
+  get_currentuserinfo();
 
-  // Get the CafePress API Key - return if blank.
-  $cpApiKey = trim(get_option('config_cpapikey'));
-  if ($cpApiKey == '') {
-    return '<div>QuickCafepress: Missing API key, get it from developer.cafepress.com and put in you Wordpress settings.</div>';
-  }
+  // This block of code is a bit too big, needs to be re-worked
+  if (($current_user->user_level == '10') || get_option('qcp-purchased')) {
 
-  // Process theincoming attributes
-  $attr = shortcode_atts(array('return'   => get_option('display_numtoshow'),
-                               'preview'   => get_option('display_numtopreview')), $attr);
-  $cpstore_url = $content;
-
-  // Set the display attributes
-  $cpstore_preview = $attr['preview'];
-  $cpstore_return = $attr['return'];
-  $cpstore_permalink = get_permalink($post->ID);
-  $cpstore_startPage = (isset($_GET['startpage']) && $_GET['startpage']) ? $_GET['startpage'] : "1";
-
-  // build the file name
-  $cpstoreArray1 = explode("cafepress.com/",$cpstore_url);
-  list($cpstore_storeid,$cpstore_sectionid) = explode("/",$cpstoreArray1[1]);
-  if ($cpstore_sectionid == '') { $cpstore_sectionid='0'; }	                    # Default store section 0 = top if not set
-  $cpstore_dir = dirname(__FILE__) ;
-  $cpstore_cache_dir = $cpstore_dir . "/cache" ;
-  cpstore_cleancache($cpstore_cache_dir);
-  $cpstore_FileName = $cpstore_cache_dir . "/" . $cpstore_storeid . "_" . $cpstore_sectionid . ".xml";
-  $depth = array();
-  $qcpCacheOK = true;
-
-  // No cache?  Build one...
-  if (!file_exists ($cpstore_FileName)) {
-    $file_content = wp_remote_fopen("http://open-api.cafepress.com/product.listByStoreSection.cp?appKey=$cpApiKey&storeId=$cpstore_storeid&sectionId=$cpstore_sectionid&v=3");
-
-    // Write Cache File if the response does not contain an error message.
-    if (preg_match('/<help>\s+<exception-message>(.*?)<\/exception-message>/',$file_content,$error) > 0) {
-      return 'No products found: ' . $error[1] . '<br>';
-    } else {
-      if ($fh = fopen($cpstore_FileName, 'w')) {
-        fwrite($fh, $file_content);
-        fclose($fh);
-      } else {
-        $qcpCacheOK = false;
-      }
+    // Get the CafePress API Key - return if blank.
+    $cpApiKey = trim(get_option('config_cpapikey'));
+    if ($cpApiKey == '') {
+      return '<div>QuickCafepress: Missing API key, get it from developer.cafepress.com and put in you Wordpress settings.</div>';
     }
 
-    // Read Cache
-  } else {
-    if (!$file_content = file_get_contents($cpstore_FileName)) { return 'could not open cache file '.$cpstore_FileName; }
-  }
+    // Process theincoming attributes
+    $attr = shortcode_atts(array('return'   => get_option('display_numtoshow'),
+                                 'preview'   => get_option('display_numtopreview')), $attr);
+    $cpstore_url = $content;
 
-  // Setup for XML Parsing
-  $cpstore_xml_parser = xml_parser_create();
-  xml_set_element_handler($cpstore_xml_parser, "startElement", "endElement");
-  if (!xml_parse($cpstore_xml_parser, $file_content, feof($fp))) {
-    return sprintf("XML error: %s at line %d",
-                   xml_error_string(xml_get_error_code($cpstore_xml_parser)),
-                   xml_get_current_line_number($cpstore_xml_parser));
-  }
-  xml_parser_free($cpstore_xml_parser);
+    // Set the display attributes
+    $cpstore_preview = $attr['preview'];
+    $cpstore_return = $attr['return'];
+    $cpstore_permalink = get_permalink($post->ID);
+    $cpstore_startPage = (isset($_GET['startpage']) && $_GET['startpage']) ? $_GET['startpage'] : "1";
 
-  // Display Settings...
+    // build the file name
+    $cpstoreArray1 = explode("cafepress.com/",$cpstore_url);
+    list($cpstore_storeid,$cpstore_sectionid) = explode("/",$cpstoreArray1[1]);
+    if ($cpstore_sectionid == '') { $cpstore_sectionid='0'; }	                    # Default store section 0 = top if not set
+    $cpstore_dir = dirname(__FILE__) ;
+    $cpstore_cache_dir = $cpstore_dir . "/cache" ;
+    cpstore_cleancache($cpstore_cache_dir);
+    $cpstore_FileName = $cpstore_cache_dir . "/" . $cpstore_storeid . "_" . $cpstore_sectionid . ".xml";
+    $depth = array();
+    $qcpCacheOK = true;
 
-  // Default category ordering
-  $cpstore_category = array(
-                            "Shirts (short)",
-                            "Shirts (long)",
-                            "Kids Clothing",
-                            "Outerwear",
-                            "Intimate Apparel",
-                            "Home & Office",
-                            "Fun Stuff",
-                            "Cards, Prints & Calendars",
-                            "Hats & Caps",
-                            "Bags",
-                            "Stickers",
-                            "Mugs",
-                            "Pets",
-                            "Buttons & Magnets",
-                            "Books & CDs",
-                            );
+    // No cache?  Build one...
+    if (!file_exists ($cpstore_FileName)) {
+      $file_content = wp_remote_fopen("http://open-api.cafepress.com/product.listByStoreSection.cp?appKey=$cpApiKey&storeId=$cpstore_storeid&sectionId=$cpstore_sectionid&v=3");
 
-  // Get CSS Settings
-  $cpstore_css_container = get_option('css_container');
-  $cpstore_css_category = get_option('css_category');
-  $cpstore_css_float = get_option('css_float');
-  $cpstore_css_float_img = get_option('css_float_img');
-  $cpstore_css_float_p = get_option('css_float_p');
-  $cpstore_css_price_a = get_option('css_price_a');
-  $cpstore_css_float_hover = get_option('css_float_hover');
-  $cpstore_css_float_hover_img = get_option('css_float_hover_img');
-  $cpstore_css_float_hover_p = get_option('css_float_hover_p');
-  $cpstore_css_price_hover_a = get_option('css_price_hover_a');
-  $cpstore_css_viewall = get_option('css_viewall');
-  $cpstore_css_catmenu = get_option('css_catmenu');
+      // Write Cache File if the response does not contain an error message.
+      if (preg_match('/<help>\s+<exception-message>(.*?)<\/exception-message>/',$file_content,$error) > 0) {
+        return 'No products found: ' . $error[1] . '<br>';
+      } else {
+        if ($fh = fopen($cpstore_FileName, 'w')) {
+          fwrite($fh, $file_content);
+          fclose($fh);
+        } else {
+          $qcpCacheOK = false;
+        }
+      }
+
+      // Read Cache
+    } else {
+      if (!$file_content = file_get_contents($cpstore_FileName)) { return 'could not open cache file '.$cpstore_FileName; }
+    }
+
+    // Setup for XML Parsing
+    $cpstore_xml_parser = xml_parser_create();
+    xml_set_element_handler($cpstore_xml_parser, "startElement", "endElement");
+    if (!xml_parse($cpstore_xml_parser, $file_content, feof($fp))) {
+      return sprintf("XML error: %s at line %d",
+                     xml_error_string(xml_get_error_code($cpstore_xml_parser)),
+                     xml_get_current_line_number($cpstore_xml_parser));
+    }
+    xml_parser_free($cpstore_xml_parser);
+
+    // Display Settings...
+
+    // Default category ordering
+    $cpstore_category = array(
+                              "Shirts (short)",
+                              "Shirts (long)",
+                              "Kids Clothing",
+                              "Outerwear",
+                              "Intimate Apparel",
+                              "Home & Office",
+                              "Fun Stuff",
+                              "Cards, Prints & Calendars",
+                              "Hats & Caps",
+                              "Bags",
+                              "Stickers",
+                              "Mugs",
+                              "Pets",
+                              "Buttons & Magnets",
+                              "Books & CDs",
+                              );
+
+    // Get CSS Settings
+    $cpstore_css_container = get_option('css_container');
+    $cpstore_css_category = get_option('css_category');
+    $cpstore_css_float = get_option('css_float');
+    $cpstore_css_float_img = get_option('css_float_img');
+    $cpstore_css_float_p = get_option('css_float_p');
+    $cpstore_css_price_a = get_option('css_price_a');
+    $cpstore_css_float_hover = get_option('css_float_hover');
+    $cpstore_css_float_hover_img = get_option('css_float_hover_img');
+    $cpstore_css_float_hover_p = get_option('css_float_hover_p');
+    $cpstore_css_price_hover_a = get_option('css_price_hover_a');
+    $cpstore_css_viewall = get_option('css_viewall');
+    $cpstore_css_catmenu = get_option('css_catmenu');
 
 
-  // Build Style Sheet
-  $cpstore_content .= '<style>
+    // Build Style Sheet
+    $cpstore_content .= '<style>
 <!--
 div.cpstore_css_category {
 ' . $cpstore_css_category . '
@@ -284,60 +289,61 @@ div.cpstore_css_catmenu {
 -->
 </style>
 <div class="cpstore_css_container">'
-  ;
+    ;
 
-  // create the category menu if this is a single post or page
-  if (is_single() || is_page())  {
+    // create the category menu if this is a single post or page
+    if (is_single() || is_page())  {
+      foreach ($cpstore_category as $key => $cpstore_catname) {
+        $cpstore_productlist = $thisprod["$cpstore_catname"];
+        if (!empty($cpstore_productlist)){
+          $cpstore_catlist .= "<span style=\"white-space:nowrap;\"><a href=\"#$key\">$cpstore_catname</a></span> | ";
+        }
+      }
+      $cpstore_catlist = substr($cpstore_catlist,0,strlen($cpstore_catlist)-3);
+      $cpstore_catlist = '<div class="cpstore_css_catmenu"><a name="cpstore_menu"></a>' . $cpstore_catlist . '</div>';
+      $cpstore_content .= $cpstore_catlist;
+    }
+    $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
+
+    // now run through each category and show the thumbs
     foreach ($cpstore_category as $key => $cpstore_catname) {
       $cpstore_productlist = $thisprod["$cpstore_catname"];
       if (!empty($cpstore_productlist)){
-        $cpstore_catlist .= "<span style=\"white-space:nowrap;\"><a href=\"#$key\">$cpstore_catname</a></span> | ";
-      }
-    }
-    $cpstore_catlist = substr($cpstore_catlist,0,strlen($cpstore_catlist)-3);
-    $cpstore_catlist = '<div class="cpstore_css_catmenu"><a name="cpstore_menu"></a>' . $cpstore_catlist . '</div>';
-    $cpstore_content .= $cpstore_catlist;
-  }
-  $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
-
-  // now run through each category and show the thumbs
-  foreach ($cpstore_category as $key => $cpstore_catname) {
-    $cpstore_productlist = $thisprod["$cpstore_catname"];
-    if (!empty($cpstore_productlist)){
-      $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
-      $cpstore_content .= "<div class=\"cpstore_css_category\"><a name=\"$key\"></a>$cpstore_catname</div>";
-      foreach ($cpstore_productlist as $cpstore_id => $cpstore_attr) {
-        $this_link = $cpstore_attr["link"];
-        $cpstore_content .= '
+        $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
+        $cpstore_content .= "<div class=\"cpstore_css_category\"><a name=\"$key\"></a>$cpstore_catname</div>";
+        foreach ($cpstore_productlist as $cpstore_id => $cpstore_attr) {
+          $this_link = $cpstore_attr["link"];
+          $cpstore_content .= '
 <div class="cpstore_css_float" onmouseover="this.className=\'cpstore_css_float_hover\'" onmouseout="this.className=\'cpstore_css_float\'">
 <a href="' . $this_link . '"><img title="' . $cpstore_attr["description"] . '" src="' . $cpstore_attr["image"] . '" alt="' . $cpstore_attr["description"] . '" width="150" height="150" /></a>
 <div><a class="thickbox" href="' . str_replace("150x150","350x350",$cpstore_attr["image"]) . '">
 +zoom</a></div><p>' . $cpstore_attr["name"] . '</p><div class="cpstore_css_price"><a href="' . $this_link . '">Buy Now! - $' . $cpstore_attr["price"] . '</a></div></div>
 ';
-        $cpstore_loopcounter++;
-        if (!is_single() && ($cpstore_loopcounter == $cpstore_preview)) { // exit both loops
+          $cpstore_loopcounter++;
+          if (!is_single() && ($cpstore_loopcounter == $cpstore_preview)) { // exit both loops
+            $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
+            $cpstore_content .= "<div class=\"cpstore_css_viewall\"><a href=\"" . get_permalink($post->ID) . "\">View all</a></div>";
+            break 2;
+
+          }
+          if (is_single() && ($cpstore_loopcounter == $cpstore_return)) { // exit both loops
+            break 2;
+          }
+        }
+
+        // end of individual category loop
+        // if this is a single post or page, show the "back to top" link
+        if (is_single() || is_page())  {
           $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
-          $cpstore_content .= "<div class=\"cpstore_css_viewall\"><a href=\"" . get_permalink($post->ID) . "\">View all</a></div>";
-          break 2;
-
+          $cpstore_content .= "<div class=\"cpstore_toplink\"><a href=\"#cpstore_menu\">back to menu</a></div>";
         }
-        if (is_single() && ($cpstore_loopcounter == $cpstore_return)) { // exit both loops
-          break 2;
-        }
-      }
-
-      // end of individual category loop
-      // if this is a single post or page, show the "back to top" link
-      if (is_single() || is_page())  {
-        $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
-        $cpstore_content .= "<div class=\"cpstore_toplink\"><a href=\"#cpstore_menu\">back to menu</a></div>";
       }
     }
-  }
-  $cpstore_content .= '<div class="cpstore_css_spacer"></div><div style="margin-bottom:2em;"></div></div>';
+    $cpstore_content .= '<div class="cpstore_css_spacer"></div><div style="margin-bottom:2em;"></div></div>';
 
-  # Info messages
-  if (!$qcpCacheOK) { $cpstore_content .= '<br />wpQuickCafepress could not create the cache file '.$cpstore_FileName.'<br />'; }
+    # Info messages
+    if (!$qcpCacheOK) { $cpstore_content .= '<br />wpQuickCafepress could not create the cache file '.$cpstore_FileName.'<br />'; }
+  }
 
   # Return
   return $cpstore_content;

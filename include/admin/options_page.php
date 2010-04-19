@@ -2,7 +2,7 @@
   <h2>CSL Quick CafePress Store</h2>
 
 
-  <h3>For a complete explanation of the setup and use, see the <a href="<?= WP_PLUGIN_URL; ?>/wpQuickCafepress/wpQuickCafepress-help.php" target="_blank">help file</a>.	</h3>
+  <h3>For a complete explanation of the setup and use, see the <a href="<?= QCPPLUGINURL; ?>/wpQuickCafepress-help.php" target="_blank">help file</a>.	</h3>
 
   <form method="post" action="options.php">
     <?php settings_fields('qcp-settings'); ?>

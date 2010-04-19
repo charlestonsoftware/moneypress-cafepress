@@ -46,9 +46,10 @@
     <blockquote>
       <textarea cols="60" rows="2">[QuickCafe preview=&quot;3&quot; return=&quot;21&quot;]http://www.cafepress.com/storeid/1234567[/QuickCafe] </textarea>
     </blockquote>
-    <p>The shortcode above would create a section that displays all of the products from the CafePress store section found at that url. On the front page or category pages of your blog, it will show only the first three products followed by a &quot;View All&quot; link that takes the visitor to the full page or post. There, the plugin will display the first 21 products. If you leave the &quot;return&quot; field blank it will show all of your products. If you just want to use your default settings, simply use this type of shortcode:</p>
+    <p>The shortcode above would create a section that displays all of the products from the CafePress store section found at that url. On the front page or category pages of your blog, it will show only the first three products followed by a &quot;View All&quot; link that takes the visitor to the full page or post. There, the plugin will display the first 21 products. If you leave the &quot;return&quot; field blank it will show all of your products.</p>
+    <p>If you just want to use your default settings, simply use this type of shortcode:</p>
     <blockquote>
-      <textarea cols="60" rows="2">[cpstore]http://www.cafepress.com/storeid/1234567[/cpstore]</textarea>
+      <textarea cols="60" rows="2">[QuickCafe]http://www.cafepress.com/storeid/1234567[/QuickCafe]</textarea>
     </blockquote>
     <p>The shortcode can be entered manually or use the form that the plugin creates under your posting text area when adding or editing posts or pages.</p>
     <p>When you create a post or page, you'll see a form under the text area titled &quot;Quick Cafepress Entry&quot;. TIP: In some cases, you will be able to drag this form higher up on the page, where it will remain in future posts!</p>

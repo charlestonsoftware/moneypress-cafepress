@@ -6,7 +6,7 @@ Requires at least: 2.6
 Test up to: 2.9.2
 Stable tag: 1.2
 
-Display your CafePress store products on pages and posts using shortcodes.
+Our wpQuickCafepress plugin allows you to quickly and easily display products from your (or someone else’s) Cafepress store. Install the plugin and you can add products to your existing blog posts or pages just be entering a shortcode. If you are a Cafepress retailer, this plugin is for you!
 
 == Description ==
 

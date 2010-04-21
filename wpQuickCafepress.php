@@ -2,7 +2,7 @@
 /*
   Plugin Name: CSL Quick Cafepress
   Plugin URI: http://www.cybersprocket.com/products/wpquickcafepress/
-  Description: Cafepress store plugin for Wordpress.
+  Description: Our wpQuickCafepress plugin allows you to quickly and easily display products from your (or someone else’s) Cafepress store. Install the plugin and you can add products to your existing blog posts or pages just be entering a shortcode. If you are a Cafepress retailer, this plugin is for you!
   Author: Cyber Sprocket Labs
   Version: 1.2
   Author URI: http://www.cybersprocket.com/

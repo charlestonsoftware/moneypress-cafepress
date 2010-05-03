@@ -30,6 +30,8 @@ v1.2.1 (May 3rd, 2010)
 - Try to create cache directory if it does not exist
 - Better error handling concerning permissions of cache directory
 
+- Updated product description
+
 v1.2 (April 19th, 2010)
 - Minor documentation fixes
 - Added "demo mode" for non-licensed copies

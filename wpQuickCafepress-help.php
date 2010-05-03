@@ -34,6 +34,15 @@
     <h3>Plugin setup:</h3>
     <ol>
       <li>Unzip the plugin zip file and copy the entire directory and subdirectory structure to your WordPress plugins directory.</li>
+      <ul>
+        <li>Make sure you have a <code>cache</code> directory along
+          side the plugin.  Also make sure this directory has full
+          permissions for reading, writing, and executing.  If get the error
+          <code>"could not open cache file"</code> on your site, then
+          either the cache directory does not exist or does not have the
+          proper permissions.</li>
+      </ul>
+      </ol>
       <li>Log in to your WordPress blog and go to the &quot;Plugins&quot; section of your admin panel.</li>
       <li>Click &quot;Activate&quot; for the &quot;Quick Cafepress&quot; plugin.</li>
       <li>Go to the &quot;wpQuick Cafepress&quot; link under your &quot;Settings&quot; section of your admin panel.</li>

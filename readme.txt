@@ -4,7 +4,7 @@ Donate link: http://www.cybersprocket.com/proucts/wpquickcafepress/
 Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store
 Requires at least: 2.6
 Test up to: 2.9.2
-Stable tag: 1.2
+Stable tag: 1.2.1
 
 Our wpQuickCafepress plugin allows you to quickly and easily display products from your (or someone else’s) Cafepress store. Install the plugin and you can add products to your existing blog posts or pages just be entering a shortcode. If you are a Cafepress retailer, this plugin is for you!
 

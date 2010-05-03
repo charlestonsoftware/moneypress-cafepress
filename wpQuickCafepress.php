@@ -171,8 +171,13 @@ function wpQuickCafe ($attr, $content) {
     $depth = array();
     $qcpCacheOK = true;
 
+    // Make sure the cache directory exists with the proper permissions.
+    if (file_exists($cpstore_cache_dir) === false) {
+        $qcpCacheOK = mkdir($cpstore_cache_dir, 0777, true);
+    }
+
     // No cache?  Build one...
-    if (!file_exists ($cpstore_FileName)) {
+    if ($qcpCacheOK && !file_exists($cpstore_FileName)) {
       $file_content = wp_remote_fopen("http://open-api.cafepress.com/product.listByStoreSection.cp?appKey=$cpApiKey&storeId=$cpstore_storeid&sectionId=$cpstore_sectionid&v=3");
 
       // Write Cache File if the response does not contain an error message.
@@ -180,7 +185,9 @@ function wpQuickCafe ($attr, $content) {
         return 'No products found: ' . $error[1] . '<br>';
       } else {
         if ($fh = fopen($cpstore_FileName, 'w')) {
-          fwrite($fh, $file_content);
+            if (fwrite($fh, $file_content) === false) {
+                $qcpCacheOK = false;
+            }
           fclose($fh);
         } else {
           $qcpCacheOK = false;
@@ -188,8 +195,9 @@ function wpQuickCafe ($attr, $content) {
       }
 
       // Read Cache
-    } else {
-      if (!$file_content = file_get_contents($cpstore_FileName)) { return 'could not open cache file '.$cpstore_FileName; }
+    }
+    else if ($qcpCacheOK) {
+        if (!$file_content = file_get_contents($cpstore_FileName)) { return 'could not open cache file '.$cpstore_FileName; }
     }
 
     // Setup for XML Parsing
@@ -442,7 +450,6 @@ function cpStoreInsertForm() {
       }
 
     }
-
 
 
     //--------------------------------------------------------------------------

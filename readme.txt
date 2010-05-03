@@ -24,8 +24,11 @@ Features:
 * Go to wpCafepress in the Wordpress Settings menu.
 * Enter your Cafepress API key.
 
+== Update History ==
 
-Update History
+v1.2.1 (May 3rd, 2010)
+- Try to create cache directory if it does not exist
+- Better error handling concerning permissions of cache directory
 
 v1.2 (April 19th, 2010)
 - Minor documentation fixes

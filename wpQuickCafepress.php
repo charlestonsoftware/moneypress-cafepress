@@ -63,8 +63,9 @@ if ( is_admin() ) {
 }
 
 add_shortcode('QuickCafe', 'wpQuickCafe');
-add_action('wp_head', 'wpQC_add_css');
 
+add_filter('wp_print_scripts', 'wpQC_add_js');
+add_filter('wp_print_styles', 'wpQC_add_css');
 
 function wpQC_Register_Settings() { // whitelist options
   /* Product Settings */
@@ -360,11 +361,13 @@ div.cpstore_css_catmenu {
 
 //--------------------------------------------------------------------------
 function wpQC_add_css() {
+  wp_enqueue_style('thickbox');
+}
+
+//--------------------------------------------------------------------------
+function wpQC_add_js() {
   wp_enqueue_script('jquery');
   wp_enqueue_script('thickbox');
-  echo '<script type="text/javascript" src="/wp-includes/js/jquery/jquery.js"></script>'."\n";
-  echo '<script type="text/javascript" src="/wp-includes/js/thickbox/thickbox.js"></script>'."\n";
-  echo '<link rel="stylesheet" href="/wp-includes/js/thickbox/thickbox.css" type="text/css" media="screen" />'."\n";
 }
 
 

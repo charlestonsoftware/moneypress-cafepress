@@ -43,6 +43,7 @@ Please direct all inquiries to: info@cybersprocket.com
 == Changelog ==
 
 = v1.2.2 () =
+* Fixed loading of thickbox (lightbox image zooming)
 * Correctly formatted the readme.txt file
 
 = v1.2.1 (May 3rd, 2010) =

@@ -4,7 +4,7 @@ Donate link: http://www.cybersprocket.com/proucts/wpquickcafepress/
 Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store
 Requires at least: 2.6
 Tested up to: 2.9.2
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 
 Our wpQuickCafepress plugin allows you to quickly and easily display products from your (or someone else’s) Cafepress store.
 
@@ -42,7 +42,7 @@ Please direct all inquiries to: info@cybersprocket.com
 
 == Changelog ==
 
-= v1.2.2 () =
+= v1.2.2 (May 7th, 2010) =
 * Fixed loading of thickbox (lightbox image zooming)
 * Correctly formatted the readme.txt file
 

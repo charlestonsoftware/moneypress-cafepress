@@ -186,8 +186,11 @@ function wpQuickCafe ($attr, $content) {
       $file_content = wp_remote_fopen("http://open-api.cafepress.com/product.listByStoreSection.cp?appKey=$cpApiKey&storeId=$cpstore_storeid&sectionId=$cpstore_sectionid&v=3");
 
       // Write Cache File if the response does not contain an error message.
-      if (preg_match('/<help>\s+<exception-message>(.*?)<\/exception-message>/',$file_content,$error) > 0) {
-        return 'No products found: ' . $error[1] . '<br>';
+      if (
+          (preg_match('/<help>\s+<exception-message>(.*?)<\/exception-message>/',$file_content,$error) > 0) ||
+          (strlen($file_content)<1)
+          ){
+        return 'No products found.<br/>' . $error[1] . '<br/>';
       } else {
         if ($fh = fopen($cpstore_FileName, 'w')) {
             if (fwrite($fh, $file_content) === false) {

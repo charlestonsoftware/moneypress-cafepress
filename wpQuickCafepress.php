@@ -182,7 +182,7 @@ function wpQuickCafe ($attr, $content) {
     }
 
     // No cache?  Build one...
-    if ($qcpCacheOK && !file_exists($cpstore_FileName)) {
+    if ($qcpCacheOK && (!file_exists($cpstore_FileName) || !filesize($cpstore_FileName))) {
       $file_content = wp_remote_fopen("http://open-api.cafepress.com/product.listByStoreSection.cp?appKey=$cpApiKey&storeId=$cpstore_storeid&sectionId=$cpstore_sectionid&v=3");
 
       // Write Cache File if the response does not contain an error message.
@@ -202,7 +202,10 @@ function wpQuickCafe ($attr, $content) {
       // Read Cache
     }
     else if ($qcpCacheOK) {
-        if (!$file_content = file_get_contents($cpstore_FileName)) { return 'could not open cache file '.$cpstore_FileName; }
+        if (!$file_content = file_get_contents($cpstore_FileName)) {
+            if ($UserIsAnAdmin) { $cpstore_content = '<div>MoneyPress : Cafepress Edition could not open cache file '.$cpstore_FileName.'</div>'; }             
+            return $cpstore_content; 
+        }
     }
 
     // Setup for XML Parsing
@@ -318,48 +321,46 @@ div.cpstore_css_catmenu {
     }
     $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
 
-    // now run through each category and show the thumbs
+    // now run through each category arm -f nd show the thumbs
     foreach ($cpstore_category as $key => $cpstore_catname) {
       $cpstore_productlist = $thisprod["$cpstore_catname"];
       if (!empty($cpstore_productlist)){
         $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
         $cpstore_content .= "<div class=\"cpstore_css_category\"><a name=\"$key\"></a>$cpstore_catname</div>";
         foreach ($cpstore_productlist as $cpstore_id => $cpstore_attr) {
-          $this_link = $cpstore_attr["link"];
-          $cpstore_content .= '
+              $this_link = $cpstore_attr["link"];
+              $cpstore_content .= '
 <div class="cpstore_css_float" onmouseover="this.className=\'cpstore_css_float_hover\'" onmouseout="this.className=\'cpstore_css_float\'">
 <a href="' . $this_link . '"><img title="' . $cpstore_attr["description"] . '" src="' . $cpstore_attr["image"] . '" alt="' . $cpstore_attr["description"] . '" width="150" height="150" /></a>
 <div><a class="thickbox" href="' . str_replace("150x150","350x350",$cpstore_attr["image"]) . '">
 +zoom</a></div><p>' . $cpstore_attr["name"] . '</p><div class="cpstore_css_price"><a href="' . $this_link . '">Buy Now! - $' . $cpstore_attr["price"] . '</a></div></div>
 ';
-          $cpstore_loopcounter++;
-          if (!is_single() && ($cpstore_loopcounter == $cpstore_preview)) { // exit both loops
-            $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
-            $cpstore_content .= "<div class=\"cpstore_css_viewall\"><a href=\"" . get_permalink($post->ID) . "\">View all</a></div>";
-            break 2;
+              $cpstore_loopcounter++;
+              if (!is_single() && ($cpstore_loopcounter == $cpstore_preview)) { // exit both loops
+                $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
+                $cpstore_content .= "<div class=\"cpstore_css_viewall\"><a href=\"" . get_permalink($post->ID) . "\">View all</a></div>";
+                break 2;
+    
+              }
+              if (is_single() && ($cpstore_loopcounter == $cpstore_return)) { // exit both loops
+                break 2;
+              }
+            }
 
-          }
-          if (is_single() && ($cpstore_loopcounter == $cpstore_return)) { // exit both loops
-            break 2;
-          }
+            // end of individual category loop
+            // if this is a single post or page, show the "back to top" link
+            if (is_single() || is_page())  {
+              $cpstore_content .= '<div class="cpstore_css_spacer"></div><div class="cpstore_toplink"><a href="#cpstore_menu">back to menu</a></div>';
+            }
         }
-
-        // end of individual category loop
-        // if this is a single post or page, show the "back to top" link
-        if (is_single() || is_page())  {
-          $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
-          $cpstore_content .= "<div class=\"cpstore_toplink\"><a href=\"#cpstore_menu\">back to menu</a></div>";
-        }
-      }
     }
     $cpstore_content .= '<div class="cpstore_css_spacer"></div><div style="margin-bottom:2em;"></div></div>';
-
+    
     # Info messages
     if (!$qcpCacheOK) { $cpstore_content .= '<br />MoneyPress : Cafepress Edition could not create the cache file '.$cpstore_FileName.'<br />'; }
-  }
-
-  # Return
-  return $cpstore_content;
+    
+    # Return
+    return $cpstore_content;
 }
 
 

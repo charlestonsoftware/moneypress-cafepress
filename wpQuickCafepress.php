@@ -1,21 +1,11 @@
 <?php
 /*
-  Plugin Name: CSL Quick Cafepress
+  Plugin Name: MoneyPress : Cafepress Edition
   Plugin URI: http://www.cybersprocket.com/products/wpquickcafepress/
-  Description: Cafepress store plugin for Wordpress.
+  Description: MoneyPress Cafepress Edition allows you to quickly and easily display products from Cafepress on any page or post via a simple shortcode.
   Author: Cyber Sprocket Labs
-  Version: 1.2
+  Version: 2.0
   Author URI: http://www.cybersprocket.com/
-
-  Based on the Wishads Cafepress store plugin.  We picked it up
-  and tweaked it after they shut down the project.  Improvements include:
-
-  Missing API key - dumps out faster (saves processing / CPU)
-  On error, don't write cache file.
-  On API error, show it.
-  Don't kill entire page on caching error.
-  Eliminate custom REST/cURL calls, use built-in Wordpress page fetch.
-  PHP4 compatability
 
 */
 
@@ -63,8 +53,9 @@ if ( is_admin() ) {
 }
 
 add_shortcode('QuickCafe', 'wpQuickCafe');
-add_action('wp_head', 'wpQC_add_css');
 
+add_filter('wp_print_scripts', 'wpQC_add_js');
+add_filter('wp_print_styles', 'wpQC_add_css');
 
 function wpQC_Register_Settings() { // whitelist options
   /* Product Settings */
@@ -103,7 +94,7 @@ function wpQC_admin_notices() {
   foreach ($notices as $notice) {
     if ($notice) {
       $notice_output = "<div id='cscj_warning' class='updated fade' style='background-color: rgb(255, 102, 102);'>";
-      $notice_output .= sprintf(__('<p><strong><a href="%1$s">CSL Quick CafePress Store</a> needs attention: </strong>'),"options-general.php?page=CSQC-options");
+      $notice_output .= sprintf(__('<p><strong><a href="%1$s">MoneyPress : Cafepress Edition</a> needs attention: </strong>'),"options-general.php?page=CSQC-options");
 
       if (isset($notice['options'])) {
         $notice_output .= 'Please provide the following on the settings page: ';
@@ -146,7 +137,7 @@ function wpQuickCafe ($attr, $content) {
     // Get the CafePress API Key - return if blank.
     $cpApiKey = trim(get_option('config_cpapikey'));
     if ($cpApiKey == '') {
-      return '<div>QuickCafepress: Missing API key, get it from developer.cafepress.com and put in you Wordpress settings.</div>';
+      return '<div>MoneyPress : Cafepress Edition is missing the Cafepress Developer API key, get it from developer.cafepress.com and save it in your MoneyPress Cafepress Edition settings.</div>';
     }
 
     // Process theincoming attributes
@@ -171,8 +162,13 @@ function wpQuickCafe ($attr, $content) {
     $depth = array();
     $qcpCacheOK = true;
 
+    // Make sure the cache directory exists with the proper permissions.
+    if (file_exists($cpstore_cache_dir) === false) {
+        $qcpCacheOK = mkdir($cpstore_cache_dir, 0777, true);
+    }
+
     // No cache?  Build one...
-    if (!file_exists ($cpstore_FileName)) {
+    if ($qcpCacheOK && !file_exists($cpstore_FileName)) {
       $file_content = wp_remote_fopen("http://open-api.cafepress.com/product.listByStoreSection.cp?appKey=$cpApiKey&storeId=$cpstore_storeid&sectionId=$cpstore_sectionid&v=3");
 
       // Write Cache File if the response does not contain an error message.
@@ -180,7 +176,9 @@ function wpQuickCafe ($attr, $content) {
         return 'No products found: ' . $error[1] . '<br>';
       } else {
         if ($fh = fopen($cpstore_FileName, 'w')) {
-          fwrite($fh, $file_content);
+            if (fwrite($fh, $file_content) === false) {
+                $qcpCacheOK = false;
+            }
           fclose($fh);
         } else {
           $qcpCacheOK = false;
@@ -188,8 +186,9 @@ function wpQuickCafe ($attr, $content) {
       }
 
       // Read Cache
-    } else {
-      if (!$file_content = file_get_contents($cpstore_FileName)) { return 'could not open cache file '.$cpstore_FileName; }
+    }
+    else if ($qcpCacheOK) {
+        if (!$file_content = file_get_contents($cpstore_FileName)) { return 'could not open cache file '.$cpstore_FileName; }
     }
 
     // Setup for XML Parsing
@@ -342,7 +341,7 @@ div.cpstore_css_catmenu {
     $cpstore_content .= '<div class="cpstore_css_spacer"></div><div style="margin-bottom:2em;"></div></div>';
 
     # Info messages
-    if (!$qcpCacheOK) { $cpstore_content .= '<br />wpQuickCafepress could not create the cache file '.$cpstore_FileName.'<br />'; }
+    if (!$qcpCacheOK) { $cpstore_content .= '<br />MoneyPress : Cafepress Edition could not create the cache file '.$cpstore_FileName.'<br />'; }
   }
 
   # Return
@@ -352,18 +351,20 @@ div.cpstore_css_catmenu {
 
 //--------------------------------------------------------------------------
 function wpQC_add_css() {
+  wp_enqueue_style('thickbox');
+}
+
+//--------------------------------------------------------------------------
+function wpQC_add_js() {
   wp_enqueue_script('jquery');
   wp_enqueue_script('thickbox');
-  echo '<script type="text/javascript" src="/wp-includes/js/jquery/jquery.js"></script>'."\n";
-  echo '<script type="text/javascript" src="/wp-includes/js/thickbox/thickbox.js"></script>'."\n";
-  echo '<link rel="stylesheet" href="/wp-includes/js/thickbox/thickbox.css" type="text/css" media="screen" />'."\n";
 }
 
 
 //--------------------------------------------------------------------------
 function wpQC_Handle_AdminMenu() {
-  add_meta_box('cpStoreMB', 'CSL Quick CafePress Entry', 'cpStoreInsertForm', 'post', 'normal');
-  add_meta_box('cpStoreMB', 'CSL Quick CafePress Entry', 'cpStoreInsertForm', 'page', 'normal');
+  add_meta_box('cpStoreMB', 'MoneyPress Cafepress Edition Entry', 'cpStoreInsertForm', 'post', 'normal');
+  add_meta_box('cpStoreMB', 'MoneyPress Cafepress Edition Entry', 'cpStoreInsertForm', 'page', 'normal');
 }
 
 
@@ -371,7 +372,7 @@ function wpQC_Handle_AdminMenu() {
 function cpstorewarning() {
   echo "<div id='wpCPStore_warning' class='updated fade-ff0000'><p><strong>"
     .__('Quick CafePress is almost ready.')."</strong> "
-    .sprintf(__('You must <a href="options-general.php?page=wpQuickCafepress/cafepress_grid.php">enter your CafePress API key</a> for it to work.'), "options-general.php?page=wpQuickCafepress/cafepress_grid.php")
+    .sprintf(__('You must <a href="options-general.php?page=wpQuickCafepress/cafepress_grid.php">enter your CafePress Developer API key</a> for it to work.'), "options-general.php?page=wpQuickCafepress/cafepress_grid.php")
     ."</p></div>";
 }
 
@@ -400,7 +401,7 @@ function cpStoreInsertForm() {
   </tr>
 </table>
 <p class="submit">
-  <input type="button" onclick="return this_wpCPStoreAdmin.sendToEditor(this.form);" value="<?php _e('Create QuickCafepress Shortcode &raquo;'); ?>" />
+  <input type="button" onclick="return this_wpCPStoreAdmin.sendToEditor(this.form);" value="<?php _e('Create MoneyPress Cafepress Edition Shortcode &raquo;'); ?>" />
 </p>
 <?php
 }
@@ -416,7 +417,7 @@ function cpStoreInsertForm() {
 
     //--------------------------------------------------------------------------
     function wpQC_plugin_menu() {
-      add_options_page('wpQuickCafepress Settings', 'wpQuickCafepress', 'administrator', 'CSQC-options', 'qcp_plugin_options');
+      add_options_page('MoneyPress Cafepress Edition', 'wpQuickCafepress', 'administrator', 'CSQC-options', 'qcp_plugin_options');
     }
 
 
@@ -442,7 +443,6 @@ function cpStoreInsertForm() {
       }
 
     }
-
 
 
     //--------------------------------------------------------------------------

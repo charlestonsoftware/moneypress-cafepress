@@ -1,8 +1,6 @@
 <div class="wrap">
-  <h2>CSL Quick CafePress Store</h2>
-
-
-  <h3>For a complete explanation of the setup and use, see the <a href="<?= QCPPLUGINURL; ?>/wpQuickCafepress-help.php" target="_blank">help file</a>.	</h3>
+<h2>MoneyPress : Cafepress Edition</h2>
+<h3>For a complete explanation of the setup and use, see the <a href="<?= QCPPLUGINURL; ?>/wpQuickCafepress-help.php" target="_blank">help file</a>.</h3>
 
   <form method="post" action="options.php">
     <?php settings_fields('qcp-settings'); ?>
@@ -20,12 +18,12 @@
         <div class="postbox">
           <div class="handlediv" title="Click to toggle"><br/></div>
           <h3 class="hndle">
-            <span>Product Settings</span>
+            <span>License Settings</span>
           </h3>
           <div class="inside">
             <p>
               To obtain a key, please purchase this plugin from
-              <a href="http://www.cybersprocket.com/products/wpcjproductsearch/" target="_new">http://www.cybersprocket.com/proucts/wpquickcafepress/</a>
+              <a href="http://www.cybersprocket.com/products/wpquickcafepress/" target="_new">http://www.cybersprocket.com/products/wpquickcafepress/</a>
             </p>
 
             <table class="form-table" style="margin-top: 0pt;">
@@ -35,7 +33,6 @@
                   <input type="text" <?= (!get_option('qcp-purchased')) ? 'name="qcp-license_key"' : '' ?> value="<?= get_option('qcp-license_key'); ?>" <?= (get_option('qcp-purchased')) ? 'disabled' : ''?> />
                   <? if (get_option('qcp-purchased')) { ?>
                   <input type="hidden" name="qcp-license_key" value="<?= get_option('qcp-license_key')?>"/>
-                  <span><font color="green">Valid license key.  Thanks for your purchase!</font></span>
                   <? } ?>
                   <?= (get_option('qcp-license_key') == '') ? '<span><font color="red">Without a license key, this plugin will only function for Admins</font></span>' : '' ?>
                   <?= ( !(get_option('qcp-license_key') == '') && !get_option('qcp-purchased') ) ? '<span><font color="red">Your license key could not be verified</font></span>' : '' ?>
@@ -46,11 +43,14 @@
                       <img alt="PayPal - The safer, easier way to pay online!" src="https://www.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" />
                     </a>
                   </div>
-                  <? }?>
-
                   <div>
-                    <p>Your license key is simply your PayPal transaction key</p>
+                    <p>Your license key is emailed to your PayPal email address. It will arrive within 5 minutes of your purchase.</p>
                   </div>
+                  <? } else { ?>
+                  <div>
+                      <span><font color="green">Valid license key.  Thanks for your purchase!</font></span>
+                  </div>                      
+                  <? } ?>
                 </td>
               </tr>
             </table>
@@ -78,11 +78,13 @@
               </tr>
 
               <tr valign="top">
-                <th scope="row">CafePress Account Number</th>
+                <th scope="row">Commission Junction Affiliate ID (CJ PID)</th>
                 <td>
-                  <input type="text" name="config_cjxid" value="<?= get_option('config_cjxid'); ?>" />
+                  <input type="text" name="config_cjpid" value="<?= get_option('config_cjpid'); ?>" /><br />
+                  This setting is optional.  If you are a Cafepress affiliate, enter your CJ PID here and we'll build your referal links automatically so you can earn commission on verified sales from your Cafepress sales.  Until you acquire your own CJ PID you can use our demo PID 3783719.  This is a shared demo key and should not be used to run your plugin. You will NOT earn commissions if you leave this PID key in place.
                 </td>
               </tr>
+              
             </table>
           </div>
         </div>
@@ -90,7 +92,7 @@
         <div class="postbox">
           <div class="handlediv" title="Click to toggle"><br/></div>
           <h3 class="hndle">
-            <span>Display Settings</span>
+            <span>Product Display Settings</span>
           </h3>
           <div class="inside">
               <p>These settings can be changed per individual post</p>
@@ -117,7 +119,7 @@
             <div class="postbox">
               <div class="handlediv" title="Click to toggle"><br/></div>
               <h3 class="hndle">
-                <span>Primary Settings</span>
+                <span>Style Settings</span>
               </h3>
               <div class="inside">
                 <p>Edit the styles for the store grid. Copy and paste the sample styles the first time you set up the plugin, then make changes as necessary to match your site's style.</p>
@@ -324,7 +326,7 @@
                     For more information, please visit our website at <a href="http://www.cybersprocket.com" target="_new">www.cybersprocket.com</a>
                   </p>
                   <p>
-                    Visit the product page for this plugin <a href="http://www.cybersprocket.com/proucts/wpquickcafepress/" target="_new">here</a>.
+                  Visit the <a href="http://www.cybersprocket.com/products/wpquickcafepress/" target="_new">MoneyPress : Cafepress Edition page</a> to learn more.
                   </p>
                 </div>
               </div>
@@ -341,4 +343,3 @@
 
         </form>
       </div>
-

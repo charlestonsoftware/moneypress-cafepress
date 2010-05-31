@@ -43,7 +43,6 @@
           either the cache directory does not exist or does not have the
           proper permissions.</li>
       </ul>
-      </ol>
       <li>Log in to your WordPress blog and go to the &quot;Plugins&quot; section of your admin panel.</li>
       <li>Click &quot;Activate&quot; for the &quot;Quick Cafepress&quot; plugin.</li>
       <li>Go to the &quot;MoneyPress : Cafepress Edition&quot; link under your &quot;Settings&quot; section of your admin panel.</li>

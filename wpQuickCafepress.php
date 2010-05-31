@@ -7,6 +7,11 @@
   Version: 2.0
   Author URI: http://www.cybersprocket.com/
 
+  Our PID: 3783719
+  
+  http://www.tkqlhce.com/click-PID-10467594?url=<blah>      
+
+  
 */
 
 /*	Copyright 2010  Cyber Sprocket Labs (info@cybersprocket.com)
@@ -57,13 +62,15 @@ add_shortcode('QuickCafe', 'wpQuickCafe');
 add_filter('wp_print_scripts', 'wpQC_add_js');
 add_filter('wp_print_styles', 'wpQC_add_css');
 
-function wpQC_Register_Settings() { // whitelist options
+
+
+function wpQC_Register_Settings() {
   /* Product Settings */
   wpCSL_initialize_license_options('qcp');
 
   /* Configuration Settings */
   register_setting( 'qcp-settings', 'config_cpapikey' );
-  register_setting( 'qcp-settings', 'config_cjxid' );
+  register_setting( 'qcp-settings', 'config_cjpid' );
 
   /* Display Settings */
   register_setting( 'qcp-settings', 'display_numtoshow' );
@@ -127,17 +134,24 @@ function wpQC_admin_notices() {
 *
 */
 function wpQuickCafe ($attr, $content) {
-  global $thisprod;
-  global $current_user;
-  get_currentuserinfo();
-
-  // This block of code is a bit too big, needs to be re-worked
-  if ( ($current_user->wp_capabilities['administrator']) || ($current_user->user_level == '10') || get_option('qcp-purchased')) {
+    global $thisprod;
+    global $current_user;
+    get_currentuserinfo();
+    $UserIsAnAdmin = ($current_user->wp_capabilities['administrator'] || ($current_user->user_level == '10'));
+    
+    // If they don't have a license and are not admin, return blank.
+    //
+    #if ( ($current_user->wp_capabilities['administrator']) || ($current_user->user_level == '10') || get_option('qcp-purchased')) {
+    if ( !$UserIsAnAdmin && !get_option('qcp-purchased')) {
+        return '';
+    }
 
     // Get the CafePress API Key - return if blank.
+    $cpstore_content = '';
     $cpApiKey = trim(get_option('config_cpapikey'));
     if ($cpApiKey == '') {
-      return '<div>MoneyPress : Cafepress Edition is missing the Cafepress Developer API key, get it from developer.cafepress.com and save it in your MoneyPress Cafepress Edition settings.</div>';
+      if ($UserIsAnAdmin) { $cpstore_content = '<div>MoneyPress : Cafepress Edition is missing the Cafepress Developer API key, get it from developer.cafepress.com and save it in your MoneyPress Cafepress Edition settings.</div>'; } 
+      return $cpstore_content;      
     }
 
     // Process theincoming attributes
@@ -417,7 +431,7 @@ function cpStoreInsertForm() {
 
     //--------------------------------------------------------------------------
     function wpQC_plugin_menu() {
-      add_options_page('MoneyPress Cafepress Edition', 'wpQuickCafepress', 'administrator', 'CSQC-options', 'qcp_plugin_options');
+        add_options_page('MoneyPress : Cafepress Edition Options', 'MoneyPress : Cafepress Edition', 'administrator', 'CSQC-options', 'qcp_plugin_options');
     }
 
 
@@ -451,7 +465,13 @@ function cpStoreInsertForm() {
       if ($depth[$parser] == 1) {
         $temp_cat = $attrs['CATEGORYCAPTION'];
         $temp_id = $attrs['ID'];
+        
         $temp_link = "http://www.cafepress.com/" . $attrs['STOREID'] . "." . $temp_id;
+        $cjpid = trim(get_option('config_cjpid'));
+        if ($cjpid != '') {
+            $temp_link = sprintf('http://www.tkqlhce.com/click-%s-10467594?url=%s',$cjpid,$temp_link);
+        }
+                
         $temp_description = $attrs['DESCRIPTION'];
         $temp_name = $attrs['NAME'];
         $temp_price = $attrs['SELLPRICE'];

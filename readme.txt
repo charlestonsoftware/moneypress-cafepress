@@ -1,7 +1,7 @@
 === CSL Quick Cafpress ===
 Contributors: cybersprocket
 Donate link: http://www.cybersprocket.com/proucts/wpquickcafepress/
-Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,commission junction,products,ecommerce,revenue sharing,storefront
+Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,commission junction,products,ecommerce,revenue sharing,storefront, moneypress
 Requires at least: 2.6
 Tested up to: 2.9.2
 Stable tag: 2.0

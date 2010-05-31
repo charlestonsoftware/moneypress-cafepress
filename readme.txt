@@ -63,7 +63,10 @@ We charge a nominal $5 fee to unlock this plugin which turns on the plugin conte
 
 = v2.0 (May 31st, 2010) =
 
-* Earn revenue on ANY Cafepress store via the affiliate program 
+* Earn revenue on ANY Cafepress store via the affiliate program.
+* Improved data retrieval for faster response and fewer "no products found" messages.
+* Elminated basic error messages for users,errors only appear for admins.
+* Improved error reporting.
 
 = v1.2.2 (May 7th, 2010) =
 * Fixed loading of thickbox (lightbox image zooming)

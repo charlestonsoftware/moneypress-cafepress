@@ -183,24 +183,43 @@ function wpQuickCafe ($attr, $content) {
 
     // No cache?  Build one...
     if ($qcpCacheOK && (!file_exists($cpstore_FileName) || !filesize($cpstore_FileName))) {
-      $file_content = wp_remote_fopen("http://open-api.cafepress.com/product.listByStoreSection.cp?appKey=$cpApiKey&storeId=$cpstore_storeid&sectionId=$cpstore_sectionid&v=3");
+        $CafeURL = "http://open-api.cafepress.com/product.listByStoreSection.cp?appKey=$cpApiKey&storeId=$cpstore_storeid&sectionId=$cpstore_sectionid&v=3";
 
-      // Write Cache File if the response does not contain an error message.
-      if (
+        // Fetch data using PHP5 built in method
+        // for some reason the built-in Wordpress method
+        // times out on servers with high latency
+        //
+        # $file_content = wp_remote_fopen($CafeURL);
+        $file_content = file_get_contents($CafeURL); 
+        
+        // Oops - we got an error back, or the return result is an empty string!
+        //
+        if (
           (preg_match('/<help>\s+<exception-message>(.*?)<\/exception-message>/',$file_content,$error) > 0) ||
           (strlen($file_content)<1)
           ){
-        return 'No products found.<br/>' . $error[1] . '<br/>';
-      } else {
-        if ($fh = fopen($cpstore_FileName, 'w')) {
-            if (fwrite($fh, $file_content) === false) {
-                $qcpCacheOK = false;
-            }
-          fclose($fh);
+            $cpstore_content = 'No products found.<br/>' . $error[1] . '<br/>';
+            if ($UserIsAnAdmin) {
+                $cpstore_content .= 'Try pasting this URL into your browser.  If it returns a bunch of XML then the links are working but your server is not.<br/><br/>'
+                                 .  'Please ask your system administrator to try to fetch the following URL directly from the server:<br/>'
+                                 .  "http://open-api.cafepress.com/product.listByStoreSection.cp?appKey=$cpApiKey&storeId=$cpstore_storeid&sectionId=$cpstore_sectionid&v=3<br/><br/>"
+                                 .  "<pre>Results:\n$file_content</pre><br/>"; 
+            } 
+            return $cpstore_content;
+            
+        // Write Cache File if the response does not contain an error message.
+        // And the response is not blank.
+        //
         } else {
-          $qcpCacheOK = false;
+            if ($fh = fopen($cpstore_FileName, 'w')) {
+                if (fwrite($fh, $file_content) === false) {
+                    $qcpCacheOK = false;
+                }
+              fclose($fh);
+            } else {
+              $qcpCacheOK = false;
+            }
         }
-      }
 
       // Read Cache
     }

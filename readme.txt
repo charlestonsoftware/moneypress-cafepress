@@ -1,4 +1,5 @@
-=== CSL Quick Cafpress ===
+=== MoneyPress : Cafepress Edition ===
+Plugin Name: MoneyPress : Cafepress Edition
 Contributors: cybersprocket
 Donate link: http://www.cybersprocket.com/proucts/wpquickcafepress/
 Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,commission junction,products,ecommerce,revenue sharing,storefront, moneypress

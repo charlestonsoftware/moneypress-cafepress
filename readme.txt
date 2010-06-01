@@ -2,7 +2,7 @@
 Plugin Name: MoneyPress : Cafepress Edition
 Contributors: cybersprocket
 Donate link: http://www.cybersprocket.com/proucts/wpquickcafepress/
-Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,commission junction,products,ecommerce,revenue sharing,storefront, moneypress
+Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,products,ecommerce,revenue sharing,storefront,cj,commission-junction
 Requires at least: 2.6
 Tested up to: 2.9.2
 Stable tag: 2.0

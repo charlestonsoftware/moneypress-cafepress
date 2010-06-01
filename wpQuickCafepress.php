@@ -1,22 +1,17 @@
 <?php
 /*
-  Plugin Name: CSL Quick Cafepress
+  Plugin Name: MoneyPress : Cafepress Edition
   Plugin URI: http://www.cybersprocket.com/products/wpquickcafepress/
-  Description: Our wpQuickCafepress plugin allows you to quickly and easily display products from your (or someone else’s) Cafepress store. Install the plugin and you can add products to your existing blog posts or pages just be entering a shortcode. If you are a Cafepress retailer, this plugin is for you!
+  Description: MoneyPress Cafepress Edition allows you to quickly and easily display products from Cafepress on any page or post via a simple shortcode.
   Author: Cyber Sprocket Labs
-  Version: 1.2.2
+  Version: 2.0
   Author URI: http://www.cybersprocket.com/
 
-  Based on the Wishads Cafepress store plugin.  We picked it up
-  and tweaked it after they shut down the project.  Improvements include:
+  Our PID: 3783719
+  
+  http://www.tkqlhce.com/click-PID-10467594?url=<blah>      
 
-  Missing API key - dumps out faster (saves processing / CPU)
-  On error, don't write cache file.
-  On API error, show it.
-  Don't kill entire page on caching error.
-  Eliminate custom REST/cURL calls, use built-in Wordpress page fetch.
-  PHP4 compatability
-
+  
 */
 
 /*	Copyright 2010  Cyber Sprocket Labs (info@cybersprocket.com)
@@ -67,13 +62,15 @@ add_shortcode('QuickCafe', 'wpQuickCafe');
 add_filter('wp_print_scripts', 'wpQC_add_js');
 add_filter('wp_print_styles', 'wpQC_add_css');
 
-function wpQC_Register_Settings() { // whitelist options
+
+
+function wpQC_Register_Settings() {
   /* Product Settings */
   wpCSL_initialize_license_options('qcp');
 
   /* Configuration Settings */
   register_setting( 'qcp-settings', 'config_cpapikey' );
-  register_setting( 'qcp-settings', 'config_cjxid' );
+  register_setting( 'qcp-settings', 'config_cjpid' );
 
   /* Display Settings */
   register_setting( 'qcp-settings', 'display_numtoshow' );
@@ -104,7 +101,7 @@ function wpQC_admin_notices() {
   foreach ($notices as $notice) {
     if ($notice) {
       $notice_output = "<div id='cscj_warning' class='updated fade' style='background-color: rgb(255, 102, 102);'>";
-      $notice_output .= sprintf(__('<p><strong><a href="%1$s">CSL Quick CafePress Store</a> needs attention: </strong>'),"options-general.php?page=CSQC-options");
+      $notice_output .= sprintf(__('<p><strong><a href="%1$s">MoneyPress : Cafepress Edition</a> needs attention: </strong>'),"options-general.php?page=CSQC-options");
 
       if (isset($notice['options'])) {
         $notice_output .= 'Please provide the following on the settings page: ';
@@ -137,17 +134,24 @@ function wpQC_admin_notices() {
 *
 */
 function wpQuickCafe ($attr, $content) {
-  global $thisprod;
-  global $current_user;
-  get_currentuserinfo();
-
-  // This block of code is a bit too big, needs to be re-worked
-  if ( ($current_user->wp_capabilities['administrator']) || ($current_user->user_level == '10') || get_option('qcp-purchased')) {
+    global $thisprod;
+    global $current_user;
+    get_currentuserinfo();
+    $UserIsAnAdmin = ($current_user->wp_capabilities['administrator'] || ($current_user->user_level == '10'));
+    
+    // If they don't have a license and are not admin, return blank.
+    //
+    #if ( ($current_user->wp_capabilities['administrator']) || ($current_user->user_level == '10') || get_option('qcp-purchased')) {
+    if ( !$UserIsAnAdmin && !get_option('qcp-purchased')) {
+        return '';
+    }
 
     // Get the CafePress API Key - return if blank.
+    $cpstore_content = '';
     $cpApiKey = trim(get_option('config_cpapikey'));
     if ($cpApiKey == '') {
-      return '<div>QuickCafepress: Missing API key, get it from developer.cafepress.com and put in you Wordpress settings.</div>';
+      if ($UserIsAnAdmin) { $cpstore_content = '<div><strong>Admin Notice</strong><br/>MoneyPress : Cafepress Edition is missing the Cafepress Developer API key, get it from developer.cafepress.com and save it in your MoneyPress Cafepress Edition settings.</div>'; } 
+      return $cpstore_content;      
     }
 
     // Process theincoming attributes
@@ -178,27 +182,53 @@ function wpQuickCafe ($attr, $content) {
     }
 
     // No cache?  Build one...
-    if ($qcpCacheOK && !file_exists($cpstore_FileName)) {
-      $file_content = wp_remote_fopen("http://open-api.cafepress.com/product.listByStoreSection.cp?appKey=$cpApiKey&storeId=$cpstore_storeid&sectionId=$cpstore_sectionid&v=3");
+    if ($qcpCacheOK && (!file_exists($cpstore_FileName) || !filesize($cpstore_FileName))) {
+        $CafeURL = "http://open-api.cafepress.com/product.listByStoreSection.cp?appKey=$cpApiKey&storeId=$cpstore_storeid&sectionId=$cpstore_sectionid&v=3";
 
-      // Write Cache File if the response does not contain an error message.
-      if (preg_match('/<help>\s+<exception-message>(.*?)<\/exception-message>/',$file_content,$error) > 0) {
-        return 'No products found: ' . $error[1] . '<br>';
-      } else {
-        if ($fh = fopen($cpstore_FileName, 'w')) {
-            if (fwrite($fh, $file_content) === false) {
-                $qcpCacheOK = false;
-            }
-          fclose($fh);
+        // Fetch data using PHP5 built in method
+        // for some reason the built-in Wordpress method
+        // times out on servers with high latency
+        //
+        # $file_content = wp_remote_fopen($CafeURL);
+        $file_content = file_get_contents($CafeURL); 
+        
+        // Oops - we got an error back, or the return result is an empty string!
+        //
+        if (
+          (preg_match('/<help>\s+<exception-message>(.*?)<\/exception-message>/',$file_content,$error) > 0) ||
+          (strlen($file_content)<1)
+          ){
+            $cpstore_content = 'No products found.<br/>' . $error[1] . '<br/>';
+            if ($UserIsAnAdmin) {
+                $cpstore_content .= '<br/><strong>Admin Notice</strong><br/>'
+                                 .  'Try pasting this URL into your browser.  If it returns a bunch of XML then the links are working but your server is not.<br/><br/>'
+                                 .  'Please ask your system administrator to try to fetch the following URL directly from the server:<br/>'
+                                 .  "http://open-api.cafepress.com/product.listByStoreSection.cp?appKey=$cpApiKey&storeId=$cpstore_storeid&sectionId=$cpstore_sectionid&v=3<br/><br/>"
+                                 .  "<pre>Results:\n$file_content</pre><br/>"; 
+            } 
+            return $cpstore_content;
+            
+        // Write Cache File if the response does not contain an error message.
+        // And the response is not blank.
+        //
         } else {
-          $qcpCacheOK = false;
+            if ($fh = fopen($cpstore_FileName, 'w')) {
+                if (fwrite($fh, $file_content) === false) {
+                    $qcpCacheOK = false;
+                }
+              fclose($fh);
+            } else {
+              $qcpCacheOK = false;
+            }
         }
-      }
 
       // Read Cache
     }
     else if ($qcpCacheOK) {
-        if (!$file_content = file_get_contents($cpstore_FileName)) { return 'could not open cache file '.$cpstore_FileName; }
+        if (!$file_content = file_get_contents($cpstore_FileName)) {
+            if ($UserIsAnAdmin) { $cpstore_content = '<div><strong>Admin Notice</strong><br/>MoneyPress : Cafepress Edition could not open cache file '.$cpstore_FileName.'</div>'; }             
+            return $cpstore_content; 
+        }
     }
 
     // Setup for XML Parsing
@@ -314,48 +344,46 @@ div.cpstore_css_catmenu {
     }
     $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
 
-    // now run through each category and show the thumbs
+    // now run through each category arm -f nd show the thumbs
     foreach ($cpstore_category as $key => $cpstore_catname) {
       $cpstore_productlist = $thisprod["$cpstore_catname"];
       if (!empty($cpstore_productlist)){
         $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
         $cpstore_content .= "<div class=\"cpstore_css_category\"><a name=\"$key\"></a>$cpstore_catname</div>";
         foreach ($cpstore_productlist as $cpstore_id => $cpstore_attr) {
-          $this_link = $cpstore_attr["link"];
-          $cpstore_content .= '
+              $this_link = $cpstore_attr["link"];
+              $cpstore_content .= '
 <div class="cpstore_css_float" onmouseover="this.className=\'cpstore_css_float_hover\'" onmouseout="this.className=\'cpstore_css_float\'">
 <a href="' . $this_link . '"><img title="' . $cpstore_attr["description"] . '" src="' . $cpstore_attr["image"] . '" alt="' . $cpstore_attr["description"] . '" width="150" height="150" /></a>
 <div><a class="thickbox" href="' . str_replace("150x150","350x350",$cpstore_attr["image"]) . '">
 +zoom</a></div><p>' . $cpstore_attr["name"] . '</p><div class="cpstore_css_price"><a href="' . $this_link . '">Buy Now! - $' . $cpstore_attr["price"] . '</a></div></div>
 ';
-          $cpstore_loopcounter++;
-          if (!is_single() && ($cpstore_loopcounter == $cpstore_preview)) { // exit both loops
-            $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
-            $cpstore_content .= "<div class=\"cpstore_css_viewall\"><a href=\"" . get_permalink($post->ID) . "\">View all</a></div>";
-            break 2;
+              $cpstore_loopcounter++;
+              if (!is_single() && ($cpstore_loopcounter == $cpstore_preview)) { // exit both loops
+                $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
+                $cpstore_content .= "<div class=\"cpstore_css_viewall\"><a href=\"" . get_permalink($post->ID) . "\">View all</a></div>";
+                break 2;
+    
+              }
+              if (is_single() && ($cpstore_loopcounter == $cpstore_return)) { // exit both loops
+                break 2;
+              }
+            }
 
-          }
-          if (is_single() && ($cpstore_loopcounter == $cpstore_return)) { // exit both loops
-            break 2;
-          }
+            // end of individual category loop
+            // if this is a single post or page, show the "back to top" link
+            if (is_single() || is_page())  {
+              $cpstore_content .= '<div class="cpstore_css_spacer"></div><div class="cpstore_toplink"><a href="#cpstore_menu">back to menu</a></div>';
+            }
         }
-
-        // end of individual category loop
-        // if this is a single post or page, show the "back to top" link
-        if (is_single() || is_page())  {
-          $cpstore_content .= '<div class="cpstore_css_spacer"></div>';
-          $cpstore_content .= "<div class=\"cpstore_toplink\"><a href=\"#cpstore_menu\">back to menu</a></div>";
-        }
-      }
     }
     $cpstore_content .= '<div class="cpstore_css_spacer"></div><div style="margin-bottom:2em;"></div></div>';
-
+    
     # Info messages
-    if (!$qcpCacheOK) { $cpstore_content .= '<br />wpQuickCafepress could not create the cache file '.$cpstore_FileName.'<br />'; }
-  }
-
-  # Return
-  return $cpstore_content;
+    if (!$qcpCacheOK) { $cpstore_content .= '<br />MoneyPress : Cafepress Edition could not create the cache file '.$cpstore_FileName.'<br />'; }
+    
+    # Return
+    return $cpstore_content;
 }
 
 
@@ -373,8 +401,8 @@ function wpQC_add_js() {
 
 //--------------------------------------------------------------------------
 function wpQC_Handle_AdminMenu() {
-  add_meta_box('cpStoreMB', 'CSL Quick CafePress Entry', 'cpStoreInsertForm', 'post', 'normal');
-  add_meta_box('cpStoreMB', 'CSL Quick CafePress Entry', 'cpStoreInsertForm', 'page', 'normal');
+  add_meta_box('cpStoreMB', 'MoneyPress Cafepress Edition Entry', 'cpStoreInsertForm', 'post', 'normal');
+  add_meta_box('cpStoreMB', 'MoneyPress Cafepress Edition Entry', 'cpStoreInsertForm', 'page', 'normal');
 }
 
 
@@ -382,7 +410,7 @@ function wpQC_Handle_AdminMenu() {
 function cpstorewarning() {
   echo "<div id='wpCPStore_warning' class='updated fade-ff0000'><p><strong>"
     .__('Quick CafePress is almost ready.')."</strong> "
-    .sprintf(__('You must <a href="options-general.php?page=wpQuickCafepress/cafepress_grid.php">enter your CafePress API key</a> for it to work.'), "options-general.php?page=wpQuickCafepress/cafepress_grid.php")
+    .sprintf(__('You must <a href="options-general.php?page=wpQuickCafepress/cafepress_grid.php">enter your CafePress Developer API key</a> for it to work.'), "options-general.php?page=wpQuickCafepress/cafepress_grid.php")
     ."</p></div>";
 }
 
@@ -411,7 +439,7 @@ function cpStoreInsertForm() {
   </tr>
 </table>
 <p class="submit">
-  <input type="button" onclick="return this_wpCPStoreAdmin.sendToEditor(this.form);" value="<?php _e('Create QuickCafepress Shortcode &raquo;'); ?>" />
+  <input type="button" onclick="return this_wpCPStoreAdmin.sendToEditor(this.form);" value="<?php _e('Create MoneyPress Cafepress Edition Shortcode &raquo;'); ?>" />
 </p>
 <?php
 }
@@ -427,7 +455,7 @@ function cpStoreInsertForm() {
 
     //--------------------------------------------------------------------------
     function wpQC_plugin_menu() {
-      add_options_page('wpQuickCafepress Settings', 'wpQuickCafepress', 'administrator', 'CSQC-options', 'qcp_plugin_options');
+        add_options_page('MoneyPress : Cafepress Edition Options', 'MoneyPress : Cafepress Edition', 'administrator', 'CSQC-options', 'qcp_plugin_options');
     }
 
 
@@ -461,7 +489,13 @@ function cpStoreInsertForm() {
       if ($depth[$parser] == 1) {
         $temp_cat = $attrs['CATEGORYCAPTION'];
         $temp_id = $attrs['ID'];
+        
         $temp_link = "http://www.cafepress.com/" . $attrs['STOREID'] . "." . $temp_id;
+        $cjpid = trim(get_option('config_cjpid'));
+        if ($cjpid != '') {
+            $temp_link = sprintf('http://www.tkqlhce.com/click-%s-10467594?url=%s',$cjpid,$temp_link);
+        }
+                
         $temp_description = $attrs['DESCRIPTION'];
         $temp_name = $attrs['NAME'];
         $temp_price = $attrs['SELLPRICE'];

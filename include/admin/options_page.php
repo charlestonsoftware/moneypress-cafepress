@@ -1,6 +1,6 @@
 <div class="wrap">
 <h2>MoneyPress : Cafepress Edition</h2>
-<h3>For a complete explanation of the setup and use, see the <a href="<?= QCPPLUGINURL; ?>/wpQuickCafepress-help.php" target="_blank">help file</a>.</h3>
+<h3>For help setting up and using this plugin, please visit the <a href="http://redmine.cybersprocket.com/projects/wpcafepress/wiki" target="cyber sprocket">MoneyPress : Cafepress Edition Knowledgebase</a></h3>
 
   <form method="post" action="options.php">
     <?php settings_fields('qcp-settings'); ?>

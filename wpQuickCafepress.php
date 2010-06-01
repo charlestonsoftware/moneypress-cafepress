@@ -150,7 +150,7 @@ function wpQuickCafe ($attr, $content) {
     $cpstore_content = '';
     $cpApiKey = trim(get_option('config_cpapikey'));
     if ($cpApiKey == '') {
-      if ($UserIsAnAdmin) { $cpstore_content = '<div>MoneyPress : Cafepress Edition is missing the Cafepress Developer API key, get it from developer.cafepress.com and save it in your MoneyPress Cafepress Edition settings.</div>'; } 
+      if ($UserIsAnAdmin) { $cpstore_content = '<div><strong>Admin Notice</strong><br/>MoneyPress : Cafepress Edition is missing the Cafepress Developer API key, get it from developer.cafepress.com and save it in your MoneyPress Cafepress Edition settings.</div>'; } 
       return $cpstore_content;      
     }
 
@@ -200,7 +200,8 @@ function wpQuickCafe ($attr, $content) {
           ){
             $cpstore_content = 'No products found.<br/>' . $error[1] . '<br/>';
             if ($UserIsAnAdmin) {
-                $cpstore_content .= 'Try pasting this URL into your browser.  If it returns a bunch of XML then the links are working but your server is not.<br/><br/>'
+                $cpstore_content .= '<br/><strong>Admin Notice</strong><br/>'
+                                 .  'Try pasting this URL into your browser.  If it returns a bunch of XML then the links are working but your server is not.<br/><br/>'
                                  .  'Please ask your system administrator to try to fetch the following URL directly from the server:<br/>'
                                  .  "http://open-api.cafepress.com/product.listByStoreSection.cp?appKey=$cpApiKey&storeId=$cpstore_storeid&sectionId=$cpstore_sectionid&v=3<br/><br/>"
                                  .  "<pre>Results:\n$file_content</pre><br/>"; 
@@ -225,7 +226,7 @@ function wpQuickCafe ($attr, $content) {
     }
     else if ($qcpCacheOK) {
         if (!$file_content = file_get_contents($cpstore_FileName)) {
-            if ($UserIsAnAdmin) { $cpstore_content = '<div>MoneyPress : Cafepress Edition could not open cache file '.$cpstore_FileName.'</div>'; }             
+            if ($UserIsAnAdmin) { $cpstore_content = '<div><strong>Admin Notice</strong><br/>MoneyPress : Cafepress Edition could not open cache file '.$cpstore_FileName.'</div>'; }             
             return $cpstore_content; 
         }
     }

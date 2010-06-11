@@ -1,6 +1,13 @@
+<style>
+.help_icon {
+    position: relative;
+    top: 8px;
+    padding-left: 2px;
+}
+</style>
 <div class="wrap">
-<h2>MoneyPress : Cafepress Edition</h2>
-<h3>For help setting up and using this plugin, please visit the <a href="http://redmine.cybersprocket.com/projects/wpcafepress/wiki" target="cyber sprocket">MoneyPress : Cafepress Edition Knowledgebase</a></h3>
+<h2>MoneyPress : CafePress Edition</h2>
+<h3>For help setting up and using this plugin, please visit the <a href="http://redmine.cybersprocket.com/projects/wpcafepress/wiki" target="cyber sprocket">MoneyPress : CafePress Edition Knowledgebase</a></h3>
 
   <form method="post" action="options.php">
     <?php settings_fields('qcp-settings'); ?>
@@ -70,9 +77,13 @@
               <tr valign="top">
                 <th scope="row">CafePress API Key *</th>
                 <td>
-                  <input type="text" name="config_cpapikey" value="<?= get_option('config_cpapikey'); ?>" />
+                  <input type="text" size="30" name="config_cpapikey" value="<?= get_option('config_cpapikey'); ?>" />
+                  <a href="http://redmine.cybersprocket.com/projects/wpcafepress/wiki/Getting_A_Cafepress_Developer_API_Key" target="cyber sprocket labs"><img src="<?= QCPPLUGINURL ?>/images/question_orange_24px.png" class="help_icon"></a>                  
                   <div>
-                    <p>Until you acquire your own api key, you can use our demo key &quot;ut3dcs8rr3svqt5r4r2u8677&quot; (without the quotes). This is a shared demo key and should not be used to run your plugin. Check the help file above for details about acquiring an api key.</p>
+                    <p>                    
+                    Until you acquire your own api key, you can use our demo key &quot;ut3dcs8rr3svqt5r4r2u8677&quot; (without the quotes). 
+                    This is a shared demo key and should not be used to run your plugin.
+                    </p>
                   </div>
                 </td>
               </tr>
@@ -80,8 +91,17 @@
               <tr valign="top">
                 <th scope="row">Commission Junction Affiliate ID (CJ PID)</th>
                 <td>
-                  <input type="text" name="config_cjpid" value="<?= get_option('config_cjpid'); ?>" /><br />
-                  This setting is optional.  If you are a Cafepress affiliate, enter your CJ PID here and we'll build your referal links automatically so you can earn commission on verified sales from your Cafepress sales.  Until you acquire your own CJ PID you can use our demo PID 3783719.  This is a shared demo key and should not be used to run your plugin. You will NOT earn commissions if you leave this PID key in place.
+                  <input type="text" size="30" name="config_cjpid" value="<?= get_option('config_cjpid'); ?>" />
+                  <a href="http://redmine.cybersprocket.com/projects/wpcafepress/wiki/Getting_A_Commission_Junction_PID" target="cyber sprocket labs"><img src="<?= QCPPLUGINURL ?>/images/question_orange_24px.png"  class="help_icon"></a><br />
+                  <div><p>
+                  This setting is optional.                    
+                  <br/>
+                  If you are a CafePress affiliate, enter your CJ PID here and we'll build your referal links automatically 
+                  so you can earn commission on verified sales from your CafePress sales.  
+                  Until you acquire your own CJ PID you can use our demo PID 3783719.  
+                  This is a shared demo key and should not be used to run your plugin. 
+                  You will NOT earn commissions if you leave this PID key in place.
+                  </p></div>
                 </td>
               </tr>
               
@@ -326,7 +346,7 @@
                     For more information, please visit our website at <a href="http://www.cybersprocket.com" target="_new">www.cybersprocket.com</a>
                   </p>
                   <p>
-                  Visit the <a href="http://www.cybersprocket.com/products/wpquickcafepress/" target="_new">MoneyPress : Cafepress Edition page</a> to learn more.
+                  Visit the <a href="http://www.cybersprocket.com/products/wpquickcafepress/" target="_new">MoneyPress : CafePress Edition page</a> to learn more.
                   </p>
                 </div>
               </div>

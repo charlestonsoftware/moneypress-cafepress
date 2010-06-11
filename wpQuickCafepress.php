@@ -1,8 +1,8 @@
 <?php
 /*
-  Plugin Name: MoneyPress : Cafepress Edition
+  Plugin Name: MoneyPress : CafePress Edition
   Plugin URI: http://www.cybersprocket.com/products/wpquickcafepress/
-  Description: MoneyPress Cafepress Edition allows you to quickly and easily display products from Cafepress on any page or post via a simple shortcode.
+  Description: MoneyPress CafePress Edition allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode.
   Author: Cyber Sprocket Labs
   Version: 2.2
   Author URI: http://www.cybersprocket.com/
@@ -101,7 +101,7 @@ function wpQC_admin_notices() {
   foreach ($notices as $notice) {
     if ($notice) {
       $notice_output = "<div id='cscj_warning' class='updated fade' style='background-color: rgb(255, 102, 102);'>";
-      $notice_output .= sprintf(__('<p><strong><a href="%1$s">MoneyPress : Cafepress Edition</a> needs attention: </strong>'),"options-general.php?page=CSQC-options");
+      $notice_output .= sprintf(__('<p><strong><a href="%1$s">MoneyPress : CafePress Edition</a> needs attention: </strong>'),"options-general.php?page=CSQC-options");
 
       if (isset($notice['options'])) {
         $notice_output .= 'Please provide the following on the settings page: ';
@@ -150,7 +150,7 @@ function wpQuickCafe ($attr, $content) {
     $cpstore_content = '';
     $cpApiKey = trim(get_option('config_cpapikey'));
     if ($cpApiKey == '') {
-      if ($UserIsAnAdmin) { $cpstore_content = '<div><strong>Admin Notice</strong><br/>MoneyPress : Cafepress Edition is missing the Cafepress Developer API key, get it from developer.cafepress.com and save it in your MoneyPress Cafepress Edition settings.</div>'; } 
+      if ($UserIsAnAdmin) { $cpstore_content = '<div><strong>Admin Notice</strong><br/>MoneyPress : CafePress Edition is missing the CafePress Developer API key, get it from developer.cafepress.com and save it in your MoneyPress CafePress Edition settings.</div>'; } 
       return $cpstore_content;      
     }
 
@@ -226,7 +226,7 @@ function wpQuickCafe ($attr, $content) {
     }
     else if ($qcpCacheOK) {
         if (!$file_content = file_get_contents($cpstore_FileName)) {
-            if ($UserIsAnAdmin) { $cpstore_content = '<div><strong>Admin Notice</strong><br/>MoneyPress : Cafepress Edition could not open cache file '.$cpstore_FileName.'</div>'; }             
+            if ($UserIsAnAdmin) { $cpstore_content = '<div><strong>Admin Notice</strong><br/>MoneyPress : CafePress Edition could not open cache file '.$cpstore_FileName.'</div>'; }             
             return $cpstore_content; 
         }
     }
@@ -381,8 +381,7 @@ div.cpstore_css_catmenu {
     
     # Info messages
     if ($UserIsAnAdmin && !$qcpCacheOK) { 
-        $cpstore_content .= '<br />AAAhhhhhhh! MoneyPress : Cafepress Edition could not create the cache file '.$cpstore_FileName.'<br />';
-        $spstore_content .= "$current_user->wp_capabilities['administrator'] -OR- ($current_user->user_level == '10')<br />";
+        $cpstore_content .= '<br />MoneyPress : CafePress Edition could not create the cache file '.$cpstore_FileName.'<br />';
     }
     
     # Return
@@ -404,17 +403,8 @@ function wpQC_add_js() {
 
 //--------------------------------------------------------------------------
 function wpQC_Handle_AdminMenu() {
-  add_meta_box('cpStoreMB', 'MoneyPress Cafepress Edition Entry', 'cpStoreInsertForm', 'post', 'normal');
-  add_meta_box('cpStoreMB', 'MoneyPress Cafepress Edition Entry', 'cpStoreInsertForm', 'page', 'normal');
-}
-
-
-//--------------------------------------------------------------------------
-function cpstorewarning() {
-  echo "<div id='wpCPStore_warning' class='updated fade-ff0000'><p><strong>"
-    .__('Quick CafePress is almost ready.')."</strong> "
-    .sprintf(__('You must <a href="options-general.php?page=wpQuickCafepress/cafepress_grid.php">enter your CafePress Developer API key</a> for it to work.'), "options-general.php?page=wpQuickCafepress/cafepress_grid.php")
-    ."</p></div>";
+  add_meta_box('cpStoreMB', 'MoneyPress CafePress Edition Entry', 'cpStoreInsertForm', 'post', 'normal');
+  add_meta_box('cpStoreMB', 'MoneyPress CafePress Edition Entry', 'cpStoreInsertForm', 'page', 'normal');
 }
 
 
@@ -442,7 +432,7 @@ function cpStoreInsertForm() {
   </tr>
 </table>
 <p class="submit">
-  <input type="button" onclick="return this_wpCPStoreAdmin.sendToEditor(this.form);" value="<?php _e('Create MoneyPress Cafepress Edition Shortcode &raquo;'); ?>" />
+  <input type="button" onclick="return this_wpCPStoreAdmin.sendToEditor(this.form);" value="<?php _e('Create MoneyPress CafePress Edition Shortcode &raquo;'); ?>" />
 </p>
 <?php
 }
@@ -458,7 +448,7 @@ function cpStoreInsertForm() {
 
     //--------------------------------------------------------------------------
     function wpQC_plugin_menu() {
-        add_options_page('MoneyPress : Cafepress Edition Options', 'MoneyPress : Cafepress Edition', 'administrator', 'CSQC-options', 'qcp_plugin_options');
+        add_options_page('MoneyPress : CafePress Edition Options', 'MoneyPress : CafePress Edition', 'administrator', 'CSQC-options', 'qcp_plugin_options');
     }
 
 

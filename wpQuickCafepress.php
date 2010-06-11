@@ -4,7 +4,7 @@
   Plugin URI: http://www.cybersprocket.com/products/wpquickcafepress/
   Description: MoneyPress Cafepress Edition allows you to quickly and easily display products from Cafepress on any page or post via a simple shortcode.
   Author: Cyber Sprocket Labs
-  Version: 2.0
+  Version: 2.2
   Author URI: http://www.cybersprocket.com/
 
   Our PID: 3783719
@@ -380,7 +380,10 @@ div.cpstore_css_catmenu {
     $cpstore_content .= '<div class="cpstore_css_spacer"></div><div style="margin-bottom:2em;"></div></div>';
     
     # Info messages
-    if (!$qcpCacheOK) { $cpstore_content .= '<br />MoneyPress : Cafepress Edition could not create the cache file '.$cpstore_FileName.'<br />'; }
+    if ($UserIsAnAdmin && !$qcpCacheOK) { 
+        $cpstore_content .= '<br />AAAhhhhhhh! MoneyPress : Cafepress Edition could not create the cache file '.$cpstore_FileName.'<br />';
+        $spstore_content .= "$current_user->wp_capabilities['administrator'] -OR- ($current_user->user_level == '10')<br />";
+    }
     
     # Return
     return $cpstore_content;

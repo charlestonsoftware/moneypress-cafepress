@@ -5,7 +5,7 @@ Donate link: http://www.cybersprocket.com/proucts/wpquickcafepress/
 Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,products,ecommerce,revenue sharing,storefront,cj,commission-junction
 Requires at least: 2.6
 Tested up to: 2.9.2
-Stable tag: 2.0
+Stable tag: 2.2
 
 MoneyPress : Cafepress Edition allows you to quickly and easily display products from Cafepress on any page or post via a simple shortcode.
 
@@ -61,6 +61,10 @@ To learn more, visit our <a href="http://redmine.cybersprocket.com/projects/wpca
 We charge a nominal $5 fee to unlock this plugin which turns on the plugin content for your site visitors.  However you can download and test this plugin for FREE without entering a license code which allows anyone logged in as an administrator on your site to see the plugin content.  By charging this one-time fee we are able to provide ongoing support and maintance for the plugin.  Remember, you can still try this in admin mode at no charge.  If you purchase the plugin and decide you don't like it just let us know within 30 days and we'll refund your purchase with no questions asked.
 
 == Changelog ==
+
+= v2.2 (in progress) =
+
+*
 
 = v2.0 (May 31st, 2010) =
 

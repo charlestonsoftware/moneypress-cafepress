@@ -62,9 +62,11 @@ We charge a nominal $5 fee to unlock this plugin which turns on the plugin conte
 
 == Changelog ==
 
-= v2.2 (in progress) =
+= v2.2 (June 10th, 2010) =
 
-*
+* Minor updates extending help.
+* Better license lookup.
+* Eliminated missing cache message for regular users.
 
 = v2.0 (May 31st, 2010) =
 

@@ -73,6 +73,15 @@ $MP_cafepress_plugin->settings->add_item('Product Display', 'Number of products 
                            'If you have a CafePress Affiliate account, enter your CJ PID here to earn commission on products you list on '.
                            'this site from other CafePress sellers.');
 
+$MP_cafepress_plugin->settings->add_item('Product Display', 'Store ID', 'csl-mp-cafepress-storeid', 'text', false,
+                           'The default store ID.  The plugin will show items from this store if you don\'t specify a store in the shortcode.'.
+                           );
+
+$MP_cafepress_plugin->settings->add_item('Product Display', 'Section ID', 'csl-mp-cafepress-sectionid', 'text', false,
+                           'The default section ID.  The plugin will show items from this section within your store if you don\'t specify a store in the shortcode.'.
+                           );
+
+
 /* Need to put in the CSS Settings */
 
 ?>

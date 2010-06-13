@@ -42,9 +42,18 @@ if (defined('MP_CAFEPRESS_PLUGINURL') === false) {
 
 require_once('include/config.php');
 
-if (class_exists('CafePressPanhandler') === false) {
+if (class_exists('PanhandlerProduct') === false) {
     try {
         require_once('Panhandler/Panhandler.php');
+    }
+    catch (PanhandlerMissingRequirement $exception) {
+        add_action('admin_notices', array($exception, 'getMessage'));
+        exit(1);
+    }
+}
+
+if (class_exists('CafePressPanhandler') === false) {
+    try {
         require_once('Panhandler/Drivers/CafePress.php');
     }
     catch (PanhandlerMissingRequirement $exception) {

@@ -23,7 +23,7 @@ $MP_cafepress_plugin = new wpCSL_plugin(
         'url'                    => 'http://www.cybersprocket.com/products/wpquickcafepress/',
         'paypal_button_id'       => 'NRMZK9MRR7AML',
         'cache_path'             => MP_CAFEPRESS_PLUGINDIR,
-        'plugin_url'             => MP_CAFEPRESS_PLUGINDIR,
+        'plugin_url'             => '/wp-content/plugins/wpquickcafepress/',
         'notifications_obj_name' => 'default',
         'settings_obj_name'      => 'default',
         'license_obj_name'       => 'default'
@@ -74,11 +74,11 @@ $MP_cafepress_plugin->settings->add_item('Product Display', 'Number of products 
                            'this site from other CafePress sellers.');
 
 $MP_cafepress_plugin->settings->add_item('Product Display', 'Store ID', 'csl-mp-cafepress-storeid', 'text', false,
-                           'The default store ID.  The plugin will show items from this store if you don\'t specify a store in the shortcode.'.
+                           'The default store ID.  The plugin will show items from this store if you don\'t specify a store in the shortcode.'
                            );
 
 $MP_cafepress_plugin->settings->add_item('Product Display', 'Section ID', 'csl-mp-cafepress-sectionid', 'text', false,
-                           'The default section ID.  The plugin will show items from this section within your store if you don\'t specify a store in the shortcode.'.
+                           'The default section ID.  The plugin will show items from this section within your store if you don\'t specify a store in the shortcode.'
                            );
 
 

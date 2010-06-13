@@ -69,6 +69,10 @@ $MP_cafepress_plugin->settings->add_section(
     )
 );
 
+$MP_cafepress_plugin->settings->add_item('Product Display', 'Number of products to show', 'csl-mp-cafepress-product-count', 'text', false,
+                           'If you have a CafePress Affiliate account, enter your CJ PID here to earn commission on products you list on '.
+                           'this site from other CafePress sellers.');
+
 /* Need to put in the CSS Settings */
 
 ?>

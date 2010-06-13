@@ -1,47 +1,51 @@
 <?php
 /*
-  Plugin Name: MoneyPress : eBay Edition
-  Plugin URI: http://www.cybersprocket.com/products/moneypress-ebay/
-  Description: Our MoneyPress eBay plugin allows you to display products from eBay on your web site.
-  Version: 1.2
+  Plugin Name: MoneyPress : CafePress Edition
+  Plugin URI: http://www.cybersprocket.com/products/wpquickcafepress/
+  Description: MoneyPress CafePress Edition allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode.
   Author: Cyber Sprocket Labs
-  Author URI: http://www.cybersprocket.com
+  Version: 3.0
+  Author URI: http://www.cybersprocket.com/
   License: GPL3
+
+  Our PID: 3783719
+  
+  http://www.tkqlhce.com/click-PID-10467594?url=<blah>
+  
 */
 
-/* mp-ebay.php --- MoneyPress : eBay Edition                              */
+/*	Copyright 2010  Cyber Sprocket Labs (info@cybersprocket.com)
 
-/* Copyright (C) 2010 Cyber Sprocket Labs <info@cybersprocket.com>      */
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 3 of the License, or
+        (at your option) any later version.
 
-/* Authors: Eric James Michael Ritz <Eric@cybersprocket.com>            */
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-/* This program is free software; you can redistribute it and/or        */
-/* modify it under the terms of the GNU General Public License          */
-/* as published by the Free Software Foundation; either version 3       */
-/* of the License, or (at your option) any later version.               */
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 
-/* This program is distributed in the hope that it will be useful,      */
-/* but WITHOUT ANY WARRANTY; without even the implied warranty of       */
-/* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the        */
-/* GNU General Public License for more details.                         */
 
-/* You should have received a copy of the GNU General Public License    */
-/* along with this program. If not, see <http://www.gnu.org/licenses/>. */
-
-if (defined('MP_EBAY_PLUGINDIR') === false) {
-    define('MP_EBAY_PLUGINDIR', plugin_dir_path(__FILE__));
+if (defined('MP_CAFEPRESS_PLUGINDIR') === false) {
+    define('MP_CAFEPRESS_PLUGINDIR', plugin_dir_path(__FILE__));
 }
 
-if (defined('MP_EBAY_PLUGINURL') === false) {
-    define('MP_EBAY_PLUGINURL', plugins_url('',__FILE__));
+if (defined('MP_CAFEPRESS_PLUGINURL') === false) {
+    define('MP_CAFEPRESS_PLUGINURL', plugins_url('',__FILE__));
 }
 
 require_once('include/config.php');
 
-if (class_exists('eBayPanhandler') === false) {
+if (class_exists('CafePressPanhandler') === false) {
     try {
         require_once('Panhandler/Panhandler.php');
-        require_once('Panhandler/Drivers/eBay.php');
+        require_once('Panhandler/Drivers/CafePress.php');
     }
     catch (PanhandlerMissingRequirement $exception) {
         add_action('admin_notices', array($exception, 'getMessage'));
@@ -49,65 +53,68 @@ if (class_exists('eBayPanhandler') === false) {
     }
 }
 
-add_filter('wp_print_styles', 'MP_ebay_user_css');
+add_filter('wp_print_styles', 'MP_cafepress_user_css');
 
 /**
- * Add the [ebay_show_items] short code.  The code requires the
- * attribute 'keywords', which is a list of product keywords to search
- * for.  The keywords should be separated by white-space.
+ * Add the [QuickCafe] short code for backwards compatability.
  *
- * The shortcode optionally accepts an attribute 'number_of_products'
- * which takes a number and controls how many products should be
- * displayed on the page.
+ * Example:
+ * [QuickCafe preview="3" return="21"]http://www.cafepress.com/cybersprocket/ [/QuickCafe]
+ *
+ * See the knowledgebase for detailed usage at:
+ * http://redmine.cybersprocket.com/projects/wpcafepress/wiki/Using_MoneyPress_CafePress_Edition
  */
-add_shortcode('ebay_show_items', 'MP_ebay_show_items');
+add_shortcode('QuickCafe', 'MP_cafepress_show_items');
 
 //// FUNCTIONS ///////////////////////////////////////////////////////
 
 /**
  * Adds our user CSS to the page.
  */
-function MP_ebay_user_css() {
-    wp_enqueue_style('mp_ebay_css', plugins_url('css/mp-ebay.css', __FILE__));
+function MP_cafepress_user_css() {
+    wp_enqueue_style('mp_cafepress_css', plugins_url('css/mp-cafepress.css', __FILE__));
 }
 
 /**
  * Processes our short code.
  */
-function MP_ebay_show_items($attributes, $content = null) {
+function MP_cafepress_show_items($attributes, $content = null) {
     global $current_user;
     get_currentuserinfo();
-
-    // The key we use for making API requests.
-    $ebay_app_id = "CyberSpr-e973-4a45-ad8b-430a8ee3b190";
 
     // Make sure the user is either an admin, in which case he
     // gets to view the results of the plugin, or otherwise
     // make sure the license has been purchased.
     if (($current_user->wp_capabilities['administrator'] == false) &&
         ($current_user->user_level != '10') &&
-        (get_option('csl-mp-ebay-purchased') == false)) {
+        (get_option('csl-mp-cafepress-purchased') == false)) {
+        return;
+    }
+    
+    // Check to make sure we have a CafePress API Key
+    $csl_mp_cafepress_api_key = get_option('csl-mp-cafepress-api-key');
+    if (get_option('csl-mp-cafepress-api-key') == '') {
         return;
     }
 
-    $ebay = new eBayPanhandler($ebay_app_id);
+    $cafepress = new CafepressPanhandler($csl_mp_cafepress_api_key);
 
     extract(
         shortcode_atts(
             array(
-                'keywords' => null,
-                'number_of_products' => null
+                'preview' => null,
+                'return' => null
             ),
             $attributes
         )
     );
 
     // See if we are setting a limit on how many items to show.
-    if (isset($attributes['number_of_products'])) {
-        $product_count = (integer) $attributes['number_of_products'];
+    if (isset($attributes['return'])) {
+        $product_count = (integer) $attributes['return'];
     }
     else {
-        $product_count = (integer) get_option('csl-mp-ebay-product-count');
+        $product_count = (integer) get_option('csl-mp-cafepress-product-count');
     }
 
     // Even after the above two checks for places to get a product count, we may
@@ -115,16 +122,16 @@ function MP_ebay_show_items($attributes, $content = null) {
     // $product_count is non-zero before calling set_maximum_product_count(),
     // otherwise we will display nothing.
     if ($product_count) {
-        $ebay->set_maximum_product_count($product_count);
+        $cafepress->set_maximum_product_count($product_count);
     }
 
-    $general_options = MP_ebay_get_general_options();
+    $general_options = MP_cafepress_get_general_options();
 
     if ($keywords !== null) {
         $general_options['keywords'] = array($keywords);
     }
 
-    return MP_ebay_format_all_products( $ebay->get_products($general_options) );
+    return MP_cafepress_format_all_products( $cafepress->get_products($general_options) );
 }
 
 /**
@@ -135,45 +142,35 @@ function MP_ebay_show_items($attributes, $content = null) {
  * to the wrong method.
  *
  * This function returns the array of options to use when calling our
- * eBay driver, if any.
+ * CafePress driver, if any.
  */
-function MP_ebay_get_general_options() {
+function MP_cafepress_get_general_options() {
     $general_options = array();
-    $seller_id       = get_option('csl-mp-ebay-seller-id');
-    $tracking_id     = get_option('csl-mp-ebay-tracking-id');
-    $network_id      = get_option('csl-mp-ebay-network-id');
-    $sort_order      = get_option('csl-mp-ebay-sort-order');
+    $storeid       = get_option('csl-mp-cafepress-storeid');
+    $sectionid     = get_option('csl-mp-cafepress-sectionid');
 
-    if ($seller_id) {
-        $general_options['sellers'] = array($seller_id);
+    if ($storeid) {
+        $general_options['storeid'] = array($storeid);
     }
-
-    if ($tracking_id && $network_id) {
-        $general_options['affiliate_info'] = array(
-            'tracking_id' => $tracking_id,
-            'network_id'  => $network_id
-        );
+    if ($sectionid) {
+        $general_options['sectionid'] = array($sectionid);
     }
-
-    if ($sort_order && $sort_order !== 'no-sorting') {
-        $general_options['sort_order'] = $sort_order;
-    }
-
+    
     return $general_options;
 }
 
 /**
  * This is our HTML template for display products, which we use as an
- * argument to sprintf() in the MB_ebay_format_product() function just
+ * argument to sprintf() in the MB_cafepress_format_product() function just
  * below.  Eventually this will get factored out elsewhere.  Or that's
  * on the todo list anyways.  We'll see.  For all I know, a ravaging
- * yeti could attack the office and kill us all before we have a
- * chance to get around to it.
+ * loch ness monster could attack the office and kill us all before we 
+ * have a chance to get around to it.
  */
-$MB_ebay_product_template = '<div class="csl-ebay-product">
+$MB_cafepress_product_template = '<div class="csl-cafepress-product">
   <!-- Product Name -->
   <h3><a href="%s">%s</a></h3>
-  <div class="csl-ebay-product-image">
+  <div class="csl-cafepress-product-image">
     <!-- Image URL and Link -->
     <a href="%s" target="_new">
       <img src="%s" alt="%s"/>
@@ -194,15 +191,15 @@ $MB_ebay_product_template = '<div class="csl-ebay-product">
  * Takes an PanhandlerProduct object and returns a string of HTML
  * suitabale for displaying that product.
  */
-function MB_ebay_format_product($product) {
-    global $MB_ebay_product_template;
+function MB_cafepress_format_product($product) {
+    global $MB_cafepress_product_template;
 
     if ($product->image_urls[0] === null) {
-        $product->image_urls[0] = MP_EBAY_PLUGINURL.'/images/ImageNA.png';
+        $product->image_urls[0] = MP_CAFEPRESS_PLUGINURL.'/images/ImageNA.png';
     }
 
     return sprintf(
-        $MB_ebay_product_template,
+        $MB_cafepress_product_template,
         $product->web_urls[0],
         $product->name,
         $product->web_urls[0],
@@ -218,8 +215,8 @@ function MB_ebay_format_product($product) {
  * Takes an array of PanhandlerProduct objects and returns all of the
  * HTML for displaying them on the page.
  */
-function MP_ebay_format_all_products($products) {
-    return implode('', array_map('MB_ebay_format_product', $products));
+function MP_cafepress_format_all_products($products) {
+    return implode('', array_map('MB_cafepress_format_product', $products));
 }
 
 ?>

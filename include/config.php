@@ -23,7 +23,7 @@ $MP_cafepress_plugin = new wpCSL_plugin(
         'url'                    => 'http://www.cybersprocket.com/products/wpquickcafepress/',
         'paypal_button_id'       => 'NRMZK9MRR7AML',
         'cache_path'             => MP_CAFEPRESS_PLUGINDIR,
-        'plugin_url'             => '/wp-content/plugins/wpquickcafepress/',
+        'plugin_url'             => MP_CAFEPRESS_PLUGINURL,
         'notifications_obj_name' => 'default',
         'settings_obj_name'      => 'default',
         'license_obj_name'       => 'default'
@@ -66,7 +66,7 @@ $MP_cafepress_plugin->settings->add_section(
     array(
         'name'        => 'Product Display',
         'description' => 'The values that are entered here are the defaults whenever you use a shortcode.' .
-                         'You can override these settings via the shortcode qualifiers when you put the code into a page or post.'
+                         'You can override these settings via the shortcode qualifiers when you put the code into a page or post.<br/><br/>'
     )
 );
 

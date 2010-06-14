@@ -65,7 +65,8 @@ $MP_cafepress_plugin->settings->add_item('Store Configuration', 'Affiliate ID (C
 $MP_cafepress_plugin->settings->add_section(
     array(
         'name'        => 'Product Display',
-        'description' => ''
+        'description' => 'The values that are entered here are the defaults whenever you use a shortcode.' .
+                         'You can override these settings via the shortcode qualifiers when you put the code into a page or post.'
     )
 );
 

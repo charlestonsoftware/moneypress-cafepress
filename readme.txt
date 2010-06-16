@@ -1,7 +1,7 @@
 === MoneyPress : CafePress Edition ===
 Plugin Name: MoneyPress : CafePress Edition
 Contributors: cybersprocket
-Donate link: http://www.cybersprocket.com/proucts/wpquickcafepress/
+Donate link: http://www.cybersprocket.com/products/wpquickcafepress/
 Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,products,ecommerce,revenue sharing,storefront,cj,commission-junction
 Requires at least: 2.6
 Tested up to: 2.9.2
@@ -42,6 +42,8 @@ These changes are necessary to move the MoneyPress : CafePress Edition plugin on
 This allows us to keep the plugins consistent amongst the different editions and gives this plugin the benefit of any
 bug fixes or new base features we add when updating the other MoneyPress plugins.
 
+*Note:* When you upgrade this plugin, you will need to update any other MoneyPress plugins you may have installed if there is a plugin available.
+
 == Screenshots ==
 
 Coming soon!
@@ -79,6 +81,10 @@ We charge a nominal $5 fee to unlock this plugin which turns on the plugin conte
 = v3.0 (tbd) =
 
 * Major update move CafePress Edition to a standard codebase
+* The selling price display can now be set to match your locale.
+* Better inline help on settings page.
+
+
 
 = v2.2 (June 10th, 2010) =
 

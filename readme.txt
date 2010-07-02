@@ -46,7 +46,11 @@ bug fixes or new base features we add when updating the other MoneyPress plugins
 
 == Screenshots ==
 
-Coming soon!
+1. Get the ZIP file from Cyber Sprocket
+2. Get your API key from the Cafepress developer site.
+3. Install the plugin using the zip file.
+4. Go to MoneyPress : Cafepress in the Wordpress Settings menu.
+5. Enter your Cafepress Developer API key.
 
 == Frequently Asked Questions ==
 

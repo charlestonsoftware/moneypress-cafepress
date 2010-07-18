@@ -66,9 +66,11 @@ Sign up at <a href="http://developer.cafepress.com/">Developer.cafepress.com</a>
 
 We offer the following MoneyPress plugins that all work to show listings from various eCommerce sites in your WordPress site via a few simple shortcodes:
 
+* BuyAt Master Edition
 * CafePress Edition
 * Commission Junction Edition
 * eBay Edition
+* New York Times Store Edition
 
 Look for more editions coming soon!
 
@@ -87,8 +89,6 @@ We charge a nominal $5 fee to unlock this plugin which turns on the plugin conte
 * Major update move CafePress Edition to a standard codebase
 * The selling price display can now be set to match your locale.
 * Better inline help on settings page.
-
-
 
 = v2.2 (June 10th, 2010) =
 

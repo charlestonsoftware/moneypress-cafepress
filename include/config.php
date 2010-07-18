@@ -6,7 +6,7 @@
  * not already been loaded by another plugin that may also be
  * installed, and if not then we load it.
  */
-if (class_exists('wpCSL_plugin_mpcafe') === false) {
+if (class_exists('wpCSL_plugin__mpcafe') === false) {
     require_once(MP_CAFEPRESS_PLUGINDIR.'WPCSL-generic/classes/CSL-plugin.php');
 }
 
@@ -16,8 +16,9 @@ if (class_exists('wpCSL_plugin_mpcafe') === false) {
  * This section defines the settings for the admin menu.
  */
 
-$MP_cafepress_plugin = new wpCSL_plugin_mpcafe(
+$MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
     array(
+        'use_obj_defaults'       => true,        
         'prefix'                 => 'csl-mp-cafepress',
         'name'                   => 'MoneyPress : CafePress Edition',
         'url'                    => 'http://www.cybersprocket.com/products/wpquickcafepress/',

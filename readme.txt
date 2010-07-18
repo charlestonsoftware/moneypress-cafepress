@@ -4,8 +4,8 @@ Contributors: cybersprocket
 Donate link: http://www.cybersprocket.com/proucts/wpquickcafepress/
 Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,products,ecommerce,revenue sharing,storefront,cj,commission-junction
 Requires at least: 2.6
-Tested up to: 2.9.2
-Stable tag: 2.0
+Tested up to: 3.0
+Stable tag: 3.0
 
 MoneyPress : Cafepress Edition allows you to quickly and easily display products from Cafepress on any page or post via a simple shortcode.
 
@@ -13,7 +13,7 @@ MoneyPress : Cafepress Edition allows you to quickly and easily display products
 
 MoneyPress : Cafepress Edition allows you to quickly and easily display products from Cafepress on any page or post via a simple shortcode.  Install the plugin and you can add products to your existing blog posts or pages just be entering a shortcode. Multiple configuration options allow you to customize the display.  If you are a Cafepress retailer, this plugin is for you!
 
-Requires PHP5 with XMLDOM.
+Requires PHP5.
 
 Features:
 

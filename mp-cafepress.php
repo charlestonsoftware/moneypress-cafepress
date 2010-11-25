@@ -40,6 +40,10 @@ if (defined('MP_CAFEPRESS_PLUGINURL') === false) {
     define('MP_CAFEPRESS_PLUGINURL', plugins_url('',__FILE__));
 }
 
+if (defined('MP_CAFEPRESS_BASENAME') === false) {
+    define('MP_CAFEPRESS_BASENAME', plugin_basename(__FILE__));
+}
+
 require_once('include/config.php');
 
 if (class_exists('PanhandlerProduct') === false) {

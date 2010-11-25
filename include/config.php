@@ -18,17 +18,19 @@ if (class_exists('wpCSL_plugin__mpcafe') === false) {
 
 $MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
     array(
-        'use_obj_defaults'       => true,        
-        'prefix'                 => 'csl-mp-cafepress',
-        'name'                   => 'MoneyPress : CafePress Edition',
-        'url'                    => 'http://www.cybersprocket.com/products/wpquickcafepress/',
-        'paypal_button_id'       => 'NRMZK9MRR7AML',
-        'plugin_path'            => MP_CAFEPRESS_PLUGINDIR,
-        'plugin_url'             => MP_CAFEPRESS_PLUGINURL,
-        'cache_path'             => MP_CAFEPRESS_PLUGINDIR . 'cache',
-        'driver_name'            => 'CafePress',
-        'driver_args'            => array(get_option('csl-mp-cafepress-api_key')),
-        'shortcodes'             => array('mp-cafepress','mp_cafepress','QuickCafe')
+        'use_obj_defaults'      => true,        
+        'prefix'                => 'csl-mp-cafepress',
+        'name'                  => 'MoneyPress : CafePress Edition',
+        'url'                   => 'http://www.cybersprocket.com/products/wpquickcafepress/',
+        'paypal_button_id'      => 'NRMZK9MRR7AML',
+        'basefile'              => MP_CAFEPRESS_BASENAME,
+        'plugin_path'           => MP_CAFEPRESS_PLUGINDIR,
+        'plugin_url'            => MP_CAFEPRESS_PLUGINURL,
+        'cache_path'            => MP_CAFEPRESS_PLUGINDIR . 'cache',
+        'driver_name'           => 'CafePress',
+        'driver_type'           => 'Panhandler',
+        'driver_args'           => array(get_option('csl-mp-cafepress-api_key')),
+        'shortcodes'            => array('mp-cafepress','mp_cafepress','QuickCafe')
     )
 );
 

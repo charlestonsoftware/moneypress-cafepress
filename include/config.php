@@ -29,7 +29,9 @@ $MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
         'cache_path'            => MP_CAFEPRESS_PLUGINDIR . 'cache',
         'driver_name'           => 'CafePress',
         'driver_type'           => 'Panhandler',
-        'driver_args'           => array(get_option('csl-mp-cafepress-api_key')),
+        'driver_args'           => array(
+                'api_key'   => get_option('csl-mp-cafepress-api_key')
+                ),
         'shortcodes'            => array('mp-cafepress','mp_cafepress','QuickCafe')
     )
 );

@@ -30,7 +30,7 @@ $MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
         'driver_name'           => 'CafePress',
         'driver_type'           => 'Panhandler',
         'driver_args'           => array(
-                'api_key'   => get_option('csl-mp-cafepress-api_key')
+                'api_key'   => get_option('csl-mp-cafepress-api-key')
                 ),
         'shortcodes'            => array('mp-cafepress','mp_cafepress','QuickCafe')
     )

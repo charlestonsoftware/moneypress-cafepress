@@ -13,7 +13,7 @@ MoneyPress : CafePress Edition allows you to quickly and easily display products
 
 MoneyPress : CafePress Edition allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode.  Install the plugin and you can add products to your existing blog posts or pages just be entering a shortcode. Multiple configuration options allow you to customize the display.  If you are a CafePress retailer, this plugin is for you!
 
-Requires PHP5.
+Requires PHP version 5.1.3 or higher.
 
 Features:
 

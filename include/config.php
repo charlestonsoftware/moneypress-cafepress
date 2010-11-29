@@ -30,11 +30,16 @@ $MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
         'driver_name'           => 'CafePress',
         'driver_type'           => 'Panhandler',
         'driver_args'           => array(
-                'api_key'   => get_option('csl-mp-cafepress-api-key')
+                'api_key'   => get_option('csl-mp-cafepress-api-key'),
+                'wait_for'  => get_option('csl-mp-cafepress-wait_for')
                 ),
         'shortcodes'            => array('mp-cafepress','mp_cafepress','QuickCafe')
     )
 );
+
+//-------------------------
+// How to Use Section
+//-------------------------
 
 $MP_cafepress_plugin->settings->add_section(
     array(
@@ -53,20 +58,51 @@ $MP_cafepress_plugin->settings->add_section(
     )
 );
 
+//---------------------------------
+// CafePress Communications Section
+//---------------------------------
+
 $MP_cafepress_plugin->settings->add_section(
     array(
-        'name'        => 'Store Configuration',
-        'description' => ''
+        'name'        => 'CafePress Communication',
+        'description' => 'These settings affect how the plugin communicates with CafePress to get your listings.'.
+                            '<br/><br/>'
     )
 );
 
-$MP_cafepress_plugin->settings->add_item('Store Configuration', 'CafePress API Key', 'api-key', 'text', false,
-                                  'Your CafePress API Key.  You can use our demo key jvkq6kq4qysvyztj6hkgghk7 until you get your own key.  '.
-                                  'This is a shared demo key and should not be used to run your plugin. ');
+$MP_cafepress_plugin->settings->add_item(
+    'CafePress Communication', 
+    'CafePress API Key', 
+    'api-key', 
+    'text', 
+    false,
+    'Your CafePress API Key.  You can use our demo key jvkq6kq4qysvyztj6hkgghk7 until you get your own key.  '.
+        'This is a shared demo key and should not be used to run your plugin. '
+);
 
-$MP_cafepress_plugin->settings->add_item('Store Configuration', 'Affiliate ID (CJ PID)', 'cj-pid', 'text', false,
-                           'If you have a CafePress Affiliate account, enter your CJ PID here to earn commission on products you list on '.
-                           'this site from other CafePress sellers.');
+$MP_cafepress_plugin->settings->add_item(
+    'CafePress Communication', 
+    'Affiliate ID (CJ PID)', 
+    'cj-pid', 
+    'text', 
+    false,
+    'If you have a CafePress Affiliate account, enter your CJ PID here to earn commission on products '.
+        'you list on this site from other CafePress sellers.'
+);
+
+$MP_cafepress_plugin->settings->add_item(
+    'CafePress Communication', 
+    'Wait For ',   
+    'wait_for',    
+    'text', 
+    false, 
+    'How long to wait for the CafePress server to respond in seconds (default: 30).'
+);
+
+
+//-------------------------
+// Product Display Section
+//-------------------------
 
 $MP_cafepress_plugin->settings->add_section(
     array(
@@ -76,8 +112,33 @@ $MP_cafepress_plugin->settings->add_section(
     )
 );
 
-$MP_cafepress_plugin->settings->add_item('Product Display', 'Number of products to show',   'product-count',    'text', false,'Default number of product to show.');
-$MP_cafepress_plugin->settings->add_item('Product Display', 'Store ID',                     'storeid',          'text', false,'The default store ID.  The plugin will show items from this store if you don\'t specify a store in the shortcode.');
-$MP_cafepress_plugin->settings->add_item('Product Display', 'Section ID',                   'sectionid',        'text', false,'The default section ID.  The plugin will show items from this section within your store if you don\'t specify a store in the shortcode.');
+$MP_cafepress_plugin->settings->add_item(
+    'Product Display', 
+    'Number of products to show',   
+    'product-count',    
+    'text', 
+    false,
+    'Default number of product to show.'
+);
+
+$MP_cafepress_plugin->settings->add_item(
+    'Product Display', 
+    'Store ID',                     
+    'storeid',          
+    'text', 
+    false,
+    'The default store ID. The plugin will show items from this store '.
+        'if you don\'t specify a store in the shortcode.'
+);
+
+$MP_cafepress_plugin->settings->add_item(
+    'Product Display', 
+    'Section ID',                   
+    'sectionid',        
+    'text', 
+    false,
+    'The default section ID.  The plugin will show items from this section ' .
+        'within your store if you don\'t specify a store in the shortcode.'
+);
 
 ?>

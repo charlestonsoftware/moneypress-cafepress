@@ -45,16 +45,29 @@ $MP_cafepress_plugin->settings->add_section(
     array(
         'name' => 'How to Use',
         'description' =>
-        '<p>To use MoneyPress : CafePress Edition you only need to add a simple '                   .
-        'shortcode to any page where you want to show CafePress products.  An example '              .
-        'of the shortcode is <code>[mp-cafepress]http://www.cafepress.com/cybersprocket[/mp-cafepress]</code>. '     .
-        'Putting this code on a page would show ten products from youre CafePress store (you need to. '         .
-        'change "cybersprocket" in that URL to your CafePress store URL).  The list will include links ' .
-        'to each item and their current price.  If you want '        .
-        'to change how many products are shown, you can either change the default value below ' .
-        'or you can change it in the shortcode itself, e.g. <code>[mp-cafepress '            .
-        'return="5"]http://www.cafepress.com/cybersprocket[/mp-cafepress], which would only show '       .
-        'five items.</p>' 
+        '<p>To use MoneyPress : CafePress Edition you only need to add a simple '                       .
+        'shortcode to any page where you want to show a list of CafePress products. '                   .
+        'The following code will show products from your CafePress store (you need to change '          .
+        '"cybersprocket" to your CafePress store name):<br/>' .
+        '<code>[mp-cafepress]http://www.cafepress.com/cybersprocket[/mp-cafepress]</code><br/>'         .
+        '<br/>'.
+        'If you want to change how many products are shown, you can change the default '                .
+        'value below or you can specify it in the shortcode itself.  For example the following code '   .
+        'would show 5 items:<br/>'.
+        '<code>[mp-cafepress return="5"]http://www.cafepress.com/cybersprocket[/mp-cafepress]</code><br/>'.
+        '<br/>' .
+        '<strong>Need More Assistance?</strong><br/><br/>'.
+        'For help setting up and using this plugin, please visit the '.
+        '<strong><a href="http://redmine.cybersprocket.com/projects/wpcafepress/wiki" target="newinfo">'.
+        'MoneyPress:CafePress Edition Knowledgebase</a></strong>.<br/> We recommend registering on the site and '.
+        'using the forums to post questions.  It is the best way to get a response from our development team.'.
+        '<br/><br/>Register here:<br/>'.
+        '<a href="http://redmine.cybersprocket.com/account/register">'.
+        'http://redmine.cybersprocket.com/account/register</a>'.
+        '<br/><br/>Review the forum here:<br/>'.
+        '<a href="http://redmine.cybersprocket.com/projects/moneypress-buyat/boards">'.
+        'http://redmine.cybersprocket.com/projects/moneypress-buyat/boards</a>'.
+        '</p>'
     )
 );
 

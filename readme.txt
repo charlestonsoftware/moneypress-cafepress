@@ -70,7 +70,6 @@ We offer the following MoneyPress plugins that all work to show listings from va
 * CafePress Edition
 * Commission Junction Edition
 * eBay Edition
-* New York Times Store Edition
 
 Look for more editions coming soon!
 
@@ -86,9 +85,14 @@ We charge a nominal $5 fee to unlock this plugin which turns on the plugin conte
 
 = v3.0 (tbd) =
 
-* Major update move CafePress Edition to a standard codebase
+* Major update move CafePress Edition to a standard codebase.
 * The selling price display can now be set to match your locale.
 * Better inline help on settings page.
+* Ability to specify which "page" of products to return via page="#" qualifier.
+* Ability to set default section ID or specify in short code.
+* Ability to set default store ID or specify in short code.
+* New shortcodes, can be specified as a single shortcode entry, no URL required with store ID set.
+* Updated the licensing code and product fetching code with a more robust connection algorithm.
 
 = v2.2 (June 10th, 2010) =
 

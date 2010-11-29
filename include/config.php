@@ -118,7 +118,7 @@ $MP_cafepress_plugin->settings->add_item(
 $MP_cafepress_plugin->settings->add_item(
     'Product Display', 
     'Store ID',
-    'return',    
+    'store_id',    
     'text', 
     false,
     'The default store ID to use if not sepcified (default: cybersprocket).'
@@ -128,7 +128,7 @@ $MP_cafepress_plugin->settings->add_item(
 $MP_cafepress_plugin->settings->add_item(
     'Product Display', 
     'Section ID',   
-    'return',    
+    'section_id',    
     'text', 
     false,
     'The default section ID to use if not sepcified (default: 0).'

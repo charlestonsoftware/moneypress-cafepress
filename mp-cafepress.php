@@ -95,18 +95,18 @@ function MP_cafepress_show_items($attributes, $content = null) {
     global $current_user;
     get_currentuserinfo();
 
-    // Make sure the user is either an admin, in which case he
+    // Make sure the user is either an admin, in which case he        
     // gets to view the results of the plugin, or otherwise
     // make sure the license has been purchased.
     if (($current_user->wp_capabilities['administrator'] == false) &&
         ($current_user->user_level != '10') &&
-        (get_option('csl-mp-cafepress-purchased') == false)) {
+        (get_option($prefix.'-purchased') == false)) {
         return;
     }
     
     // Check to make sure we have a CafePress API Key
-    $csl_mp_cafepress_api_key = get_option('csl-mp-cafepress-api-key');
-    if (get_option('csl-mp-cafepress-api-key') == '') {
+    $csl_mp_cafepress_api_key = get_option($prefix.'-api-key');
+    if (get_option($prefix.'-api-key') == '') {
         return;
     }
 
@@ -115,8 +115,11 @@ function MP_cafepress_show_items($attributes, $content = null) {
     extract(
         shortcode_atts(
             array(
-                'preview' => null,
-                'return' => null
+                'page'          => null, 
+                'preview'       => null,
+                'return'        => null,
+                'section_id'    => null,
+                'wait_for'      => null,
             ),
             $attributes
         )
@@ -127,7 +130,7 @@ function MP_cafepress_show_items($attributes, $content = null) {
         $product_count = (integer) $attributes['return'];
     }
     else {
-        $product_count = (integer) get_option('csl-mp-cafepress-product-count');
+        $product_count = (integer) get_option($prefix.'-return');
     }
 
     // Even after the above two checks for places to get a product count, we may
@@ -159,14 +162,14 @@ function MP_cafepress_show_items($attributes, $content = null) {
  */
 function MP_cafepress_get_general_options() {
     $general_options = array();
-    $storeid       = get_option('csl-mp-cafepress-storeid');
-    $sectionid     = get_option('csl-mp-cafepress-sectionid');
+    $store_id       = get_option($prefix.'-store_id');
+    $section_id     = get_option($prefix.'-section_id');
 
-    if ($storeid) {
-        $general_options['storeid'] = array($storeid);
+    if ($store_id) {
+        $general_options['store_id'] = array($store_id);
     }
-    if ($sectionid) {
-        $general_options['sectionid'] = array($sectionid);
+    if ($section_id) {
+        $general_options['section_id'] = array($section_id);
     }
     
     return $general_options;

@@ -16,10 +16,12 @@ if (class_exists('wpCSL_plugin__mpcafe') === false) {
  * This section defines the settings for the admin menu.
  */
 
+$prefix = 'csl-mp-cafepress';
+
 $MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
     array(
         'use_obj_defaults'      => true,        
-        'prefix'                => 'csl-mp-cafepress',
+        'prefix'                => $prefix,
         'name'                  => 'MoneyPress : CafePress Edition',
         'url'                   => 'http://www.cybersprocket.com/products/wpquickcafepress/',
         'paypal_button_id'      => 'NRMZK9MRR7AML',
@@ -30,8 +32,9 @@ $MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
         'driver_name'           => 'CafePress',
         'driver_type'           => 'Panhandler',
         'driver_args'           => array(
-                'api_key'   => get_option('csl-mp-cafepress-api-key'),
-                'wait_for'  => get_option('csl-mp-cafepress-wait_for')
+                'api_key'   => get_option($prefix.'-api-key'),
+                'return'    => get_option($prefix.'-return'),
+                'wait_for'  => get_option($prefix.'-wait_for')
                 ),
         'shortcodes'            => array('mp-cafepress','mp_cafepress','QuickCafe')
     )
@@ -44,30 +47,7 @@ $MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
 $MP_cafepress_plugin->settings->add_section(
     array(
         'name' => 'How to Use',
-        'description' =>
-        '<p>To use MoneyPress : CafePress Edition you only need to add a simple '                       .
-        'shortcode to any page where you want to show a list of CafePress products. '                   .
-        'The following code will show products from your CafePress store (you need to change '          .
-        '"cybersprocket" to your CafePress store name):<br/>' .
-        '<code>[mp-cafepress]http://www.cafepress.com/cybersprocket[/mp-cafepress]</code><br/>'         .
-        '<br/>'.
-        'If you want to change how many products are shown, you can change the default '                .
-        'value below or you can specify it in the shortcode itself.  For example the following code '   .
-        'would show 5 items:<br/>'.
-        '<code>[mp-cafepress return="5"]http://www.cafepress.com/cybersprocket[/mp-cafepress]</code><br/>'.
-        '<br/>' .
-        '<strong>Need More Assistance?</strong><br/><br/>'.
-        'For help setting up and using this plugin, please visit the '.
-        '<strong><a href="http://redmine.cybersprocket.com/projects/wpcafepress/wiki" target="newinfo">'.
-        'MoneyPress:CafePress Edition Knowledgebase</a></strong>.<br/> We recommend registering on the site and '.
-        'using the forums to post questions.  It is the best way to get a response from our development team.'.
-        '<br/><br/>Register here:<br/>'.
-        '<a href="http://redmine.cybersprocket.com/account/register">'.
-        'http://redmine.cybersprocket.com/account/register</a>'.
-        '<br/><br/>Review the forum here:<br/>'.
-        '<a href="http://redmine.cybersprocket.com/projects/moneypress-buyat/boards">'.
-        'http://redmine.cybersprocket.com/projects/moneypress-buyat/boards</a>'.
-        '</p>'
+        'description' => file_get_contents(MP_CAFEPRESS_PLUGINDIR.'/how_to_use.txt')
     )
 );
 
@@ -128,30 +108,30 @@ $MP_cafepress_plugin->settings->add_section(
 $MP_cafepress_plugin->settings->add_item(
     'Product Display', 
     'Number of products to show',   
-    'product-count',    
+    'return',    
     'text', 
     false,
-    'Default number of product to show.'
+    'Default number of product to show when listing products (default: 10).'
 );
+
 
 $MP_cafepress_plugin->settings->add_item(
     'Product Display', 
-    'Store ID',                     
-    'storeid',          
+    'Store ID',
+    'return',    
     'text', 
     false,
-    'The default store ID. The plugin will show items from this store '.
-        'if you don\'t specify a store in the shortcode.'
+    'The default store ID to use if not sepcified (default: cybersprocket).'
 );
+
 
 $MP_cafepress_plugin->settings->add_item(
     'Product Display', 
-    'Section ID',                   
-    'sectionid',        
+    'Section ID',   
+    'return',    
     'text', 
     false,
-    'The default section ID.  The plugin will show items from this section ' .
-        'within your store if you don\'t specify a store in the shortcode.'
+    'The default section ID to use if not sepcified (default: 0).'
 );
 
 ?>

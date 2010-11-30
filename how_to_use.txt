@@ -1,0 +1,33 @@
+<p>To use MoneyPress : CafePress Edition you only need to add a simple 
+shortcode to any page where you want to show a list of CafePress products. 
+The following code will show products from your CafePress store (you need to set the
+store ID, otherwise it defaults to "cyersprocket"):<br/>
+<code>[mp-cafepress]</code><br/>
+<br/>
+If you want to change how many products are shown, you can change the default 
+value below or you can specify it in the shortcode itself.  For example the following code 
+would show 5 items:<br/>
+<code>[mp-cafepress return="5"]</code><br/>
+<br/>
+Other shortcode qualifiers include: <br/>
+<table>
+<tr><th>Qualifier</th><th>What it does</th></tr>
+<tr><td>page="0"	</td><td>the default page number to display, default page is 0 (start of catalog)</td></tr>
+<tr><td>return="10"	</td><td>the default number of products to return</td></tr>
+<tr><td>section_id="0"	</td><td>the default section to show, default is 0 (all of catalog)</td></tr>
+<tr><td>store_id="cybersprocket"</td><td>the default store ID, should be set to your store name</td></tr>
+<tr><td>wait_for="30"	</td><td>how long to wait before getting the list back from CafePress</td></tr>
+</table>
+<br/>
+<strong>Need More Assistance?</strong><br/><br/>
+For help setting up and using this plugin, please visit the 
+<strong><a href="http://redmine.cybersprocket.com/projects/wpcafepress/wiki" target="newinfo">
+MoneyPress:CafePress Edition Knowledgebase</a></strong>.<br/> We recommend registering on the site and 
+using the forums to post questions.  It is the best way to get a response from our development team.
+<br/><br/>Register here:<br/>
+<a href="http://redmine.cybersprocket.com/account/register">
+http://redmine.cybersprocket.com/account/register</a>
+<br/><br/>Review the forum here:<br/>
+<a href="http://redmine.cybersprocket.com/projects/moneypress-buyat/boards">
+http://redmine.cybersprocket.com/projects/moneypress-buyat/boards</a>
+</p>

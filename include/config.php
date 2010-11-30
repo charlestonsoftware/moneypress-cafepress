@@ -33,7 +33,7 @@ $MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
         'driver_type'           => 'Panhandler',
         'driver_args'           => array(
                 'api_key'   => get_option($prefix.'-api_key'),
-                'cj_pid'    => get-option($prefix.'-cj_pid'),
+                'cj_pid'    => get_option($prefix.'-cj_pid'),
                 'return'    => get_option($prefix.'-return'),
                 'wait_for'  => get_option($prefix.'-wait_for')
                 ),

@@ -83,7 +83,7 @@ We charge a nominal $5 fee to unlock this plugin which turns on the plugin conte
 
 == Changelog ==
 
-= v3.0 (tbd) =
+= v3.0 (November 29th, 2010) =
 
 * Major update move CafePress Edition to a standard codebase.
 * The selling price display can now be set to match your locale.
@@ -93,6 +93,7 @@ We charge a nominal $5 fee to unlock this plugin which turns on the plugin conte
 * Ability to set default store ID or specify in short code.
 * New shortcodes, can be specified as a single shortcode entry, no URL required with store ID set.
 * Updated the licensing code and product fetching code with a more robust connection algorithm.
+* Added a debugging flag to the settings page to help when things go awry.
 
 = v2.2 (June 10th, 2010) =
 

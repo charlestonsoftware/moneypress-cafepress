@@ -32,7 +32,8 @@ $MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
         'driver_name'           => 'CafePress',
         'driver_type'           => 'Panhandler',
         'driver_args'           => array(
-                'api_key'   => get_option($prefix.'-api-key'),
+                'api_key'   => get_option($prefix.'-api_key'),
+                'cj_pid'    => get-option($prefix.'-cj_pid'),
                 'return'    => get_option($prefix.'-return'),
                 'wait_for'  => get_option($prefix.'-wait_for')
                 ),
@@ -66,7 +67,7 @@ $MP_cafepress_plugin->settings->add_section(
 $MP_cafepress_plugin->settings->add_item(
     'CafePress Communication', 
     'CafePress API Key', 
-    'api-key', 
+    'api_key', 
     'text', 
     false,
     'Your CafePress API Key.  You can use our demo key jvkq6kq4qysvyztj6hkgghk7 until you get your own key.  '.
@@ -76,7 +77,7 @@ $MP_cafepress_plugin->settings->add_item(
 $MP_cafepress_plugin->settings->add_item(
     'CafePress Communication', 
     'Affiliate ID (CJ PID)', 
-    'cj-pid', 
+    'cj_pid', 
     'text', 
     false,
     'If you have a CafePress Affiliate account, enter your CJ PID here to earn commission on products '.

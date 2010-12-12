@@ -100,12 +100,15 @@ function MP_cafepress_show_items($attributes, $content = null) {
     // Make sure the user is either an admin, in which case he        
     // gets to view the results of the plugin, or otherwise
     // make sure the license has been purchased.
-    if (($current_user->wp_capabilities['administrator'] == false) &&
-        ($current_user->user_level != '10') &&
-        (get_option($prefix.'-purchased') == false)) {
-        return;
+    if (!get_option($prefix.'-purchased')) {
+        if (!isset($current_user) ) { return; }
+        if ($current_user->ID <= 0 ) { return; }
+        if (($current_user->wp_capabilities['administrator'] == false) &&
+            ($current_user->user_level != '10') ) {
+            return;
+        }
     }
-    
+
     $cafepress = $MP_cafepress_plugin->driver;
 
     extract(

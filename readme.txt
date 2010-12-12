@@ -24,7 +24,6 @@ Related Links:
 
 * <a href="http://redmine.cybersprocket.com/projects/wpcafepress/wiki" title="MoneyPress : CafePress Edition Knowledgebase">MoneyPress : CafePress Edition Knowledgebase</a>
 * <a href="http://redmine.cybersprocket.com/projects/wpcafepress/boards" title="MoneyPress : CafePress Edition Forums">MoneyPress : CafePress Edition Forums</a>
-* 
 
 == Installation ==
 
@@ -51,7 +50,6 @@ bug fixes or new base features we add when updating the other MoneyPress plugins
 3. Entering a license key and API key via admin panel.
 4. The email you will receive upon purchasing the plugin.
 5. Getting a CafePress API key from CafePress.
-
 
 == Frequently Asked Questions ==
 

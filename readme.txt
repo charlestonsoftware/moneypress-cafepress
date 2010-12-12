@@ -4,8 +4,8 @@ Contributors: cybersprocket
 Donate link: http://www.cybersprocket.com/products/wpquickcafepress/
 Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,products,ecommerce,revenue sharing,storefront,cj,commission-junction
 Requires at least: 2.6
-Tested up to: 3.1
-Stable tag: 3.1
+Tested up to: 3.0.3
+Stable tag: 3.2
 
 MoneyPress : CafePress Edition allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode. Upgrading?  This is a major release update, you will need to re-enter any settings on your admin panel including the license key and CafePress API key after upgrading.
 
@@ -46,11 +46,12 @@ bug fixes or new base features we add when updating the other MoneyPress plugins
 
 == Screenshots ==
 
-1. Get the ZIP file from Cyber Sprocket
-2. Get your API key from the Cafepress developer site.
-3. Install the plugin using the zip file.
-4. Go to MoneyPress : Cafepress in the Wordpress Settings menu.
-5. Enter your Cafepress Developer API key.
+1. The plugin in action.
+2. The settings menu in the admin panel.
+3. Entering a license key and API key via admin panel.
+4. The email you will receive upon purchasing the plugin.
+5. Getting a CafePress API key from CafePress.
+
 
 == Frequently Asked Questions ==
 
@@ -79,12 +80,16 @@ To learn more, visit our <a href="http://redmine.cybersprocket.com/projects/wpca
 
 == License ==
 
-We charge a nominal $5 fee to unlock this plugin which turns on the plugin content for your site visitors.  However you can download and test this plugin for FREE without entering a license code which allows anyone logged in as an administrator on your site to see the plugin content.  By charging this one-time fee we are able to provide ongoing support and maintance for the plugin.  Remember, you can still try this in admin mode at no charge.  If you purchase the plugin and decide you don't like it just let us know within 30 days and we'll refund your purchase with no questions asked.
+We charge a nominal fee to unlock this plugin which turns on the plugin content for your site visitors.  However you can download and test this plugin for FREE without entering a license code which allows anyone logged in as an administrator on your site to see the plugin content.  By charging this one-time fee we are able to provide ongoing support and maintance for the plugin.  Remember, you can still try this in admin mode at no charge.  If you purchase the plugin and decide you don't like it just let us know within 30 days and we'll refund your purchase with no questions asked.
 
 == Changelog ==
 
-= v3.1 (tbd) =
+= v3.1 (December 12,2010) =
 
+* Fixed a problem with [quickcafepress] tag on legacy systems
+* Fixed cache setting issue (was not saving cache length)
+* Extended debugging mode output on product lookups.
+* Added proper CSS formatting for new div tags
 
 = v3.0 (November 29th, 2010) =
 

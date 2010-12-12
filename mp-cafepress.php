@@ -93,6 +93,8 @@ function MP_cafepress_user_css() {
  */
 function MP_cafepress_show_items($attributes, $content = null) {
     global $current_user;
+    global $prefix;
+    global $MP_cafepress_plugin;
     get_currentuserinfo();
 
     // Make sure the user is either an admin, in which case he        
@@ -104,13 +106,7 @@ function MP_cafepress_show_items($attributes, $content = null) {
         return;
     }
     
-    // Check to make sure we have a CafePress API Key
-    $csl_mp_cafepress_api_key = get_option($prefix.'-api-key');
-    if (get_option($prefix.'-api-key') == '') {
-        return;
-    }
-
-    $cafepress = new CafepressPanhandler($csl_mp_cafepress_api_key);
+    $cafepress = $MP_cafepress_plugin->driver;
 
     extract(
         shortcode_atts(
@@ -143,7 +139,7 @@ function MP_cafepress_show_items($attributes, $content = null) {
 
     $general_options = MP_cafepress_get_general_options();
 
-    if ($keywords !== null) {
+    if (isset($keywords) && ($keywords !== null)) {
         $general_options['keywords'] = array($keywords);
     }
 
@@ -161,6 +157,7 @@ function MP_cafepress_show_items($attributes, $content = null) {
  * CafePress driver, if any.
  */
 function MP_cafepress_get_general_options() {
+    global $prefix;
     $general_options = array();
     $store_id       = get_option($prefix.'-store_id');
     $section_id     = get_option($prefix.'-section_id');

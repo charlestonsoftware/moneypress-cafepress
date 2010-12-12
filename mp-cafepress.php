@@ -166,10 +166,10 @@ function MP_cafepress_get_general_options() {
     $section_id     = get_option($prefix.'-section_id');
 
     if ($store_id) {
-        $general_options['store_id'] = array($store_id);
+        $general_options['store_id'] = $store_id;
     }
     if ($section_id) {
-        $general_options['section_id'] = array($section_id);
+        $general_options['section_id'] = $section_id;
     }
     
     return $general_options;

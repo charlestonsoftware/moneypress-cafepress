@@ -4,17 +4,14 @@
   Plugin URI: http://www.cybersprocket.com/products/wpquickcafepress/
   Description: MoneyPress CafePress Edition allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode.
   Author: Cyber Sprocket Labs
-  Version: 3.3
+  Version: 3.4
   Author URI: http://www.cybersprocket.com/
   License: GPL3
 
   Our PID: 3783719
-  
   http://www.tkqlhce.com/click-PID-10467594?url=<blah>
   
-*/
-
-/*	Copyright 2010  Cyber Sprocket Labs (info@cybersprocket.com)
+	Copyright 2010  Cyber Sprocket Labs (info@cybersprocket.com)
 
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
@@ -166,10 +163,10 @@ function MP_cafepress_get_general_options() {
     $section_id     = get_option($prefix.'-section_id');
 
     if ($store_id) {
-        $general_options['store_id'] = $store_id;
+        $general_options['store_id'] = array($store_id);
     }
     if ($section_id) {
-        $general_options['section_id'] = $section_id;
+        $general_options['section_id'] = array($section_id);
     }
     
     return $general_options;

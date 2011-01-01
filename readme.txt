@@ -4,8 +4,8 @@ Contributors: cybersprocket
 Donate link: http://www.cybersprocket.com/products/wpquickcafepress/
 Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,products,ecommerce,revenue sharing,storefront,cj,commission-junction
 Requires at least: 2.6
-Tested up to: 3.0.3
-Stable tag: 3.3
+Tested up to: 3.0.4
+Stable tag: 3.4
 
 MoneyPress : CafePress Edition allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode. Upgrading?  This is a major release update, you will need to re-enter any settings on your admin panel including the license key and CafePress API key after upgrading.
 
@@ -15,12 +15,13 @@ MoneyPress : CafePress Edition allows you to quickly and easily display products
 
 Requires PHP version 5.1.3 or higher.
 
-Features:
+= Features =
 
 * Uses your own API key.
 * No revenue sharing, you keep 100% of your sales.
+* Built in affiliate tracking for Commission Junction affiliates.
 
-Related Links:
+= Related Links =
 
 * <a href="http://redmine.cybersprocket.com/projects/wpcafepress/wiki" title="MoneyPress : CafePress Edition Knowledgebase">MoneyPress : CafePress Edition Knowledgebase</a>
 * <a href="http://redmine.cybersprocket.com/projects/wpcafepress/boards" title="MoneyPress : CafePress Edition Forums">MoneyPress : CafePress Edition Forums</a>
@@ -30,18 +31,35 @@ Related Links:
 * Get the ZIP file from Cyber Sprocket
 * Get your API key from the CafePress developer site.
 * Install the plugin using the zip file.
-* Go to MoneyPress : CafePress in the Wordpress Settings menu.
+* Go to MoneyPress : CafePress in the WordPress Settings menu.
 * Enter your CafePress Developer API key.
 
-== Upgrade Notice ==
+= License =
 
-This is a major release update, you will need to re-enter any settings on your admin panel including the license key and CafePress API key after upgrading.
+We charge a nominal fee to unlock this plugin which turns on the plugin content 
+for your site visitors.  However you can download and test this plugin for FREE 
+without entering a license code which allows anyone logged in as an 
+administrator on your site to see the plugin content.  By charging this 
+one-time fee we are able to provide ongoing support and maintance for the plugin.  
+Remember, you can still try this in admin mode at no charge.  
 
-These changes are necessary to move the MoneyPress : CafePress Edition plugin onto our standard MoneyPress codebase.  
-This allows us to keep the plugins consistent amongst the different editions and gives this plugin the benefit of any
-bug fixes or new base features we add when updating the other MoneyPress plugins.
+If you purchase  the plugin and decide you don't like it just let us know within 
+30 days and we'll refund your purchase with no questions asked.
 
-*Note:* When you upgrade this plugin, you will need to update any other MoneyPress plugins you may have installed if there is a plugin available.
+= Upgrade Notice =
+
+This is a major release update for any 2.X users, you will need to re-enter 
+settings on your admin panel including the license key and CafePress API key 
+after upgrading.
+
+These changes are necessary to move the MoneyPress : CafePress Edition plugin 
+onto our standard MoneyPress codebase. This allows us to keep the plugins 
+consistent amongst the different editions and gives this plugin the benefit of 
+any bug fixes or new base features we add when updating the other MoneyPress 
+plugins.
+
+*Note:* When you upgrade this plugin, you will need to update other 
+MoneyPress plugins you may have installed if there is a plugin available.
 
 == Screenshots ==
 
@@ -55,15 +73,19 @@ bug fixes or new base features we add when updating the other MoneyPress plugins
 
 = What percentage of my sales does Cyber Sprocket keep? =
 
-None.  Everything you earn through this plugin is yours, we don't siphon off any of your sales or earn anything outside of our one-time $5 license fee.
+None.  Everything you earn through this plugin is yours, we don't siphon off 
+any of your sales or earn anything outside of our one-time license fee.
 
 = How do I get my CafePress API Key? =
 
-Sign up at <a href="http://developer.cafepress.com/">Developer.cafepress.com</a> and fill out the Register My Application form.  It takes less than 5 minutes and is easier than setting up your original CafePress store.
+Sign up at <a href="http://developer.cafepress.com/">Developer.cafepress.com</a> 
+and fill out the Register My Application form.  It takes less than 5 minutes and 
+is easier than setting up your original CafePress store.
 
 = What are the other MoneyPress plugins? =
 
-We offer the following MoneyPress plugins that all work to show listings from various eCommerce sites in your WordPress site via a few simple shortcodes:
+We offer the following MoneyPress plugins that all work to show listings from 
+various eCommerce sites in your WordPress site via a few simple shortcodes:
 
 * BuyAt Master Edition
 * CafePress Edition
@@ -76,11 +98,13 @@ Look for more editions coming soon!
 
 To learn more, visit our <a href="http://redmine.cybersprocket.com/projects/wpcafepress/wiki" title="MoneyPress : CafePress Edition Knowledgebase">knowledgebase</a> or visit our <a href="http://redmine.cybersprocket.com/projects/wpcafepress/boards">Community Forums</a>.
 
-== License ==
-
-We charge a nominal fee to unlock this plugin which turns on the plugin content for your site visitors.  However you can download and test this plugin for FREE without entering a license code which allows anyone logged in as an administrator on your site to see the plugin content.  By charging this one-time fee we are able to provide ongoing support and maintance for the plugin.  Remember, you can still try this in admin mode at no charge.  If you purchase the plugin and decide you don't like it just let us know within 30 days and we'll refund your purchase with no questions asked.
 
 == Changelog ==
+
+=v3.4 (January 1st 2011) =
+
+* Test with WordPress 3.0.4
+* Update readme file.
 
 = v3.3 (December 12,2010) =
 

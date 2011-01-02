@@ -101,7 +101,7 @@ To learn more, visit our <a href="http://redmine.cybersprocket.com/projects/wpca
 
 == Changelog ==
 
-=v3.4 (January 1st 2011) =
+= v3.4 (January 1st 2011) =
 
 * Test with WordPress 3.0.4
 * Update readme file.

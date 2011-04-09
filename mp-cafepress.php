@@ -47,7 +47,7 @@ if (defined('MP_CAFEPRESS_BASENAME') === false) {
 
 if (defined('MPCP_PREFIX') === false) {
     //define('MPCP_PREFIX', 'mpamz');
-    define('MPCP_PREFIX', 'csl-mp-cafepress');
+    define('MPCAFE_PREFIX', 'csl-mp-cafepress');
 }
 
 require_once('include/config.php');

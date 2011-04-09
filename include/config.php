@@ -14,7 +14,7 @@ if (defined('MP_CAFEPRESS_PLUGINDIR')) {
     $MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
         array(
             'use_obj_defaults'      => true,        
-            'prefix'                => MPCP_PREFIX,
+            'prefix'                => MPCAFE_PREFIX,
             'name'                  => 'MoneyPress : CafePress Edition',
             'url'                   => 'http://www.cybersprocket.com/products/wpquickcafepress/',
             'paypal_button_id'      => 'NRMZK9MRR7AML',

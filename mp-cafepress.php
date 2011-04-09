@@ -4,7 +4,7 @@
   Plugin URI: http://www.cybersprocket.com/products/wpquickcafepress/
   Description: MoneyPress CafePress Edition allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode.
   Author: Cyber Sprocket Labs
-  Version: 3.4
+  Version: 3.5
   Author URI: http://www.cybersprocket.com/
   License: GPL3
 

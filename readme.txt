@@ -5,7 +5,7 @@ Donate link: http://www.cybersprocket.com/products/wpquickcafepress/
 Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,products,ecommerce,revenue sharing,storefront,cj,commission-junction
 Requires at least: 2.6
 Tested up to: 3.0.4
-Stable tag: 3.4
+Stable tag: 3.5
 
 MoneyPress : CafePress Edition allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode. Upgrading?  This is a major release update, you will need to re-enter any settings on your admin panel including the license key and CafePress API key after upgrading.
 

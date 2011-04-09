@@ -232,4 +232,3 @@ function MP_cafepress_format_all_products($products) {
     return implode('', array_map('MB_cafepress_format_product', $products));
 }
 
-?>

@@ -6,40 +6,35 @@
  * not already been loaded by another plugin that may also be
  * installed, and if not then we load it.
  */
-if (class_exists('wpCSL_plugin__mpcafe') === false) {
-    require_once(MP_CAFEPRESS_PLUGINDIR.'WPCSL-generic/classes/CSL-plugin.php');
+if (defined('MP_CAFEPRESS_PLUGINDIR')) {
+    if (class_exists('wpCSL_plugin__mpcafe') === false) {
+        require_once(MP_CAFEPRESS_PLUGINDIR.'WPCSL-generic/classes/CSL-plugin.php');
+    }
+    
+    $MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
+        array(
+            'use_obj_defaults'      => true,        
+            'prefix'                => MPCP_PREFIX,
+            'name'                  => 'MoneyPress : CafePress Edition',
+            'url'                   => 'http://www.cybersprocket.com/products/wpquickcafepress/',
+            'paypal_button_id'      => 'NRMZK9MRR7AML',
+            'basefile'              => MP_CAFEPRESS_BASENAME,
+            'plugin_path'           => MP_CAFEPRESS_PLUGINDIR,
+            'plugin_url'            => MP_CAFEPRESS_PLUGINURL,
+            'cache_path'            => MP_CAFEPRESS_PLUGINDIR . 'cache',
+            'driver_name'           => 'CafePress',
+            'driver_type'           => 'Panhandler',
+            'driver_args'           => array(
+                    'api_key'   => get_option($prefix.'-api_key'),
+                    'cj_pid'    => get_option($prefix.'-cj_pid'),
+                    'return'    => get_option($prefix.'-return'),
+                    'wait_for'  => get_option($prefix.'-wait_for')
+                    ),
+            'shortcodes'            => array('mp-cafepress','mp_cafepress','QuickCafe')
+        )
+    );
+
 }
-
-//// SETTINGS ////////////////////////////////////////////////////////
-
-/**
- * This section defines the settings for the admin menu.
- */
-
-$prefix = 'csl-mp-cafepress';
-
-$MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
-    array(
-        'use_obj_defaults'      => true,        
-        'prefix'                => $prefix,
-        'name'                  => 'MoneyPress : CafePress Edition',
-        'url'                   => 'http://www.cybersprocket.com/products/wpquickcafepress/',
-        'paypal_button_id'      => 'NRMZK9MRR7AML',
-        'basefile'              => MP_CAFEPRESS_BASENAME,
-        'plugin_path'           => MP_CAFEPRESS_PLUGINDIR,
-        'plugin_url'            => MP_CAFEPRESS_PLUGINURL,
-        'cache_path'            => MP_CAFEPRESS_PLUGINDIR . 'cache',
-        'driver_name'           => 'CafePress',
-        'driver_type'           => 'Panhandler',
-        'driver_args'           => array(
-                'api_key'   => get_option($prefix.'-api_key'),
-                'cj_pid'    => get_option($prefix.'-cj_pid'),
-                'return'    => get_option($prefix.'-return'),
-                'wait_for'  => get_option($prefix.'-wait_for')
-                ),
-        'shortcodes'            => array('mp-cafepress','mp_cafepress','QuickCafe')
-    )
-);
 
 //-------------------------
 // How to Use Section

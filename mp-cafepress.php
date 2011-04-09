@@ -41,6 +41,15 @@ if (defined('MP_CAFEPRESS_BASENAME') === false) {
     define('MP_CAFEPRESS_BASENAME', plugin_basename(__FILE__));
 }
 
+if (defined('MP_CAFEPRESS_BASENAME') === false) {
+    define('MP_CAFEPRESS_BASENAME', plugin_basename(__FILE__));
+}
+
+if (defined('MPCP_PREFIX') === false) {
+    //define('MPCP_PREFIX', 'mpamz');
+    define('MPCP_PREFIX', 'csl-mp-cafepress');
+}
+
 require_once('include/config.php');
 
 if (class_exists('PanhandlerProduct') === false) {

@@ -15,7 +15,7 @@ if (defined('MP_CAFEPRESS_PLUGINDIR')) {
         array(
             'use_obj_defaults'      => true,        
             'prefix'                => MPCAFE_PREFIX,
-            'name'                  => 'MoneyPress : CafePress Edition',
+    'name'                  => 'MoneyPress : CafePress Edition',
             'url'                   => 'http://www.cybersprocket.com/products/wpquickcafepress/',
             'paypal_button_id'      => 'NRMZK9MRR7AML',
             'basefile'              => MP_CAFEPRESS_BASENAME,
@@ -25,10 +25,10 @@ if (defined('MP_CAFEPRESS_PLUGINDIR')) {
             'driver_name'           => 'CafePress',
             'driver_type'           => 'Panhandler',
             'driver_args'           => array(
-                    'api_key'   => get_option($prefix.'-api_key'),
-                    'cj_pid'    => get_option($prefix.'-cj_pid'),
-                    'return'    => get_option($prefix.'-return'),
-                    'wait_for'  => get_option($prefix.'-wait_for')
+                    'api_key'   => get_option(MPCAFE_PREFIX.'-api_key'),
+                    'cj_pid'    => get_option(MPCAFE_PREFIX.'-cj_pid'),
+                    'return'    => get_option(MPCAFE_PREFIX.'-return'),
+                    'wait_for'  => get_option(MPCAFE_PREFIX.'-wait_for')
                     ),
             'shortcodes'            => array('mp-cafepress','mp_cafepress','QuickCafe')
         )

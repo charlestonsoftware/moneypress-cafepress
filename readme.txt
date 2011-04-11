@@ -4,16 +4,17 @@ Contributors: cybersprocket
 Donate link: http://www.cybersprocket.com/products/wpquickcafepress/
 Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,products,ecommerce,revenue sharing,storefront,cj,commission-junction
 Requires at least: 2.6
-Tested up to: 3.0.4
+Tested up to: 3.1.1
 Stable tag: 3.5
 
-MoneyPress : CafePress Edition allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode. Upgrading?  This is a major release update, you will need to re-enter any settings on your admin panel including the license key and CafePress API key after upgrading.
+Put CafePress product listings on your posts and pages using a simple short code. List your own products or earn affiliate revenue.  A premium plugin.
 
 == Description ==
 
-MoneyPress : CafePress Edition allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode.  Install the plugin and you can add products to your existing blog posts or pages just be entering a shortcode. Multiple configuration options allow you to customize the display.  If you are a CafePress retailer, this plugin is for you!
+This plugin allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode.  Install the plugin and you can add products to your existing blog posts or pages just be entering a shortcode. Multiple configuration options allow you to customize the display.  If you are a CafePress retailer, this plugin is for you!
 
-Requires PHP version 5.1.3 or higher.
+Note: This is a premium plugin.   See the FAQ for details about our license.
+
 
 = Features =
 
@@ -21,30 +22,37 @@ Requires PHP version 5.1.3 or higher.
 * No revenue sharing, you keep 100% of your sales.
 * Built in affiliate tracking for Commission Junction affiliates.
 
+= Looking For Customized WordPress Plugins? =
+
+If you are looking for custom WordPress development for your own plugins, give 
+us a call.   Not only can we offer competitive rates but we can also leverage 
+our existing framework for WordPress applications which reduces development time 
+and costs.
+
+Learn more at: http://www.cybersprocket.com/services/wordpress-developers/
+
 = Related Links =
 
-* <a href="http://redmine.cybersprocket.com/projects/wpcafepress/wiki" title="MoneyPress : CafePress Edition Knowledgebase">MoneyPress : CafePress Edition Knowledgebase</a>
-* <a href="http://redmine.cybersprocket.com/projects/wpcafepress/boards" title="MoneyPress : CafePress Edition Forums">MoneyPress : CafePress Edition Forums</a>
+* [MoneyPress CafePress Edition Product Info](http://www.cybersprocket.com/products/wpquickcafepress/)
+* [MoneyPress CafePress Edition Support Pages](http://redmine.cybersprocket.com/projects/wp-cafepress/wiki)
+* [Other Cyber Sprocket Plugins](http://wordpress.org/extend/plugins/profile/cybersprocket/) 
+* [Custom WordPress Development](http://www.cybersprocket.com/services/wordpress-developers/)
+* [Our Facebook Page](http://www.facebook.com/cyber.sprocket.labs)
 
 == Installation ==
+
+= Requirements =
+
+* PHP 5.1+
+* SimpleXML enabled (must be enabled manually during install for PHP versions before 5.1.2)
+
+= How To Install =
 
 * Get the ZIP file from Cyber Sprocket
 * Get your API key from the CafePress developer site.
 * Install the plugin using the zip file.
 * Go to MoneyPress : CafePress in the WordPress Settings menu.
 * Enter your CafePress Developer API key.
-
-= License =
-
-We charge a nominal fee to unlock this plugin which turns on the plugin content 
-for your site visitors.  However you can download and test this plugin for FREE 
-without entering a license code which allows anyone logged in as an 
-administrator on your site to see the plugin content.  By charging this 
-one-time fee we are able to provide ongoing support and maintance for the plugin.  
-Remember, you can still try this in admin mode at no charge.  
-
-If you purchase  the plugin and decide you don't like it just let us know within 
-30 days and we'll refund your purchase with no questions asked.
 
 = Upgrade Notice =
 
@@ -61,13 +69,6 @@ plugins.
 *Note:* When you upgrade this plugin, you will need to update other 
 MoneyPress plugins you may have installed if there is a plugin available.
 
-== Screenshots ==
-
-1. The plugin in action.
-2. The settings menu in the admin panel.
-3. Entering a license key and API key via admin panel.
-4. The email you will receive upon purchasing the plugin.
-5. Getting a CafePress API key from CafePress.
 
 == Frequently Asked Questions ==
 
@@ -82,21 +83,68 @@ Sign up at <a href="http://developer.cafepress.com/">Developer.cafepress.com</a>
 and fill out the Register My Application form.  It takes less than 5 minutes and 
 is easier than setting up your original CafePress store.
 
-= What are the other MoneyPress plugins? =
+= Why a license fee? =
 
-We offer the following MoneyPress plugins that all work to show listings from 
-various eCommerce sites in your WordPress site via a few simple shortcodes:
+It helps us support the product and provide regular updates.
 
-* BuyAt Master Edition
-* CafePress Edition
-* Commission Junction Edition
-* eBay Edition
+= What type of support do I get? =
 
-Look for more editions coming soon!
+Cyber Sprocket Labs provides online forums where you can post questions.  The
+developers read the forums on a regular basis.   Most inquiries are responded
+to within 7 days.
 
-= More Info... =
+WordPress plugins are a fun way to share our work with the community, but it is 
+not our main revenue stream.  Please be patient when looking for responses from 
+our dev team.   We want everyone to enjoy using our products, but we must attend 
+to the projects that pay the rent first.  Low cost plugins are fun, and we do 
+want to support them but it can take a week or more to address any issues you
+may be having.
 
-To learn more, visit our <a href="http://redmine.cybersprocket.com/projects/wpcafepress/wiki" title="MoneyPress : CafePress Edition Knowledgebase">knowledgebase</a> or visit our <a href="http://redmine.cybersprocket.com/projects/wpcafepress/boards">Community Forums</a>.
+= Will you customize the plugin for me? =
+
+If you want a modification and need it in a hurry, contact us for a quote on
+getting this done.  Any work we can re-use and share with the communinty as
+part of main plugin can usually be completed in a few weeks.  We charge $60/hr
+for this work with most projects running 6-10 hours.    If you want a private
+modification we charge $120 for the work.
+
+You can also suggest features or modificaitons in the forum.  We try to release
+new features every few months and get most of our ideas from the forums.
+
+= Are there any other fees? =
+
+No, just the initial license fee.  Upgrades are free.  
+
+= What are the terms of the license? =
+
+The license is based on GPL.  You get the code, feel free to modify it as you
+wish.  We prefer that our customers pay us because they like what we do and 
+want to support our efforts to bring useful software to market.  Learn more
+on our [CSL License Terms page](http://redmine.cybersprocket.com/projects/commercial-products/wiki/Cyber_Sprocket_Labs_Licensing_Terms "CSL License Terms page").
+
+= Who Is Cyber Sprocket Labs? =
+
+Cyber Sprocket Labs is a software consulting firm.  We develop custom complex
+web applications, mobile applications, and desktop applications for our clients.
+If you are looking for help developing and deploying your application, contact
+us for a quote.  Our rates start at $80/hr for long term engagements of 6 months
+or more and $120/hr for short term projects.
+
+= How can i translate the plugin into my language? =
+
+* Find on internet the free program POEDIT, and learn how it works.
+* Use the .pot file located in the languages directory of this plugin to create or update the .po and .mo files.
+* Place these file in the languages subdirectory.
+* If everything is ok, email the files to lobbyjones@cybersprocket.com and we will add them to the next release.
+* For more information on POT files, domains, gettext and i18n have a look at the I18n for WordPress developers Codex page and more specifically at the section about themes and plugins.
+
+== Screenshots ==
+
+1. The plugin in action.
+2. The settings menu in the admin panel.
+3. Entering a license key and API key via admin panel.
+4. The email you will receive upon purchasing the plugin.
+5. Getting a CafePress API key from CafePress.
 
 
 == Changelog ==

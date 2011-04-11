@@ -117,7 +117,7 @@ $MP_cafepress_plugin->settings->add_item(
     'store_id',    
     'text', 
     false,
-    'The default store ID to use if not sepcified (default: cybersprocket).'
+    'The default store ID to use if not specified (default: cybersprocket).'
 );
 
 

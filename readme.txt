@@ -19,15 +19,9 @@ This plugin allows you to quickly and easily display products from CafePress on 
 * No revenue sharing, you keep 100% of your sales.
 * Built in affiliate tracking for Commission Junction affiliates.
 
-= Want More? Try MoneyPress : CafePress Edition =
+= Notes =
 
-MoneyPress : CafePress Edition is the premium version of this plugin only available from our website.
-
-[MoneyPress : CafePress Edition](http://www.cybersprocket.com/products/wpquickcafepress/)
-adds a number of features not included in our light edition (LE) product.  Some
-of the features include:
-
-* Bug Fixes : The standard edition product receives bug fixes first, usually 2-4 weeks in advance of the LE product.
+This plugin will not work with BETA CafePress stores.  Please make sure you are not using a beta release of CafePress stores.  If you are set to use the beta release your products may not appear correctly.  Whenver CafePress is coming out with a new store release this will be the default, so check carefully.
 
 = Looking For Customized WordPress Plugins? =
 
@@ -74,12 +68,6 @@ Sign up at <a href="http://developer.cafepress.com/">Developer.cafepress.com</a>
 and fill out the Register My Application form.  It takes less than 5 minutes and 
 is easier than setting up your original CafePress store.
 
-= What type of support do I get? =
-
-Our light edition (LE) products are unsupported, however the online documentation 
-and forums for the standard edition products will often answer any questions you 
-may have.
-
 = Will you customize the plugin for me? =
 
 Yes, we provide custom modifications for a fee.  Our rates are $60/hour.  The cost
@@ -90,7 +78,7 @@ for your modification will vary based on what you would like done.
 Cyber Sprocket Labs is a software consulting firm.  We develop custom complex
 web applications, mobile applications, and desktop applications for our clients.
 
-= How can i translate the plugin into my language? =
+= How can I translate the plugin into my language? =
 
 * Find on internet the free program POEDIT, and learn how it works.
 * Use the .pot file located in the languages directory of this plugin to create or update the .po and .mo files.

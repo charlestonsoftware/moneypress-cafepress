@@ -2,16 +2,16 @@
 /*
   Plugin Name: MoneyPress : CafePress Edition
   Plugin URI: http://www.cybersprocket.com/products/wpquickcafepress/
-  Description: MoneyPress CafePress Edition allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode.
+  Description: Display CafePress products on your pages and posts with a simple short code. Affiliate enabled.
   Author: Cyber Sprocket Labs
-  Version: 3.5
+  Version: 4.0
   Author URI: http://www.cybersprocket.com/
   License: GPL3
 
   Our PID: 3783719
   http://www.tkqlhce.com/click-PID-10467594?url=<blah>
   
-	Copyright 2010  Cyber Sprocket Labs (info@cybersprocket.com)
+	Copyright 2011  Cyber Sprocket Labs (info@cybersprocket.com)
 
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
@@ -28,30 +28,46 @@
         Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-
+// Drive Path Defines 
+//
 if (defined('MP_CAFEPRESS_PLUGINDIR') === false) {
     define('MP_CAFEPRESS_PLUGINDIR', plugin_dir_path(__FILE__));
 }
+if (defined('MP_CAFEPRESS_COREDIR') === false) {
+    define('MP_CAFEPRESS_COREDIR', MP_CAFEPRESS_PLUGINDIR . 'core/');
+}
+if (defined('MP_CAFEPRESS_ICONDIR') === false) {
+    define('MP_CAFEPRESS_ICONDIR', MP_CAFEPRESS_COREDIR . 'images/icons/');
+}
 
+// URL Defines
+//
 if (defined('MP_CAFEPRESS_PLUGINURL') === false) {
     define('MP_CAFEPRESS_PLUGINURL', plugins_url('',__FILE__));
 }
+if (defined('MP_CAFEPRESS_COREURL') === false) {
+    define('MP_CAFEPRESS_COREURL', MP_CAFEPRESS_PLUGINURL . '/core/');
+}
+if (defined('MP_CAFEPRESS_ICONURL') === false) {
+    define('MP_CAFEPRESS_ICONURL', MP_CAFEPRESS_COREURL . 'images/icons/');
+}
 
+// The relative path from the plugins directory
+//
 if (defined('MP_CAFEPRESS_BASENAME') === false) {
     define('MP_CAFEPRESS_BASENAME', plugin_basename(__FILE__));
 }
 
-if (defined('MP_CAFEPRESS_BASENAME') === false) {
-    define('MP_CAFEPRESS_BASENAME', plugin_basename(__FILE__));
+// Our product prefix
+//
+if (defined('MP_CAFEPRESS_PREFIX') === false) {
+    define('MP_CAFEPRESS_PREFIX', 'csl-mp-cafepress');
 }
 
-if (defined('MPCP_PREFIX') === false) {
-    //define('MPCP_PREFIX', 'mpamz');
-    define('MPCAFE_PREFIX', 'csl-mp-cafepress');
-}
-
-require_once('include/config.php');
-
+// Include our needed files
+//
+include_once(MP_CAFEPRESS_PLUGINDIR . '/include/config.php'   );
+include_once(MP_CAFEPRESS_COREDIR   . 'csl_helpers.php'       );
 if (class_exists('PanhandlerProduct') === false) {
     try {
         require_once('Panhandler/Panhandler.php');
@@ -61,7 +77,6 @@ if (class_exists('PanhandlerProduct') === false) {
         exit(1);
     }
 }
-
 if (class_exists('CafePressPanhandler') === false) {
     try {
         require_once('Panhandler/Drivers/CafePress.php');
@@ -72,7 +87,11 @@ if (class_exists('CafePressPanhandler') === false) {
     }
 }
 
-add_filter('wp_print_styles', 'MP_cafepress_user_css');
+
+
+add_action('wp_print_styles', 'csl_mpcafe_user_stylesheet');
+add_action('admin_print_styles','csl_mpcafe_admin_stylesheet');
+add_action('admin_init','csl_mpcafe_setup_admin_interface',10);
 
 /**
  * Add the [QuickCafe] short code for backwards compatability.
@@ -86,13 +105,6 @@ add_filter('wp_print_styles', 'MP_cafepress_user_css');
 add_shortcode('QuickCafe', 'MP_cafepress_show_items');
 
 //// FUNCTIONS ///////////////////////////////////////////////////////
-
-/**
- * Adds our user CSS to the page.
- */
-function MP_cafepress_user_css() {
-    wp_enqueue_style('mp_cafepress_css', plugins_url('css/mp-cafepress.css', __FILE__));
-}
 
 /**
  * Processes our short code.

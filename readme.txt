@@ -4,8 +4,8 @@ Contributors: cybersprocket
 Donate link: http://www.cybersprocket.com/products/wpquickcafepress/
 Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,products,ecommerce,revenue sharing,storefront,cj,commission-junction
 Requires at least: 2.6
-Tested up to: 3.1.1
-Stable tag: 3.5
+Tested up to: 3.1.4
+Stable tag: 4.0
 
 Put CafePress product listings on your posts and pages using a simple short code. List your own products or earn affiliate revenue.  A premium plugin.
 
@@ -109,7 +109,11 @@ web applications, mobile applications, and desktop applications for our clients.
 
 == Changelog ==
 
-= v3.5 (June 25th 2011 =
+= v4.0 (July 2011) =
+
+* Updated to share core components with LE version.
+
+= v3.5 (June 25th 2011) =
 
 * LE Edition released with removal of licensing requirement.
 

@@ -13,14 +13,21 @@ Put CafePress product listings on your posts and pages using a simple short code
 
 This plugin allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode.  Install the plugin and you can add products to your existing blog posts or pages just be entering a shortcode. Multiple configuration options allow you to customize the display.  If you are a CafePress retailer, this plugin is for you!
 
-Note: This is a premium plugin.   See the FAQ for details about our license.
-
-
 = Features =
 
 * Uses your own API key.
 * No revenue sharing, you keep 100% of your sales.
 * Built in affiliate tracking for Commission Junction affiliates.
+
+= Want More? Try MoneyPress : CafePress Edition =
+
+MoneyPress : CafePress Edition is the premium version of this plugin only available from our website.
+
+[MoneyPress : CafePress Edition](http://www.cybersprocket.com/products/wpquickcafepress/)
+adds a number of features not included in our light edition (LE) product.  Some
+of the features include:
+
+* Bug Fixes : The standard edition product receives bug fixes first, usually 2-4 weeks in advance of the LE product.
 
 = Looking For Customized WordPress Plugins? =
 
@@ -54,22 +61,6 @@ Learn more at: http://www.cybersprocket.com/services/wordpress-developers/
 * Go to MoneyPress : CafePress in the WordPress Settings menu.
 * Enter your CafePress Developer API key.
 
-= Upgrade Notice =
-
-This is a major release update for any 2.X users, you will need to re-enter 
-settings on your admin panel including the license key and CafePress API key 
-after upgrading.
-
-These changes are necessary to move the MoneyPress : CafePress Edition plugin 
-onto our standard MoneyPress codebase. This allows us to keep the plugins 
-consistent amongst the different editions and gives this plugin the benefit of 
-any bug fixes or new base features we add when updating the other MoneyPress 
-plugins.
-
-*Note:* When you upgrade this plugin, you will need to update other 
-MoneyPress plugins you may have installed if there is a plugin available.
-
-
 == Frequently Asked Questions ==
 
 = What percentage of my sales does Cyber Sprocket keep? =
@@ -83,52 +74,21 @@ Sign up at <a href="http://developer.cafepress.com/">Developer.cafepress.com</a>
 and fill out the Register My Application form.  It takes less than 5 minutes and 
 is easier than setting up your original CafePress store.
 
-= Why a license fee? =
-
-It helps us support the product and provide regular updates.
-
 = What type of support do I get? =
 
-Cyber Sprocket Labs provides online forums where you can post questions.  The
-developers read the forums on a regular basis.   Most inquiries are responded
-to within 7 days.
-
-WordPress plugins are a fun way to share our work with the community, but it is 
-not our main revenue stream.  Please be patient when looking for responses from 
-our dev team.   We want everyone to enjoy using our products, but we must attend 
-to the projects that pay the rent first.  Low cost plugins are fun, and we do 
-want to support them but it can take a week or more to address any issues you
-may be having.
+Our light edition (LE) products are unsupported, however the online documentation 
+and forums for the standard edition products will often answer any questions you 
+may have.
 
 = Will you customize the plugin for me? =
 
-If you want a modification and need it in a hurry, contact us for a quote on
-getting this done.  Any work we can re-use and share with the communinty as
-part of main plugin can usually be completed in a few weeks.  We charge $60/hr
-for this work with most projects running 6-10 hours.    If you want a private
-modification we charge $120 for the work.
-
-You can also suggest features or modificaitons in the forum.  We try to release
-new features every few months and get most of our ideas from the forums.
-
-= Are there any other fees? =
-
-No, just the initial license fee.  Upgrades are free.  
-
-= What are the terms of the license? =
-
-The license is based on GPL.  You get the code, feel free to modify it as you
-wish.  We prefer that our customers pay us because they like what we do and 
-want to support our efforts to bring useful software to market.  Learn more
-on our [CSL License Terms page](http://redmine.cybersprocket.com/projects/commercial-products/wiki/Cyber_Sprocket_Labs_Licensing_Terms "CSL License Terms page").
+Yes, we provide custom modifications for a fee.  Our rates are $60/hour.  The cost
+for your modification will vary based on what you would like done.
 
 = Who Is Cyber Sprocket Labs? =
 
 Cyber Sprocket Labs is a software consulting firm.  We develop custom complex
 web applications, mobile applications, and desktop applications for our clients.
-If you are looking for help developing and deploying your application, contact
-us for a quote.  Our rates start at $80/hr for long term engagements of 6 months
-or more and $120/hr for short term projects.
 
 = How can i translate the plugin into my language? =
 
@@ -148,6 +108,10 @@ or more and $120/hr for short term projects.
 
 
 == Changelog ==
+
+= v3.5 (June 25th 2011 =
+
+* LE Edition released with removal of licensing requirement.
 
 = v3.4 (January 1st 2011) =
 

@@ -11,6 +11,8 @@ if (defined('MP_CAFEPRESS_PLUGINDIR')) {
         require_once(MP_CAFEPRESS_PLUGINDIR.'WPCSL-generic/classes/CSL-plugin.php');
     }
     
+    global $MP_cafepress_plugin;
+    
     $MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
         array(
             'use_obj_defaults'      => true,        
@@ -25,10 +27,11 @@ if (defined('MP_CAFEPRESS_PLUGINDIR')) {
             'driver_name'           => 'CafePress',
             'driver_type'           => 'Panhandler',
             'driver_args'           => array(
-                    'api_key'   => get_option(MP_CAFEPRESS_PREFIX.'-api_key'),
-                    'cj_pid'    => get_option(MP_CAFEPRESS_PREFIX.'-cj_pid'),
-                    'return'    => get_option(MP_CAFEPRESS_PREFIX.'-return'),
-                    'wait_for'  => get_option(MP_CAFEPRESS_PREFIX.'-wait_for')
+                    'api_key'       => get_option(MP_CAFEPRESS_PREFIX.'-api_key'),
+                    'cj_pid'        => get_option(MP_CAFEPRESS_PREFIX.'-cj_pid'),
+                    'return'        => get_option(MP_CAFEPRESS_PREFIX.'-return'),
+                    'wait_for'      => get_option(MP_CAFEPRESS_PREFIX.'-wait_for'),
+                    'list_action'   => get_option(MP_CAFEPRESS_PREFIX.'-list_action'),
                     ),
             'shortcodes'            => array('mp-cafepress','mp_cafepress','QuickCafe')
         )

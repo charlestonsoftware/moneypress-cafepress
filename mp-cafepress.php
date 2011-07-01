@@ -87,6 +87,8 @@ if (class_exists('CafePressPanhandler') === false) {
     }
 }
 
+register_activation_hook( __FILE__, 'csl_mpcafe_activate');
+
 add_action('wp_print_styles', 'csl_mpcafe_user_stylesheet');
 add_action('admin_print_styles','csl_mpcafe_admin_stylesheet');
 add_action('admin_init','csl_mpcafe_setup_admin_interface',10);

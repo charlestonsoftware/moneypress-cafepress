@@ -17,7 +17,8 @@ if (defined('MP_CAFEPRESS_PLUGINDIR')) {
         array(
             'use_obj_defaults'      => true,        
             'prefix'                => MP_CAFEPRESS_PREFIX,
-    'name'                  => 'MoneyPress : CafePress Edition',
+            'css_prefix'            => 'csl_themes',
+            'name'                  => 'MoneyPress : CafePress Edition',
             'url'                   => 'http://www.cybersprocket.com/products/wpquickcafepress/',
             'paypal_button_id'      => 'NRMZK9MRR7AML',
             'basefile'              => MP_CAFEPRESS_BASENAME,

@@ -67,6 +67,7 @@ if (defined('MP_CAFEPRESS_PREFIX') === false) {
 // Include our needed files
 //
 include_once(MP_CAFEPRESS_PLUGINDIR . '/include/config.php'   );
+include_once(MP_CAFEPRESS_PLUGINDIR . 'plus.php'   );
 include_once(MP_CAFEPRESS_COREDIR   . 'csl_helpers.php'       );
 if (class_exists('PanhandlerProduct') === false) {
     try {

@@ -1,17 +1,17 @@
-=== MoneyPress : CafePress Edition ===
-Plugin Name: MoneyPress : CafePress Edition
+=== MoneyPress : CafePress Edition (PREMIUM) ===
+Plugin Name: MoneyPress : CafePress Edition (PREMIUM)
 Contributors: cybersprocket
 Donate link: http://www.cybersprocket.com/products/wpquickcafepress/
 Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,products,ecommerce,revenue sharing,storefront,cj,commission-junction
 Requires at least: 2.6
 Tested up to: 3.1.4
-Stable tag: 3.8
+Stable tag: 3.81
 
-Put CafePress product listings on your posts and pages using a simple short code. List your own products or earn affiliate revenue.  A premium plugin.
+Paid/Premium Plugin.  Put CafePress product listings on your posts and pages using a simple short code. List your own products or earn affiliate revenue.  A premium plugin.
 
 == Description ==
 
-This plugin allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode.  Install the plugin and you can add products to your existing blog posts or pages just be entering a shortcode. Multiple configuration options allow you to customize the display.  If you are a CafePress retailer, this plugin is for you!
+Paid/Premium Plugin.  This plugin allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode.  Install the plugin and you can add products to your existing blog posts or pages just be entering a shortcode. Multiple configuration options allow you to customize the display.  If you are a CafePress retailer, this plugin is for you!
 
 = Features =
 
@@ -19,25 +19,19 @@ This plugin allows you to quickly and easily display products from CafePress on 
 * No revenue sharing, you keep 100% of your sales.
 * Built in affiliate tracking for Commission Junction affiliates.
 
-= Notes =
+= We Can Customize This Plugin For You! =
 
-This plugin will not work with BETA CafePress stores.  Please make sure you are not using a beta release of CafePress stores.  If you are set to use the beta release your products may not appear correctly.  Whenver CafePress is coming out with a new store release this will be the default, so check carefully.
-
-= Looking For Customized WordPress Plugins? =
-
-If you are looking for custom WordPress development for your own plugins, give 
-us a call.   Not only can we offer competitive rates but we can also leverage 
-our existing framework for WordPress applications which reduces development time 
-and costs.
+Cyber Sprocket can provide modifications to the plugin to make it the perfect solution for your site.  
+We charge $60/hour to create custom additions that we roll into the next product release. 
+You get exactly the plugin you want and will have the benefit of having a mainstream product release.
+You get the benefit of getting our future upgrades without having to re-apply your patches.
 
 Learn more at: http://www.cybersprocket.com/services/wordpress-developers/
 
 = Related Links =
 
-* [MoneyPress CafePress Edition Product Info](http://www.cybersprocket.com/products/wpquickcafepress/)
-* [MoneyPress CafePress Edition Support Pages](http://redmine.cybersprocket.com/projects/wp-cafepress/wiki)
+* [MoneyPress CafePress Standard Edition](http://www.cybersprocket.com/products/wpquickcafepress/)
 * [Other Cyber Sprocket Plugins](http://wordpress.org/extend/plugins/profile/cybersprocket/) 
-* [Custom WordPress Development](http://www.cybersprocket.com/services/wordpress-developers/)
 * [Our Facebook Page](http://www.facebook.com/cyber.sprocket.labs)
 
 == Installation ==
@@ -49,13 +43,20 @@ Learn more at: http://www.cybersprocket.com/services/wordpress-developers/
 
 = How To Install =
 
-* Get the ZIP file from Cyber Sprocket
+The best way to install and update is to search "MoneyPress CafePress LE" in WordPress and install or update from there.
+
+To do it manually:
+
+* Download the zip file from the WordPress Extensions site.
+* Upload the zip file into WordPress via "upload plugins".
 * Get your API key from the CafePress developer site.
-* Install the plugin using the zip file.
-* Go to MoneyPress : CafePress in the WordPress Settings menu.
-* Enter your CafePress Developer API key.
+* Enter your CafePress Developer API key in the CafePress settings page in WordPress.
 
 == Frequently Asked Questions ==
+
+= Is this plugin free? =
+
+No. This is a premium (paid) plugin.  Please check out or LE version if you want a free copy.   Premium plugins get bug fixes and features first.
 
 = What percentage of my sales does Cyber Sprocket keep? =
 

@@ -76,7 +76,8 @@ function csl_mpcafe_GetThemeInfo ($filename) {
     if ($filename != '') {
        $default_headers = array(
             'label' => 'label',
-            'file' => 'file'
+            'file' => 'file',
+            'columns' => 'columns'
            );
         
        $dataBack = get_file_data($filename,$default_headers,'');
@@ -84,4 +85,18 @@ function csl_mpcafe_GetThemeInfo ($filename) {
     }
     
     return $dataBack;
+ }
+ 
+ 
+/**************************************
+ ** function: csl_mpcafe_configure_theme
+ ** 
+ ** Configure the plugin theme drivers based on the theme file meta data.
+ **
+ **/
+ function csl_mpcafe_configure_theme($themeFile) {
+    global $MP_cafepress_plugin;
+    
+    $newEntry = csl_mpcafe_GetThemeInfo(MP_CAFEPRESS_COREDIR.$themeFile);
+    $MP_cafepress_plugin->products->columns = $newEntry['columns'];
  }

@@ -4,7 +4,7 @@
   Plugin URI: http://www.cybersprocket.com/products/wpquickcafepress/
   Description: Display CafePress products on your pages and posts with a simple short code. Affiliate enabled.
   Author: Cyber Sprocket Labs
-  Version: 3.82
+  Version: 3.83
   Author URI: http://www.cybersprocket.com/
   License: GPL3
 

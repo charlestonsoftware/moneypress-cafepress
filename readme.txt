@@ -1,17 +1,17 @@
-=== MoneyPress : CafePress Edition (PREMIUM) ===
-Plugin Name: MoneyPress : CafePress Edition (PREMIUM)
+=== MoneyPress : CafePress Edition ===
+Plugin Name: MoneyPress : CafePress Edition
 Contributors: cybersprocket
 Donate link: http://www.cybersprocket.com/products/wpquickcafepress/
 Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,products,ecommerce,revenue sharing,storefront,cj,commission-junction
-Requires at least: 2.6
-Tested up to: 3.2.1
-Stable tag: 3.823
+Requires at least: 3.3
+Tested up to: 3.3.2
+Stable tag: 3.9
 
-Paid/Premium Plugin.  Put CafePress product listings on your posts and pages using a simple short code. List your own products or earn affiliate revenue.  A premium plugin.
+Put CafePress product listings on your posts and pages using a simple short code. List your own products or earn affiliate revenue.  A premium plugin.
 
 == Description ==
 
-Paid/Premium Plugin.  This plugin allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode.  Install the plugin and you can add products to your existing blog posts or pages just be entering a shortcode. Multiple configuration options allow you to customize the display.  If you are a CafePress retailer, this plugin is for you!
+This plugin allows you to quickly and easily display products from CafePress on any page or post via a simple shortcode.  Install the plugin and you can add products to your existing blog posts or pages just be entering a shortcode. Multiple configuration options allow you to customize the display.  If you are a CafePress retailer, this plugin is for you!
 
 = Features =
 
@@ -19,12 +19,26 @@ Paid/Premium Plugin.  This plugin allows you to quickly and easily display produ
 * No revenue sharing, you keep 100% of your sales.
 * Built in affiliate tracking for Commission Junction affiliates.
 
-= We Can Customize This Plugin For You! =
+= Pro Pack Available =
 
-Cyber Sprocket can provide modifications to the plugin to make it the perfect solution for your site.  
-We charge $60/hour to create custom additions that we roll into the next product release. 
-You get exactly the plugin you want and will have the benefit of having a mainstream product release.
-You get the benefit of getting our future upgrades without having to re-apply your patches.
+MoneyPress : CafePress Edition has a Pro Pack available that provides additional features including the ability to create custom CSS themes for the listings.  It is also a great way to help support future development.
+
+= Upgrades =
+
+We will offer upgrade versions from time-to-time when special new features are added to the product.  
+If you do not purchase the upgrade you will still receive bug fixes and minor feature additions, however
+some of the newest features may not be available to you.   
+
+The main product will always remain fully functional and free.  If you'd like to have some of the latest
+"bells & whistles" purchasing the upgrades is a great way to help support us and encourage us to add even
+more items the next time around.
+
+= Looking For Customized WordPress Plugins? =
+
+If you are looking for custom WordPress development for your own plugins, give 
+us a call.   Not only can we offer competitive rates but we can also leverage 
+our existing framework for WordPress applications which reduces development time 
+and costs.
 
 Learn more at: http://www.cybersprocket.com/services/wordpress-developers/
 
@@ -43,7 +57,7 @@ Learn more at: http://www.cybersprocket.com/services/wordpress-developers/
 
 = How To Install =
 
-The best way to install and update is to search "MoneyPress CafePress LE" in WordPress and install or update from there.
+The best way to install and update is to search "MoneyPress" in WordPress and install or update from there.
 
 To do it manually:
 
@@ -53,10 +67,6 @@ To do it manually:
 * Enter your CafePress Developer API key in the CafePress settings page in WordPress.
 
 == Frequently Asked Questions ==
-
-= Is this plugin free? =
-
-No. This is a premium (paid) plugin.  Please check out or LE version if you want a free copy.   Premium plugins get bug fixes and features first.
 
 = What percentage of my sales does Cyber Sprocket keep? =
 
@@ -69,16 +79,6 @@ Sign up at <a href="http://developer.cafepress.com/">Developer.cafepress.com</a>
 and fill out the Register My Application form.  It takes less than 5 minutes and 
 is easier than setting up your original CafePress store.
 
-= Will you customize the plugin for me? =
-
-Yes, we provide custom modifications for a fee.  Our rates are $60/hour.  The cost
-for your modification will vary based on what you would like done.
-
-= Who Is Cyber Sprocket Labs? =
-
-Cyber Sprocket Labs is a software consulting firm.  We develop custom complex
-web applications, mobile applications, and desktop applications for our clients.
-
 = How can I translate the plugin into my language? =
 
 * Find on internet the free program POEDIT, and learn how it works.
@@ -86,6 +86,15 @@ web applications, mobile applications, and desktop applications for our clients.
 * Place these file in the languages subdirectory.
 * If everything is ok, email the files to lobbyjones@cybersprocket.com and we will add them to the next release.
 * For more information on POT files, domains, gettext and i18n have a look at the I18n for WordPress developers Codex page and more specifically at the section about themes and plugins.
+
+= What browsers are supported? =
+
+All major browsers should work, however Cyber Sprocket Labs only officially supports the current and prior releases of Internet Explorer, Firefox, Chrome, and Safari.
+
+= What Happened To The LE and Premium Edition =
+
+We have merged both products into one.  MoneyPress : CafePress Edition now offers complete base functionality for free.   Users can opt to purchase the Pro Pack add-on to get extra features like themes.
+
 
 == Screenshots ==
 
@@ -98,7 +107,12 @@ web applications, mobile applications, and desktop applications for our clients.
 
 == Changelog ==
 
-= 1.83 (August 2011) =
+= v3.9 (April 2011) =
+
+* [Pro Pack] New Themes
+* Bug fixes and performance improvements.
+
+= v3.83 (August 2011) =
 
 * Elminate errors on servers with exec() disabled on php.
 

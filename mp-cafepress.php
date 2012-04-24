@@ -4,28 +4,28 @@
   Plugin URI: http://www.cybersprocket.com/products/wpquickcafepress/
   Description: Display CafePress products on your pages and posts with a simple short code. Affiliate enabled.
   Author: Cyber Sprocket Labs
-  Version: 3.83
+  Version: 3.9
   Author URI: http://www.cybersprocket.com/
   License: GPL3
 
-  Our PID: 3783719
-  http://www.tkqlhce.com/click-PID-10467594?url=<blah>
-  
-	Copyright 2011  Cyber Sprocket Labs (info@cybersprocket.com)
+Our PID: 3783719
+http://www.tkqlhce.com/click-PID-10467594?url=<blah>
 
-        This program is free software; you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation; either version 3 of the License, or
-        (at your option) any later version.
+Copyright 2012  Cyber Sprocket Labs (info@cybersprocket.com)
 
-        This program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
 
-        You should have received a copy of the GNU General Public License
-        along with this program; if not, write to the Free Software
-        Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 // Drive Path Defines 

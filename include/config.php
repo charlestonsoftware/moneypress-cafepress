@@ -20,7 +20,6 @@ if (defined('MP_CAFEPRESS_PLUGINDIR')) {
             'css_prefix'            => 'csl_themes',
             'name'                  => 'MoneyPress : CafePress Edition',
             'url'                   => 'http://www.cybersprocket.com/products/wpquickcafepress/',
-            'paypal_button_id'      => 'NRMZK9MRR7AML',
             'basefile'              => MP_CAFEPRESS_BASENAME,
             'plugin_path'           => MP_CAFEPRESS_PLUGINDIR,
             'plugin_url'            => MP_CAFEPRESS_PLUGINURL,
@@ -34,8 +33,59 @@ if (defined('MP_CAFEPRESS_PLUGINDIR')) {
                     'wait_for'      => get_option(MP_CAFEPRESS_PREFIX.'-wait_for'),
                     'list_action'   => get_option(MP_CAFEPRESS_PREFIX.'-list_action'),
                     ),
-            'shortcodes'            => array('mp-cafepress','mp_cafepress','QuickCafe')
+            'shortcodes'            => array('mpcafe','mp-cafepress','mp_cafepress','QuickCafe'),
+            
+            'has_packages'           => true,       
         )
     );
+    
+    
+    // Setup our optional packages
+    //
+    add_options_packages_for_mpcafe();        
 
+}
+
+
+/**************************************
+ ** function: add_options_packages_for_mpcafe
+ **
+ ** Setup the option package list.
+ **/
+function add_options_packages_for_mpcafe() {
+    configure_mpcafe_propack();
+}
+
+
+/**************************************
+ ** function: configure_mpcafe_propack
+ **
+ ** Configure the Pro Pack.
+ **/
+function configure_mpcafe_propack() {
+    global $MP_cafepress_plugin;
+   
+    // Setup metadata
+    //
+    $MP_cafepress_plugin->license->add_licensed_package(
+            array(
+                'name'              => 'Pro Pack',
+                'help_text'         => 'A variety of enhancements are provided with this package.  ' .
+                                       'See the <a href="'.$MP_cafepress_plugin->purchase_url.'" target="Cyber Sprocket">product page</a> for details.  If you purchased this add-on ' .
+                                       'come back to this page to enter the license key to activate the new features.',
+                'sku'               => 'MPCAFE',
+                'paypal_button_id'  => 'NRMZK9MRR7AML',
+                'paypal_upgrade_button_id' => 'NRMZK9MRR7AML'
+            )
+        );
+    
+    // Enable Features Is Licensed
+    //
+    if ($MP_cafepress_plugin->license->packages['Pro Pack']->isenabled_after_forcing_recheck()) {
+             //--------------------------------
+             // Enable Themes
+             //
+             $MP_cafepress_plugin->themes_enabled = true;
+             $MP_cafepress_plugin->themes->css_dir = MP_CAFEPRESS_PLUGINDIR . 'css/';
+    }        
 }

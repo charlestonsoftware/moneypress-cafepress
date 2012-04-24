@@ -15,15 +15,21 @@ if (defined('MP_CAFEPRESS_PLUGINDIR')) {
     
     $MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
         array(
-            'use_obj_defaults'      => true,        
+            'use_obj_defaults'      => true,
+            'cache_obj_name'        => 'mpcafecache',            
             'prefix'                => MP_CAFEPRESS_PREFIX,
             'css_prefix'            => 'csl_themes',
             'name'                  => 'MoneyPress : CafePress Edition',
+            
             'url'                   => 'http://www.cybersprocket.com/products/wpquickcafepress/',
+            'support_url'           => 'http://redmine.cybersprocket.com/projects/wpcafepress/wiki',
+            'purchase_url'          => 'http://www.cybersprocket.com/products/wpquickcafepress/',
+            
             'basefile'              => MP_CAFEPRESS_BASENAME,
             'plugin_path'           => MP_CAFEPRESS_PLUGINDIR,
             'plugin_url'            => MP_CAFEPRESS_PLUGINURL,
             'cache_path'            => MP_CAFEPRESS_PLUGINDIR . 'cache',
+            
             'driver_name'           => 'CafePress',
             'driver_type'           => 'Panhandler',
             'driver_args'           => array(

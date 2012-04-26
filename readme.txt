@@ -21,7 +21,13 @@ This plugin allows you to quickly and easily display products from CafePress on 
 
 = Pro Pack Available =
 
-MoneyPress : CafePress Edition has a Pro Pack available that provides additional features including the ability to create custom CSS themes for the listings.  It is also a great way to help support future development.
+[MoneyPress : CafePress Edition](http://www.cybersprocket.com/products/wpquickcafepress/) has a Pro Pack Add-On available that provides additional features including the ability to create custom CSS themes for the listings.  It is also a great way to help support future development.
+
+Some of the features in the Pro Pack Add-On that are not found in the LE version include:
+
+* [Theme System](http://redmine.cybersprocket.com/projects/wpcafepress/wiki/Themes) : Use one of our basic themes including multi-column output or easily create and add your own.
+* [More Settings](http://redmine.cybersprocket.com/projects/wpcafepress/wiki/Setttings) : More settings for better listing control.
+
 
 = Upgrades =
 
@@ -94,6 +100,14 @@ All major browsers should work, however Cyber Sprocket Labs only officially supp
 = What Happened To The LE and Premium Edition =
 
 We have merged both products into one.  MoneyPress : CafePress Edition now offers complete base functionality for free.   Users can opt to purchase the Pro Pack add-on to get extra features like themes.
+
+= What are the terms of the license? =
+
+The license is based on GPL.  You get the code, feel free to modify it as you
+wish.  We prefer that our customers pay us because they like what we do and 
+want to support our efforts to bring useful software to market.  Learn more
+on our [CSL License Terms page](http://redmine.cybersprocket.com/projects/commercial-products/wiki/Cyber_Sprocket_Labs_Licensing_Terms "CSL License Terms page").
+
 
 
 == Screenshots ==

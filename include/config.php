@@ -15,20 +15,26 @@ if (defined('MP_CAFEPRESS_PLUGINDIR')) {
     
     $MP_cafepress_plugin = new wpCSL_plugin__mpcafe(
         array(
-            'use_obj_defaults'      => true,
-            'cache_obj_name'        => 'mpcafecache',            
             'prefix'                => MP_CAFEPRESS_PREFIX,
-            'css_prefix'            => 'csl_themes',
-            'name'                  => 'MoneyPress : CafePress Edition',
-            
-            'url'                   => 'http://www.cybersprocket.com/products/wpquickcafepress/',
-            'support_url'           => 'http://redmine.cybersprocket.com/projects/wpcafepress/wiki',
-            'purchase_url'          => 'http://www.cybersprocket.com/products/wpquickcafepress/',
-            
-            'basefile'              => MP_CAFEPRESS_BASENAME,
-            'plugin_path'           => MP_CAFEPRESS_PLUGINDIR,
-            'plugin_url'            => MP_CAFEPRESS_PLUGINURL,
             'cache_path'            => MP_CAFEPRESS_PLUGINDIR . 'cache',
+            'plugin_url'            => MP_CAFEPRESS_PLUGINURL,
+            'plugin_path'           => MP_CAFEPRESS_PLUGINDIR,
+            'basefile'              => MP_CAFEPRESS_BASENAME,
+
+            'name'                  => 'MoneyPress : CafePress Edition',
+            'url'                   => 'http://www.charlestonsw.com/product/moneypress-cafepress-edition/',
+            'support_url'           => 'http://wordpress.org/support/plugin/moneypress-cafepress-edition',
+            'purchase_url'          => 'http://www.charlestonsw.com/product/moneypress-cafepress-edition-pro-pack/',
+            'rate_url'              => 'http://wordpress.org/extend/plugins/moneypress-cafepress-edition/',
+            'forum_url'             => 'http://wordpress.org/support/plugin/moneypress-cafepress-edition/',
+
+            'has_packages'          => true,
+
+            'use_obj_defaults'      => true,
+            'no_default_css'         => false,
+            'css_prefix'            => 'csl_themes',
+
+            'cache_obj_name'        => 'mpcafecache',            
             
             'driver_name'           => 'CafePress',
             'driver_type'           => 'Panhandler',
@@ -41,7 +47,6 @@ if (defined('MP_CAFEPRESS_PLUGINDIR')) {
                     ),
             'shortcodes'            => array('mpcafe','mp-cafepress','mp_cafepress','QuickCafe'),
             
-            'has_packages'           => true,       
         )
     );
     
@@ -59,16 +64,6 @@ if (defined('MP_CAFEPRESS_PLUGINDIR')) {
  ** Setup the option package list.
  **/
 function add_options_packages_for_mpcafe() {
-    configure_mpcafe_propack();
-}
-
-
-/**************************************
- ** function: configure_mpcafe_propack
- **
- ** Configure the Pro Pack.
- **/
-function configure_mpcafe_propack() {
     global $MP_cafepress_plugin;
    
     // Setup metadata
@@ -77,11 +72,11 @@ function configure_mpcafe_propack() {
             array(
                 'name'              => 'Pro Pack',
                 'help_text'         => 'A variety of enhancements are provided with this package.  ' .
-                                       'See the <a href="'.$MP_cafepress_plugin->purchase_url.'" target="Cyber Sprocket">product page</a> for details.  If you purchased this add-on ' .
+                                       'See the <a href="'.$MP_cafepress_plugin->purchase_url.'" target="CSA">product page</a> for details.  If you purchased this add-on ' .
                                        'come back to this page to enter the license key to activate the new features.',
-                'sku'               => 'MPCAFE',
-                'paypal_button_id'  => 'NRMZK9MRR7AML',
-                'paypal_upgrade_button_id' => 'NRMZK9MRR7AML'
+                'sku'               => 'MPCAFE-PRO',
+                'paypal_button_id'  => 'DVLXFERYYF2VE',
+                'paypal_upgrade_button_id' => 'DVLXFERYYF2VE'
             )
         );
     

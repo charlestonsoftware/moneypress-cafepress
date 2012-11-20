@@ -1,17 +1,17 @@
 <?php
 /*
   Plugin Name: MoneyPress : CafePress Edition
-  Plugin URI: http://www.cybersprocket.com/products/wpquickcafepress/
+  Plugin URI: http://www.charlestonsw.com/product/moneypress-cafepress-edition/
   Description: Display CafePress products on your pages and posts with a simple short code. Affiliate enabled.
-  Author: Cyber Sprocket Labs
-  Version: 3.9
-  Author URI: http://www.cybersprocket.com/
+  Version: 3.9.1
+  Author: Charleston Software Associates
+  Author URI: http://www.charlestonsw.com
   License: GPL3
 
 Our PID: 3783719
 http://www.tkqlhce.com/click-PID-10467594?url=<blah>
 
-Copyright 2012  Cyber Sprocket Labs (info@cybersprocket.com)
+ Copyright (C) 2012 Charleston Software Associates
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -90,6 +90,6 @@ if (class_exists('CafePressPanhandler') === false) {
 
 register_activation_hook( __FILE__, 'csl_mpcafe_activate');
 
-add_action('wp_print_styles', 'csl_mpcafe_user_stylesheet');
+add_action('wp_footer', 'csl_mpcafe_user_stylesheet');
 add_action('admin_print_styles','csl_mpcafe_admin_stylesheet');
 add_action('admin_init','csl_mpcafe_setup_admin_interface',10);

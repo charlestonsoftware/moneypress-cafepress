@@ -1,11 +1,11 @@
 === MoneyPress : CafePress Edition ===
 Plugin Name: MoneyPress : CafePress Edition
-Contributors: cybersprocket
-Donate link: http://www.cybersprocket.com/products/wpquickcafepress/
+Contributors: charlestonsw
+Donate link: http://www.charlestonsw.com/product/moneypress-cafepress-edition/
 Tags: plugin,post,page,cafepress,affiliate,shirts,pod,print-on-demand,store,products,ecommerce,revenue sharing,storefront,cj,commission-junction
 Requires at least: 3.3
 Tested up to: 3.3.2
-Stable tag: 3.9
+Stable tag: 3.9.1
 
 Put CafePress product listings on your posts and pages using a simple short code. List your own products or earn affiliate revenue.  A premium plugin.
 

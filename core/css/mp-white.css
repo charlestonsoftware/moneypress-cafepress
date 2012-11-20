@@ -1,0 +1,40 @@
+/** 
+ ** file: mp-white.css
+ ** label: White Single Column
+ ** 
+ ** The "White Single Column" theme for MoneyPress.
+ **
+ **/
+.csl_themes-product {
+    clear: both;
+    background-color: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    margin: 10px 0;
+    padding: 0px;
+    min-height: 155px;
+}
+
+.csl_themes-product div {
+    padding: 0 0 0 5px;
+}
+
+#content .csl_themes-product h3 {
+    background: none repeat scroll 0 0 #F4F4F4;
+    font-family:Verdana, Helvetica, Sans-Serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 6px;
+}
+
+.csl_themes-product img {
+    float: left;
+    padding: 0 5px 5px 0;
+    max-width: 150px;
+    max-height: 120px;
+}
+
+.csl_themes-product li {
+    list-style: none;
+}
+
